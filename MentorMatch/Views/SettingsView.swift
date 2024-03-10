@@ -16,22 +16,26 @@ struct SettingsView: View {
     @State private var newName: String = ""
     @State var isSave: Bool = false
     @State var isEducation: Bool = false
+    @State var isExperience: Bool = false
+    @State var isLogOut: Bool = false
+    
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         ScrollView {
-            HStack {
-                Spacer()
-                Button(action: {
-                    isSave.toggle()
-                    //presentationMode.wrappedValue.dismiss()
-                    viewModel.selectedTab = 3
-                }) {
-                    Text("Сохранить")
-                        .foregroundColor(Color("main_color"))
-                        .font(.system(size: 18))
-                        .padding(.trailing, 15)
-                }
-            }
+            //            HStack {
+            //                Spacer()
+            //                Button(action: {
+            //                    isSave.toggle()
+            //                    //presentationMode.wrappedValue.dismiss()
+            //                    viewModel.selectedTab = 3
+            //                }) {
+            //                    Text("Сохранить")
+            //                        .foregroundColor(Color("main_color"))
+            //                        .font(.system(size: 18))
+            //                        .padding(.trailing, 15)
+            //                }
+            //            }
             // Фотография с возможностью замены
             Button(action: {
                 // Действие при нажатии на фотографию
@@ -48,8 +52,8 @@ struct SettingsView: View {
             
             // Ячейка для имени
             VStack {
-                SettingsFieldView(maxLength: 0, labelText: "Имя", prevText: "Таисия")
-                SettingsFieldView(maxLength: 0, labelText: "Фамилия", prevText: "Галкина")
+                SettingsFieldView(maxLength: 239, labelText: "Имя", prevText: "Таисия")
+                SettingsFieldView(maxLength: 239, labelText: "Фамилия", prevText: "Галкина")
                 SettingsFieldView(maxLength: 20, labelText: "Статус", prevText: "лалала")
                 SettingsFieldView(maxLength: 20, labelText: "Описание", prevText: "сеньор девелопер")
                 
@@ -60,29 +64,56 @@ struct SettingsView: View {
                 ArrowButtonView(title: "образование") {
                     isEducation.toggle()
                 }
+                .navigationBarBackButtonHidden(true)
+                //.navigationBarItems(leading: CustomBackButton(text: ""))
+                .navigationBarItems(
+                                    leading: CustomBackButton(text: ""),
+                                    trailing:  Button(action: {
+                                        isSave.toggle()
+                                        presentationMode.wrappedValue.dismiss()
+                                    }) {
+                                        Text("Сохранить")
+                                            .foregroundColor(Color("main_color"))
+                                    }
+                                )
+                .navigationDestination(
+                    isPresented: $isEducation) {
+                        EducationView()
+                    }
                 ArrowButtonView(title: "опыт") {
+                    isExperience.toggle()
+                }
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(leading: CustomBackButton(text: ""))
+                .navigationDestination(
+                    isPresented: $isExperience) {
+                        ExperienceView()
+                    }
+                
+                ButtonView(title: "выйти", height: 50, color: "main_color") {
+                    isLogOut.toggle()
+                    presentationMode.wrappedValue.dismiss()
+                    //// костыль
                     
                 }
-//                ButtonView(title: "Сохранить",  color: "main_color") {
-//                        //isLogged.toggle()
-//                    }
-//                .padding(.horizontal, 100)
-//                .padding(.bottom, 5)
+                .padding(.bottom, 5)
+                .padding(.horizontal, 100)
+                
             }
         }
-        .fullScreenCover(isPresented: $isSave) {
-            TabBar()
-        }
-        .fullScreenCover(isPresented: $isEducation) {
-            EducationView()
-        }
-
+        //        .fullScreenCover(isPresented: $isSave) {
+        //            TabBar()
+        //        }
+        //        .fullScreenCover(isPresented: $isEducation) {
+        //            EducationView()
+        //        }
+        
     }
 }
-    
-    
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            SettingsView()
-        }
+
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingsView()
     }
+}

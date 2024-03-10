@@ -20,11 +20,6 @@ struct ButtonView: View {
         }, label: {
             Text(title)
 //                .font(.dl.mainFont())
-//                .foregroundColor(.white)
-//                .frame(height: height)
-//                .frame(maxWidth: .infinity)
-//                .background(Color.black)
-//                .cornerRadius(height / 2)
                 .fontWeight(.bold)
                 .font(.system(size: 25))
                 .foregroundColor(.black)

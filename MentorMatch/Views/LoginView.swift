@@ -45,13 +45,24 @@ struct LoginView: View {
             ButtonView(title: "Войти") {
                 isLoggedIn.toggle()
             }
+            .navigationBarBackButtonHidden(true)
+            //.navigationBarItems(leading: CustomBackButton(text: "4"))
+            .navigationDestination(
+                isPresented: $isLoggedIn) {
+                    TabBar()
+                }
             .padding(.horizontal, 120)
             .padding(.bottom, 15)
             
         }
-        .fullScreenCover(isPresented: $isLoggedIn) {
-            TabBar()
-        }
+//        .fullScreenCover(isPresented: $isLoggedIn) {
+//            TabBar()
+//        }
+//        .navigationBarHidden(false)
+//        .navigationDestination(
+//            isPresented: $isLoggedIn) {
+//                TabBar()
+//            }
     }
 }
 

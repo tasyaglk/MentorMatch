@@ -1,14 +1,14 @@
 //
-//  EducationView.swift
+//  ExperienceView.swift
 //  MentorMatch
 //
-//  Created by Тася Галкина on 10.03.2024.
+//  Created by Тася Галкина on 11.03.2024.
 //
 
 import Foundation
 import SwiftUI
 
-struct EducationView: View {
+struct ExperienceView: View {
     @State var isSaveEducation: Bool = false
     @State var isBack: Bool = false
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
@@ -16,12 +16,12 @@ struct EducationView: View {
     var body: some View {
         VStack {
             
-            SettingsFieldView(maxLength: 239, labelText: "образование", prevText: "ВШЭ")
+            SettingsFieldView(maxLength: 239, labelText: "место работы", prevText: "me")
                 .padding(.top, 15)
-            SettingsFieldView(maxLength: 239, labelText: "имя", prevText: "Таисия")
+            SettingsFieldView(maxLength: 239, labelText: "должность", prevText: "ceo")
             HStack {
-                SettingsFieldView(maxLength: 239, labelText: "год начала", prevText: "2021")
-                SettingsFieldView(maxLength: 239, labelText: "год окончания", prevText: "2025")
+                SettingsFieldView(maxLength: 239, labelText: "год начала", prevText: "2003")
+                SettingsFieldView(maxLength: 239, labelText: "год окончания", prevText: "наст время")
             }
             Spacer()
             ButtonView(title: "сохранить",  color: "main_color") {
@@ -33,10 +33,10 @@ struct EducationView: View {
         }
         .padding(.top, 5)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: CustomBackButton(text: "образование"))
+        .navigationBarItems(leading: CustomBackButton(text: "опыт"))
     }
 }
 
 #Preview {
-    EducationView()
+    ExperienceView()
 }

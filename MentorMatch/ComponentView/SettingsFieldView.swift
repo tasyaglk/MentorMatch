@@ -40,7 +40,7 @@ struct SettingsFieldView: View {
                         text = String(newValue.prefix(maxLength))
                     }
                 }
-            if maxLength != 0 {
+            if maxLength != 239 {
                 Text("\(text.count)/\(maxLength)")
                     .font(.caption)
                     .foregroundColor(.gray)

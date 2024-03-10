@@ -27,7 +27,12 @@ struct ProfileView: View {
                     }) {
                         Image(systemName: "gear")
                             .foregroundColor(.black)
-                    }
+                    } 
+                    .navigationBarHidden(true)
+                        .navigationDestination(
+                            isPresented: $isSettingsTapped) {
+                                SettingsView()
+                            }
                 }
                 .padding()
                 Image(systemName: "person")
@@ -185,9 +190,9 @@ struct ProfileView: View {
             }
             .scrollIndicators(.hidden)
             .padding()
-            .fullScreenCover(isPresented: $isSettingsTapped) {
-                SettingsView()
-            }
+//            .fullScreenCover(isPresented: $isSettingsTapped) {
+//                SettingsView()
+//            }
         }
     }
 //}

@@ -36,6 +36,8 @@
 		001A67772B9E02AC006C9425 /* ArrowButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A67762B9E02AC006C9425 /* ArrowButtonView.swift */; };
 		001A67792B9E1297006C9425 /* EducationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A67782B9E1297006C9425 /* EducationView.swift */; };
 		001A677B2B9E4B16006C9425 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A677A2B9E4B16006C9425 /* AppViewModel.swift */; };
+		001A677D2B9E65C5006C9425 /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A677C2B9E65C5006C9425 /* CustomBackButton.swift */; };
+		001A677F2B9E6B83006C9425 /* ExperienceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A677E2B9E6B83006C9425 /* ExperienceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		001A67762B9E02AC006C9425 /* ArrowButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowButtonView.swift; sourceTree = "<group>"; };
 		001A67782B9E1297006C9425 /* EducationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationView.swift; sourceTree = "<group>"; };
 		001A677A2B9E4B16006C9425 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		001A677C2B9E65C5006C9425 /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
+		001A677E2B9E6B83006C9425 /* ExperienceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,7 @@
 				001A672A2B9BBD24006C9425 /* ProfileView.swift */,
 				001A67742B9DFCCB006C9425 /* SettingsView.swift */,
 				001A67782B9E1297006C9425 /* EducationView.swift */,
+				001A677E2B9E6B83006C9425 /* ExperienceView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				001A676E2B9DEA09006C9425 /* ButtonView.swift */,
 				001A67702B9DEE76006C9425 /* SettingsFieldView.swift */,
 				001A67762B9E02AC006C9425 /* ArrowButtonView.swift */,
+				001A677C2B9E65C5006C9425 /* CustomBackButton.swift */,
 			);
 			path = ComponentView;
 			sourceTree = "<group>";
@@ -371,6 +377,7 @@
 				001A67312B9BC23C006C9425 /* Education.swift in Sources */,
 				001A67792B9E1297006C9425 /* EducationView.swift in Sources */,
 				001A67272B9BBCE3006C9425 /* MessageView.swift in Sources */,
+				001A677F2B9E6B83006C9425 /* ExperienceView.swift in Sources */,
 				001A677B2B9E4B16006C9425 /* AppViewModel.swift in Sources */,
 				001A671F2B9B9BA9006C9425 /* LoginView.swift in Sources */,
 				001A67752B9DFCCB006C9425 /* SettingsView.swift in Sources */,
@@ -379,6 +386,7 @@
 				001A67332B9BC254006C9425 /* WorkExperience.swift in Sources */,
 				001A67772B9E02AC006C9425 /* ArrowButtonView.swift in Sources */,
 				001A67292B9BBD0A006C9425 /* NewOrderView.swift in Sources */,
+				001A677D2B9E65C5006C9425 /* CustomBackButton.swift in Sources */,
 				001A67252B9BBBD9006C9425 /* CommunityView.swift in Sources */,
 				001A66E82B99F0EE006C9425 /* MentorMatchApp.swift in Sources */,
 			);
