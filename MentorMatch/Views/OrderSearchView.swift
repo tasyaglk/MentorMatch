@@ -1,14 +1,22 @@
 //
-//  NewOrderView.swift
+//  OrderSearchView.swift
 //  MentorMatch
 //
-//  Created by Тася Галкина on 09.03.2024.
+//  Created by Тася Галкина on 12.03.2024.
+//
+
+import Foundation
+//
+//  MentorSearchView.swift
+//  MentorMatch
+//
+//  Created by Тася Галкина on 12.03.2024.
 //
 
 import Foundation
 import SwiftUI
 
-struct NewOrderView: View {
+struct OrderSearchView: View {
     @State private var selectedSkills: [String] = []
     @State private var comment: String = ""
     @State private var searchText: String = ""
@@ -25,20 +33,6 @@ struct NewOrderView: View {
         "Database Management",
         "Project Management",
         "Graphic Design",
-        "iOS Development",
-        "Android Development",
-        "Web Development",
-        "UI/UX Design",
-        "Database Management",
-        "Project Management",
-        "Graphic Design",
-        "iOS Development",
-        "Android Development",
-        "Web Development",
-        "UI/UX Design",
-        "тыква",
-        "тамя",
-        "тася",
         
     ]
     
@@ -57,7 +51,7 @@ struct NewOrderView: View {
                     .foregroundColor(.black)
                     //.padding(.horizontal)
                 
-                TextField("Необходимые навыки..", text: $searchText)
+                TextField("навыки, с которыми нужна помощь..", text: $searchText)
                     //.padding(.horizontal)
                     .padding(.vertical, 8)
                     .background(.white)
@@ -103,50 +97,51 @@ struct NewOrderView: View {
                 }
             }
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(selectedSkills, id: \.self) { skill in
-                        Text(skill)
-                            .padding(8)
-                            .background(Color("main_color"))
-                            .foregroundColor(.black)
-                        
-                            .cornerRadius(8)
-                            .padding(.horizontal, 4)
-                    }
-                }
-            }
+//            ScrollView(.horizontal, showsIndicators: false) {
+//                HStack {
+//                    ForEach(selectedSkills, id: \.self) { skill in
+//                        Text(skill)
+//                            .padding(8)
+//                            .background(Color("main_color"))
+//                            .foregroundColor(.black)
+//
+//                            .cornerRadius(8)
+//                            .padding(.horizontal, 4)
+//                    }
+//                }
+//            }
             
-            VStack {
-                FieldView(maxLength: 600, labelText: "", prevText: "опишите свой запрос", type: "usual")
-            }
-            .padding(.top, 20)
-            
-            Spacer()
-            ButtonView(title: "опубликовать", height: 50, color: "main_color") {
-                isPublic.toggle()
-                //presentationMode.wrappedValue.dismiss()
-                //// костыль
-                
-            }
-            .navigationBarBackButtonHidden(true)
-            //.navigationBarItems(leading: CustomBackButton(text: ""))
-            .navigationDestination(
-                isPresented: $isPublic) {
-                    CommunityView()
-                }
-            .padding(.bottom, 5)
-            .padding(.horizontal, 80)
+//            VStack {
+//                FieldView(maxLength: 600, labelText: "", prevText: "опишите свой запрос", type: "usual")
+//            }
+//            .padding(.top, 20)
+//
+//            Spacer()
+//            ButtonView(title: "опубликовать", height: 50, color: "main_color") {
+//                isPublic.toggle()
+//                //presentationMode.wrappedValue.dismiss()
+//                //// костыль
+//
+//            }
+//            .navigationBarBackButtonHidden(true)
+//            //.navigationBarItems(leading: CustomBackButton(text: ""))
+//            .navigationDestination(
+//                isPresented: $isPublic) {
+//                    CommunityView()
+//                }
+//            .padding(.bottom, 5)
+//            .padding(.horizontal, 80)
             
             
             
         }
         .navigationBarTitle("New Order")
+        .padding(.top, 70)
     }
 }
 
-struct NewOrderView_Previews: PreviewProvider {
+struct OrderSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        NewOrderView()
+        OrderSearchView()
     }
 }
