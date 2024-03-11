@@ -31,13 +31,17 @@
 		001A67332B9BC254006C9425 /* WorkExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A67322B9BC254006C9425 /* WorkExperience.swift */; };
 		001A676C2B9CC750006C9425 /* AGroticextrabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 001A676B2B9CC750006C9425 /* AGroticextrabold.ttf */; };
 		001A676F2B9DEA09006C9425 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A676E2B9DEA09006C9425 /* ButtonView.swift */; };
-		001A67712B9DEE76006C9425 /* SettingsFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A67702B9DEE76006C9425 /* SettingsFieldView.swift */; };
+		001A67712B9DEE76006C9425 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A67702B9DEE76006C9425 /* FieldView.swift */; };
 		001A67752B9DFCCB006C9425 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A67742B9DFCCB006C9425 /* SettingsView.swift */; };
 		001A67772B9E02AC006C9425 /* ArrowButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A67762B9E02AC006C9425 /* ArrowButtonView.swift */; };
 		001A67792B9E1297006C9425 /* EducationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A67782B9E1297006C9425 /* EducationView.swift */; };
 		001A677B2B9E4B16006C9425 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A677A2B9E4B16006C9425 /* AppViewModel.swift */; };
 		001A677D2B9E65C5006C9425 /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A677C2B9E65C5006C9425 /* CustomBackButton.swift */; };
 		001A677F2B9E6B83006C9425 /* ExperienceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A677E2B9E6B83006C9425 /* ExperienceView.swift */; };
+		0062D81C2B9F1A5C00219D5A /* ExpertiseRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0062D81B2B9F1A5C00219D5A /* ExpertiseRowView.swift */; };
+		0062D81E2B9F1AAE00219D5A /* Expertise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0062D81D2B9F1AAE00219D5A /* Expertise.swift */; };
+		0062D8202B9F1AD100219D5A /* ExpertiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0062D81F2B9F1AD100219D5A /* ExpertiseView.swift */; };
+		0062D8222B9F539000219D5A /* UsualInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0062D8212B9F539000219D5A /* UsualInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,13 +86,17 @@
 		001A67322B9BC254006C9425 /* WorkExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkExperience.swift; sourceTree = "<group>"; };
 		001A676B2B9CC750006C9425 /* AGroticextrabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AGroticextrabold.ttf; path = ../../../Downloads/AGroticextrabold.ttf; sourceTree = "<group>"; };
 		001A676E2B9DEA09006C9425 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
-		001A67702B9DEE76006C9425 /* SettingsFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFieldView.swift; sourceTree = "<group>"; };
+		001A67702B9DEE76006C9425 /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
 		001A67742B9DFCCB006C9425 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		001A67762B9E02AC006C9425 /* ArrowButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowButtonView.swift; sourceTree = "<group>"; };
 		001A67782B9E1297006C9425 /* EducationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationView.swift; sourceTree = "<group>"; };
 		001A677A2B9E4B16006C9425 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		001A677C2B9E65C5006C9425 /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 		001A677E2B9E6B83006C9425 /* ExperienceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceView.swift; sourceTree = "<group>"; };
+		0062D81B2B9F1A5C00219D5A /* ExpertiseRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertiseRowView.swift; sourceTree = "<group>"; };
+		0062D81D2B9F1AAE00219D5A /* Expertise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expertise.swift; sourceTree = "<group>"; };
+		0062D81F2B9F1AD100219D5A /* ExpertiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertiseView.swift; sourceTree = "<group>"; };
+		0062D8212B9F539000219D5A /* UsualInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsualInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +203,7 @@
 				001A67742B9DFCCB006C9425 /* SettingsView.swift */,
 				001A67782B9E1297006C9425 /* EducationView.swift */,
 				001A677E2B9E6B83006C9425 /* ExperienceView.swift */,
+				0062D81F2B9F1AD100219D5A /* ExpertiseView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,6 +222,7 @@
 				001A672E2B9BC11A006C9425 /* User.swift */,
 				001A67302B9BC23C006C9425 /* Education.swift */,
 				001A67322B9BC254006C9425 /* WorkExperience.swift */,
+				0062D81D2B9F1AAE00219D5A /* Expertise.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,9 +231,11 @@
 			isa = PBXGroup;
 			children = (
 				001A676E2B9DEA09006C9425 /* ButtonView.swift */,
-				001A67702B9DEE76006C9425 /* SettingsFieldView.swift */,
+				001A67702B9DEE76006C9425 /* FieldView.swift */,
 				001A67762B9E02AC006C9425 /* ArrowButtonView.swift */,
 				001A677C2B9E65C5006C9425 /* CustomBackButton.swift */,
+				0062D81B2B9F1A5C00219D5A /* ExpertiseRowView.swift */,
+				0062D8212B9F539000219D5A /* UsualInputView.swift */,
 			);
 			path = ComponentView;
 			sourceTree = "<group>";
@@ -372,11 +384,14 @@
 			files = (
 				001A672F2B9BC11A006C9425 /* User.swift in Sources */,
 				001A672B2B9BBD24006C9425 /* ProfileView.swift in Sources */,
+				0062D81C2B9F1A5C00219D5A /* ExpertiseRowView.swift in Sources */,
 				001A676F2B9DEA09006C9425 /* ButtonView.swift in Sources */,
-				001A67712B9DEE76006C9425 /* SettingsFieldView.swift in Sources */,
+				001A67712B9DEE76006C9425 /* FieldView.swift in Sources */,
+				0062D81E2B9F1AAE00219D5A /* Expertise.swift in Sources */,
 				001A67312B9BC23C006C9425 /* Education.swift in Sources */,
 				001A67792B9E1297006C9425 /* EducationView.swift in Sources */,
 				001A67272B9BBCE3006C9425 /* MessageView.swift in Sources */,
+				0062D8222B9F539000219D5A /* UsualInputView.swift in Sources */,
 				001A677F2B9E6B83006C9425 /* ExperienceView.swift in Sources */,
 				001A677B2B9E4B16006C9425 /* AppViewModel.swift in Sources */,
 				001A671F2B9B9BA9006C9425 /* LoginView.swift in Sources */,
@@ -388,6 +403,7 @@
 				001A67292B9BBD0A006C9425 /* NewOrderView.swift in Sources */,
 				001A677D2B9E65C5006C9425 /* CustomBackButton.swift in Sources */,
 				001A67252B9BBBD9006C9425 /* CommunityView.swift in Sources */,
+				0062D8202B9F1AD100219D5A /* ExpertiseView.swift in Sources */,
 				001A66E82B99F0EE006C9425 /* MentorMatchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,6 +17,7 @@ struct SettingsView: View {
     @State var isSave: Bool = false
     @State var isEducation: Bool = false
     @State var isExperience: Bool = false
+    @State var isExpertise: Bool = false
     @State var isLogOut: Bool = false
     
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
@@ -52,14 +53,20 @@ struct SettingsView: View {
             
             // Ячейка для имени
             VStack {
-                SettingsFieldView(maxLength: 239, labelText: "Имя", prevText: "Таисия")
-                SettingsFieldView(maxLength: 239, labelText: "Фамилия", prevText: "Галкина")
-                SettingsFieldView(maxLength: 20, labelText: "Статус", prevText: "лалала")
-                SettingsFieldView(maxLength: 20, labelText: "Описание", prevText: "сеньор девелопер")
+                FieldView(maxLength: 239, labelText: "Имя", prevText: "Таисия", type: "settings")
+                FieldView(maxLength: 239, labelText: "Фамилия", prevText: "Галкина", type: "settings")
+                FieldView(maxLength: 20, labelText: "Статус", prevText: "лалала", type: "settings")
+                FieldView(maxLength: 20, labelText: "Описание", prevText: "сеньор девелопер", type: "settings")
                 
                 ArrowButtonView(title: "навыки") {
-                    
+                    isExpertise.toggle()
                 }
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(leading: CustomBackButton(text: ""))
+                .navigationDestination(
+                    isPresented: $isExpertise) {
+                        ExpertiseView()
+                    }
                 .padding(.top, 10)
                 ArrowButtonView(title: "образование") {
                     isEducation.toggle()
@@ -89,6 +96,8 @@ struct SettingsView: View {
                     isPresented: $isExperience) {
                         ExperienceView()
                     }
+                
+                Spacer()
                 
                 ButtonView(title: "выйти", height: 50, color: "main_color") {
                     isLogOut.toggle()

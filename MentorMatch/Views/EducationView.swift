@@ -16,12 +16,12 @@ struct EducationView: View {
     var body: some View {
         VStack {
             
-            SettingsFieldView(maxLength: 239, labelText: "образование", prevText: "ВШЭ")
+            FieldView(maxLength: 239, labelText: "образование", prevText: "ВШЭ", type: "settings")
                 .padding(.top, 15)
-            SettingsFieldView(maxLength: 239, labelText: "имя", prevText: "Таисия")
+            FieldView(maxLength: 239, labelText: "имя", prevText: "Таисия", type: "settings")
             HStack {
-                SettingsFieldView(maxLength: 239, labelText: "год начала", prevText: "2021")
-                SettingsFieldView(maxLength: 239, labelText: "год окончания", prevText: "2025")
+                FieldView(maxLength: 239, labelText: "год начала", prevText: "2021", type: "settings")
+                FieldView(maxLength: 239, labelText: "год окончания", prevText: "2025", type: "settings")
             }
             Spacer()
             ButtonView(title: "сохранить",  color: "main_color") {

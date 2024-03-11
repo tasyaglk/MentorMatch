@@ -49,6 +49,7 @@ struct TabBar: View {
         }
         .accentColor(Color("main_color"))
         .environmentObject(AppViewModel())
+        .navigationBarBackButtonHidden(true)
     }
 }
 

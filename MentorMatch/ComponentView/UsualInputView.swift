@@ -1,37 +1,33 @@
 //
-//  SettingsFieldView.swift
+//  UsualInputView.swift
 //  MentorMatch
 //
-//  Created by Тася Галкина on 10.03.2024.
+//  Created by Тася Галкина on 11.03.2024.
 //
 
 import Foundation
 import SwiftUI
 
-struct SettingsFieldView: View {
+struct UsualInputView: View {
     
     let maxLength: Int
-    let labelText: String
     let prevText: String
     
-    @State private var text: String
+    @State private var text: String = ""
     
-    init(maxLength: Int, labelText: String, prevText: String) {
-        self.text = prevText
+    init(maxLength: Int, prevText: String) {
         self.maxLength = maxLength
-        self.labelText = labelText
         self.prevText = prevText
     }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text(labelText)
-                .font(.headline)
-                .foregroundColor(.gray)
+            
             
             TextField(prevText, text: $text)
                 .padding()
                 .background(Color.white)
+                .foregroundColor(.gray)
                 .cornerRadius(15)
                 .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 8))
                 .cornerRadius(15)
@@ -54,9 +50,9 @@ struct SettingsFieldView: View {
 }
 
 
-struct SettingsField_Previews: PreviewProvider {
+struct UsualInputView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsFieldView(maxLength: 20, labelText: "Описание", prevText: "Таисия")
+        UsualInputView(maxLength: 20, prevText: "Таисия")
 //            .previewLayout(.sizeThatFits)
 //            .padding()
     }

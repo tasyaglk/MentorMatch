@@ -23,7 +23,7 @@ struct ButtonView: View {
                 .fontWeight(.bold)
                 .font(.system(size: 25))
                 .foregroundColor(.black)
-                //.padding()
+                .padding()
                 .frame(height: height)
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .background(Color(color))

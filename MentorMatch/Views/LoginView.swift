@@ -22,23 +22,10 @@ struct LoginView: View {
                 .multilineTextAlignment(.center)
                 .padding(.top, 50)
             
-            TextField("Введите почту", text: $email)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(15)
-                .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 8))
-                .cornerRadius(15)
-                .padding(.horizontal, 15)
+            FieldView(maxLength: 239, prevText: "введите почту", type: "usual")
                 .padding(.top, 100)
-            
-            SecureField("Введите пароль", text: $password)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(15)
-                .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 8))
-                .cornerRadius(15)
-                .padding(.horizontal, 15)
-                .padding(.top, 10)
+            FieldView(maxLength: 239, prevText: "введите пароль", type: "password")
+                .padding(.horizontal, -15)
             
             Spacer()
             
@@ -46,7 +33,6 @@ struct LoginView: View {
                 isLoggedIn.toggle()
             }
             .navigationBarBackButtonHidden(true)
-            //.navigationBarItems(leading: CustomBackButton(text: "4"))
             .navigationDestination(
                 isPresented: $isLoggedIn) {
                     TabBar()
@@ -55,14 +41,6 @@ struct LoginView: View {
             .padding(.bottom, 15)
             
         }
-//        .fullScreenCover(isPresented: $isLoggedIn) {
-//            TabBar()
-//        }
-//        .navigationBarHidden(false)
-//        .navigationDestination(
-//            isPresented: $isLoggedIn) {
-//                TabBar()
-//            }
     }
 }
 
