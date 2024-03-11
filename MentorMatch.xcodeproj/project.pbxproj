@@ -44,6 +44,7 @@
 		0062D8222B9F539000219D5A /* UsualInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0062D8212B9F539000219D5A /* UsualInputView.swift */; };
 		0062D8282B9FB0DD00219D5A /* MentorSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0062D8272B9FB0DD00219D5A /* MentorSearchView.swift */; };
 		0062D82A2B9FB19000219D5A /* OrderSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0062D8292B9FB19000219D5A /* OrderSearchView.swift */; };
+		0062D82C2B9FC09500219D5A /* EducationAndExperienceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0062D82B2B9FC09500219D5A /* EducationAndExperienceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		0062D8212B9F539000219D5A /* UsualInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsualInputView.swift; sourceTree = "<group>"; };
 		0062D8272B9FB0DD00219D5A /* MentorSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorSearchView.swift; sourceTree = "<group>"; };
 		0062D8292B9FB19000219D5A /* OrderSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSearchView.swift; sourceTree = "<group>"; };
+		0062D82B2B9FC09500219D5A /* EducationAndExperienceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationAndExperienceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 				001A677C2B9E65C5006C9425 /* CustomBackButton.swift */,
 				0062D81B2B9F1A5C00219D5A /* ExpertiseRowView.swift */,
 				0062D8212B9F539000219D5A /* UsualInputView.swift */,
+				0062D82B2B9FC09500219D5A /* EducationAndExperienceView.swift */,
 			);
 			path = ComponentView;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				001A676F2B9DEA09006C9425 /* ButtonView.swift in Sources */,
 				001A67712B9DEE76006C9425 /* FieldView.swift in Sources */,
 				0062D81E2B9F1AAE00219D5A /* Expertise.swift in Sources */,
+				0062D82C2B9FC09500219D5A /* EducationAndExperienceView.swift in Sources */,
 				0062D82A2B9FB19000219D5A /* OrderSearchView.swift in Sources */,
 				001A67312B9BC23C006C9425 /* Education.swift in Sources */,
 				001A67792B9E1297006C9425 /* EducationView.swift in Sources */,

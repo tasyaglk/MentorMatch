@@ -17,6 +17,8 @@ struct ProfileView: View {
     @State private var description = "Senior"
     @State var isSettingsTapped: Bool = false
     
+    private let user = User()
+    
     var body: some View {
         //GeometryReader { geometry in
             ScrollView {
@@ -42,42 +44,42 @@ struct ProfileView: View {
                     .clipShape(Circle())
                     .padding(.top, 20)
                 
-                HStack {
-                    VStack {
-                        Text(rate)
-                            .fontWeight(.bold)
-                            .font(.system(size: 18))
-                            .foregroundColor(.black)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 5)
-                            .background(Color("light_main_color"))
-                            .cornerRadius(10)
-                        Text("⭐")
-                            .font(.subheadline)
-                            .foregroundColor(Color("light_main_color"))
-                    }
-                    .padding()
-                    
-                    VStack {
-                        Text(cntRevie)
-                            .fontWeight(.bold)
-                            .font(.system(size: 18))
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 5)
-                            .background(Color("light_main_color"))
-                            .cornerRadius(10)
-                        Text("💬")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                    }
-                    .padding()
-                }
+//                HStack {
+//                    VStack {
+//                        Text(rate)
+//                            .fontWeight(.bold)
+//                            .font(.system(size: 18))
+//                            .foregroundColor(.black)
+//                            .padding(.horizontal, 10)
+//                            .padding(.vertical, 5)
+//                            .background(Color("light_main_color"))
+//                            .cornerRadius(10)
+//                        Text("⭐")
+//                            .font(.subheadline)
+//                            .foregroundColor(Color("light_main_color"))
+//                    }
+//                    .padding()
+//                    
+//                    VStack {
+//                        Text(cntRevie)
+//                            .fontWeight(.bold)
+//                            .font(.system(size: 18))
+//                            .padding(.horizontal, 10)
+//                            .padding(.vertical, 5)
+//                            .background(Color("light_main_color"))
+//                            .cornerRadius(10)
+//                        Text("💬")
+//                            .font(.subheadline)
+//                            .foregroundColor(.gray)
+//                    }
+//                    .padding()
+//                }
                 
-                Text(username)
+                Text(user.firstName + " " + user.lastName)
                     .font(.title)
                     .fontWeight(.bold)
                 
-                Text(status)
+                Text(user.status)
                     .font(.custom("SourceSansPro-Regular", size: 18))
                     .foregroundColor(.gray)
                 
@@ -114,7 +116,7 @@ struct ProfileView: View {
                         .foregroundColor(.gray)
                         .padding(.horizontal, 5)
                     
-                    Text(description)
+                    Text(user.description)
                         .fontWeight(.regular)
                         .font(.system(size: 18))
                         .foregroundColor(.black)
@@ -124,22 +126,39 @@ struct ProfileView: View {
                         //.frame(width: geometry.size.width)
                         //.fixedSize(horizontal: false, vertical: true)
                         .cornerRadius(15)
-                    
-                    HStack {
-                        Text("💡")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                            .padding(.horizontal, 0)
-                        Text("Мои профессиональные интересы")
-                            .fontWeight(.bold)
-                            .font(.system(size: 18))
+                    if user.expertise != nil {
+                        HStack {
+                            Text("💡")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                                .padding(.horizontal, 0)
+                            
+                            Text("Мои профессиональные интересы")
+                                .fontWeight(.bold)
+                                .font(.system(size: 18))
+                        }
+                        .padding(.vertical, 10)
+                        VStack {
+                            ForEach(user.expertise!) { expertiseItem in
+                                        // Вывод экспертиз
+                                HStack {
+                                    Text("\(expertiseItem.name)")
+                                        .padding(.horizontal, 5)
+                                
+                                
+                                ForEach(1..<6) { index in
+                                    Image(systemName: index <= expertiseItem.rating ? "star.fill" : "star")
+                                        .foregroundColor(.yellow)
+                                }
+                                }
+                                    }
+                                .padding(.horizontal, 5)
+                        }
+                        
                     }
-                    .padding(.vertical, 10)
                     
-                    VStack {
-                        Text("list")
-                            .padding(.horizontal, 5)
-                    }
+                    
+                    
                     
                     HStack {
                         Text("🎓")
@@ -153,7 +172,7 @@ struct ProfileView: View {
                     .padding(.vertical, 10)
                     
                     VStack {
-                        Text("list")
+                        EducationAndExperienceView(label1: "ВШЭ", label2: "бакалавриат", label3: "2021", label4: "2025")
                             .padding(.horizontal, 5)
                     }
                     
@@ -169,22 +188,22 @@ struct ProfileView: View {
                     .padding(.vertical, 10)
                     
                     VStack {
-                        Text("list")
+                        EducationAndExperienceView(label1: "Me", label2: "CEO", label3: "2003", label4: "2025")
                             .padding(.horizontal, 5)
                     }
                     //Spacer()
                     .padding(.vertical, 10)
-                    Divider()
-                    Text("Отзывы")
-                        .fontWeight(.bold)
-                        .font(.system(size: 18))
-                        .padding(.horizontal, -15)
-                        .padding()
-                    
-                    VStack {
-                        Text("list")
-                            //.padding(.horizontal, 5)
-                    }
+//                    Divider()
+//                    Text("Отзывы")
+//                        .fontWeight(.bold)
+//                        .font(.system(size: 18))
+//                        .padding(.horizontal, -15)
+//                        .padding()
+//                    
+//                    VStack {
+//                        Text("list")
+//                            //.padding(.horizontal, 5)
+//                    }
                 }
                 Spacer()
             }
