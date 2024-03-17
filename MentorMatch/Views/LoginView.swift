@@ -13,6 +13,22 @@ struct LoginView: View {
     @State private var password: String = ""
     
     @State var isLoggedIn: Bool = false
+    @State private var isAlertShow: Bool = false
+    @State private var alertMessage: String = ""
+    @EnvironmentObject var authFirebase: AuthFirebase
+    
+    func logIn(email: String, password: String) {
+        authFirebase.signIn(email: email, password: password) { result in
+            switch result {
+            case (.success(_)) :
+                isLoggedIn.toggle()
+            case(.failure(let error)):
+                //authFirebase.errorMessage = error.errorMessage
+                alertMessage = "ошибка входа"
+                isAlertShow.toggle()
+            }
+        }
+    }
     
     var body: some View {
         VStack {
@@ -22,23 +38,41 @@ struct LoginView: View {
                 .multilineTextAlignment(.center)
                 .padding(.top, 50)
             
-            FieldView(maxLength: 239, prevText: "введите почту", type: "usual")
-                .padding(.top, 100)
-            FieldView(maxLength: 239, prevText: "введите пароль", type: "password")
-                .padding(.horizontal, -15)
+            FieldView(maxLength: 239,labelText: "", type: "usual", prevText: "введите почту", keyboardType: .emailAddress, text: $email )
+                //.padding(.top, 100)
+            FieldView(maxLength: 239,labelText: "", type: "password", prevText: "введите пароль", keyboardType: .emailAddress, text: $password )
+                .padding(.horizontal, 15)
             
             Spacer()
             
             ButtonView(title: "Войти") {
-                isLoggedIn.toggle()
+                logIn(email: email, password: password)
+//                AuthFirebase.shared.signUp(email: email, password: password) { result in
+//                    switch result {
+//                    case .success(let user):
+//                        isLoggedIn.toggle()
+//                        
+//                        
+//                    case .failure(let error):
+//                        alertMessage = "ошибка регистрации"
+//                        isAlertShow.toggle()
+//                    }
+//                
+//                }
+                
+                
             }
             .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: CustomBackButton(text: ""))
             .navigationDestination(
                 isPresented: $isLoggedIn) {
                     TabBar()
                 }
             .padding(.horizontal, 120)
             .padding(.bottom, 15)
+            .alert(isPresented: $isAlertShow) {
+                Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            }
             
         }
     }

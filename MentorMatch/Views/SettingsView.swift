@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var viewModel: AppViewModel
+    @ObservedObject var viewModel = AuthFirebase()
     @State private var profileImage: Image = Image(systemName: "person")
     //@State private var name: String = "John Doe"
     @State private var isEditName: Bool = false
@@ -20,9 +20,17 @@ struct SettingsView: View {
     @State var isExpertise: Bool = false
     @State var isLogOut: Bool = false
     
+    
+    @State private var firstName: String = ""
+    @State private var lastName: String = ""
+    @State private var status: String = ""
+    @State private var description: String = ""
+    
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
     var body: some View {
+        
+        let user = viewModel.getUser() ?? UserM()
         ScrollView {
             //            HStack {
             //                Spacer()
@@ -38,25 +46,27 @@ struct SettingsView: View {
             //                }
             //            }
             // Фотография с возможностью замены
-            Button(action: {
-                // Действие при нажатии на фотографию
-                // Здесь можно добавить код для выбора новой фотографии из фотопленки
-            }) {
-                profileImage
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 100)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.gray, lineWidth: 2))
-                    .padding()
-            }
+//            Button(action: {
+//                // Действие при нажатии на фотографию
+//                // Здесь можно добавить код для выбора новой фотографии из фотопленки
+//            }) {
+//                profileImage
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(width: 100, height: 100)
+//                    .clipShape(Circle())
+//                    .overlay(Circle().stroke(Color.gray, lineWidth: 2))
+//                    .padding()
+//            }
             
             // Ячейка для имени
             VStack {
-                FieldView(maxLength: 239, labelText: "Имя", prevText: "Таисия", type: "settings")
-                FieldView(maxLength: 239, labelText: "Фамилия", prevText: "Галкина", type: "settings")
-                FieldView(maxLength: 20, labelText: "Статус", prevText: "лалала", type: "settings")
-                FieldView(maxLength: 20, labelText: "Описание", prevText: "сеньор девелопер", type: "settings")
+                
+                FieldView(maxLength: 239, labelText: "имя", type: "settings", prevText: user.firstName, keyboardType: .default, text: $firstName)
+                    //.padding(.top, 15)
+                FieldView(maxLength: 239, labelText: "фамилия", type: "settings", prevText: user.lastName, keyboardType: .default, text: $lastName)
+                FieldView(maxLength: 20, labelText: "Статус", type: "settings", prevText: user.status, keyboardType: .default, text: $status)
+                FieldView(maxLength: 20, labelText: "Описание", type: "settings", prevText: user.description, keyboardType: .default, text: $description)
                 
                 ArrowButtonView(title: "навыки") {
                     isExpertise.toggle()
@@ -121,7 +131,7 @@ struct SettingsView: View {
 }
 
 
-struct ContentView_Previews: PreviewProvider {
+struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
     }

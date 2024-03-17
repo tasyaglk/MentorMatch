@@ -9,10 +9,10 @@ import Foundation
 import SwiftUI
 
 struct TabBar: View {
-    @EnvironmentObject var viewModel: AppViewModel
+    @EnvironmentObject var authFirebase: AuthFirebase
     
     var body: some View {
-        TabView(selection: $viewModel.selectedTab) {
+        TabView {
             CommunityView()
                 .tabItem {
                     Image(systemName: "person.3")
@@ -48,7 +48,7 @@ struct TabBar: View {
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
         .accentColor(Color("main_color"))
-        .environmentObject(AppViewModel())
+        .environmentObject(AuthFirebase())
         .navigationBarBackButtonHidden(true)
     }
 }

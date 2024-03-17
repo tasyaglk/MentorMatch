@@ -7,9 +7,25 @@
 
 import Foundation
 
-struct WorkExperience: Codable {
+struct WorkExperience{
     var companyName: String
     var position: String
-    var startYear: Int
-    var endYear: Int
+    var startYear: String
+    var endYear: String
+    
+    init(companyName: String, position: String, startYear: String, endYear: String) {
+        self.companyName = companyName
+        self.position = position
+        self.startYear = startYear
+        self.endYear = endYear
+    }
 }
+
+//extension WorkExperience {
+//    init(companyName: String, position: String, startYear: String, endYear: String) {
+//        self.companyName = companyName
+//        self.position = position
+//        self.startYear = startYear
+//        self.endYear = endYear
+//    }
+//}

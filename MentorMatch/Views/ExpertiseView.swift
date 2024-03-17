@@ -33,6 +33,8 @@ struct ExpertiseView: View {
                 // Изменяем фоновый цвет для UICollectionViewListLayoutSectionBackgroundColorDecorationView
                 UITableView.appearance().backgroundColor = UIColor.white
             }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: CustomBackButton(text: "навыки"))
         }
     
 //    init() {

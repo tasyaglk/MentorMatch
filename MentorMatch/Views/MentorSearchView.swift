@@ -41,14 +41,14 @@ struct MentorSearchView: View {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.black)
-                    //.padding(.horizontal)
+                //.padding(.horizontal)
                 
                 TextField("Необходимые навыки..", text: $searchText)
-                    //.padding(.horizontal)
+                //.padding(.horizontal)
                     .padding(.vertical, 8)
                     .background(.white)
                     .cornerRadius(10)
-                    //.padding()
+                //.padding()
                     .onTapGesture {
                         self.isDropdownVisible = true
                     }
@@ -89,46 +89,67 @@ struct MentorSearchView: View {
                 }
             }
             
-//            ScrollView(.horizontal, showsIndicators: false) {
-//                HStack {
-//                    ForEach(selectedSkills, id: \.self) { skill in
-//                        Text(skill)
-//                            .padding(8)
-//                            .background(Color("main_color"))
-//                            .foregroundColor(.black)
-//                        
-//                            .cornerRadius(8)
-//                            .padding(.horizontal, 4)
-//                    }
-//                }
-//            }
+                HStack {
+                    SmallUserView(user: UserM(firstName: "taisia", lastName: "galkina", status: "lalala", description: "Lalala", email: "ga@m.ru"))
+                        .padding(.horizontal)
+                    
+                    Spacer()
+                }
+            HStack {
+                SmallUserView(user: UserM(firstName: "taisia2", lastName: "galkina", status: "lalala", description: "Lalala", email: "ga@m.ru"))
+                    .padding(.horizontal)
+                
+                Spacer()
+            }
+            HStack {
+                SmallUserView(user: UserM(firstName: "taisia3", lastName: "galkina", status: "lalala", description: "Lalala", email: "ga@m.ru"))
+                    .padding(.horizontal)
+                
+                Spacer()
+            }
             
-//            VStack {
-//                FieldView(maxLength: 600, labelText: "", prevText: "опишите свой запрос", type: "usual")
-//            }
-//            .padding(.top, 20)
-//            
-//            Spacer()
-//            ButtonView(title: "опубликовать", height: 50, color: "main_color") {
-//                isPublic.toggle()
-//                //presentationMode.wrappedValue.dismiss()
-//                //// костыль
-//                
-//            }
-//            .navigationBarBackButtonHidden(true)
-//            //.navigationBarItems(leading: CustomBackButton(text: ""))
-//            .navigationDestination(
-//                isPresented: $isPublic) {
-//                    CommunityView()
-//                }
-//            .padding(.bottom, 5)
-//            .padding(.horizontal, 80)
+            
+            //            ScrollView(.horizontal, showsIndicators: false) {
+            //                HStack {
+            //                    ForEach(selectedSkills, id: \.self) { skill in
+            //                        Text(skill)
+            //                            .padding(8)
+            //                            .background(Color("main_color"))
+            //                            .foregroundColor(.black)
+            //
+            //                            .cornerRadius(8)
+            //                            .padding(.horizontal, 4)
+            //                    }
+            //                }
+            //            }
+            
+            //            VStack {
+            //                FieldView(maxLength: 600, labelText: "", prevText: "опишите свой запрос", type: "usual")
+            //            }
+            //            .padding(.top, 20)
+            //
+            //            Spacer()
+            //            ButtonView(title: "опубликовать", height: 50, color: "main_color") {
+            //                isPublic.toggle()
+            //                //presentationMode.wrappedValue.dismiss()
+            //                //// костыль
+            //
+            //            }
+            //            .navigationBarBackButtonHidden(true)
+            //            //.navigationBarItems(leading: CustomBackButton(text: ""))
+            //            .navigationDestination(
+            //                isPresented: $isPublic) {
+            //                    CommunityView()
+            //                }
+            //            .padding(.bottom, 5)
+            //            .padding(.horizontal, 80)
             
             
             
         }
+        
         .navigationBarTitle("New Order")
-        .padding(.top, 70)
+        //.padding(.top, 70)
     }
 }
 

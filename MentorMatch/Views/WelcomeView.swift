@@ -11,6 +11,7 @@ import SwiftUI
 
 struct WelcomeView: View {
     @State var isLogged: Bool = false
+    @State var isRegistrated: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -31,7 +32,7 @@ struct WelcomeView: View {
                         isLogged.toggle()
                     }
                     .navigationBarBackButtonHidden(true)
-                    //.navigationBarItems(leading: CustomBackButton(text: "3"))
+                    //.navigationBarItems(leading: CustomBackButton(text: ""))
                     .navigationDestination(
                         isPresented: $isLogged) {
                             LoginView()
@@ -39,8 +40,15 @@ struct WelcomeView: View {
                     .padding(.horizontal, 40)
                     
                     ButtonView(title: "Зарегистрироваться",  color: "white_app") {
-                        // Действие при нажатии на кнопку "Зарегистрироваться"
+                        isRegistrated.toggle()
                     }
+                    .navigationBarBackButtonHidden(true)
+                    //.navigationBarItems(leading: CustomBackButton(text: "3"))
+                    .navigationDestination(
+                        isPresented: $isRegistrated) {
+                            RegisterFirstView()
+                        }
+                    //.padding(.horizontal, 40)
                     .padding(.horizontal, 40)
                     .padding(.bottom, 35)
                 }

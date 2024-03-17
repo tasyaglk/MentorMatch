@@ -16,6 +16,8 @@ struct NewOrderView: View {
     @State private var isPublic = false
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
+    
+    
     let allSkills = [
         "iOS Development",
         "Android Development",
@@ -118,7 +120,7 @@ struct NewOrderView: View {
             }
             
             VStack {
-                FieldView(maxLength: 600, labelText: "", prevText: "опишите свой запрос", type: "usual")
+                FieldView(maxLength: 600, labelText: "", type: "usual", prevText: "опишите свой запрос", keyboardType: .default, text: $comment)
             }
             .padding(.top, 20)
             
