@@ -9,39 +9,38 @@ import Foundation
 import SwiftUI
 
 struct ExpertiseView: View {
-    @State private var expertises = [
-        Expertise(name: "iOS Development", rating: 0, isChecked: false),
-        Expertise(name: "Android Development", rating: 0, isChecked: false),
-        Expertise(name: "Web Development", rating: 0, isChecked: false)
-    ]
-        
+    @Environment(\.presentationMode) private var presentationMode
+    @ObservedObject var viewModel = AuthFirebase()
+    @State var isSaveExpertise:Bool = false
+    @State private var expertises = [Expertise]()
+
     var body: some View {
-            NavigationView {
-                List {
-                    ForEach(expertises.indices, id: \.self) { index in
-                        ExpertiseRowView(expertise: self.$expertises[index])
-                    }
-                    //.listRowSeparator(.hidden)
+        let user = viewModel.getUser() ?? UserM()
+        VStack {
+            VStack {
+                ForEach(expertises.indices, id: \.self) { index in
+                    ExpertiseRowView(expertise: $expertises[index])
                 }
-                .listStyle(GroupedListStyle()) // Устанавливаем стиль списка
-                .background(Color.white) // устанавливаем белый фон для всего списка
-                .scrollContentBackground(.hidden)
-                //.listRowSeparator(.hidden)
-                //.listRowBackground(Color.white)
             }
-            .onAppear {
-                // Изменяем фоновый цвет для UICollectionViewListLayoutSectionBackgroundColorDecorationView
-                UITableView.appearance().backgroundColor = UIColor.white
-            }
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: CustomBackButton(text: "навыки"))
+            .listStyle(GroupedListStyle())
+            .background(Color.white)
+            .scrollContentBackground(.hidden)
         }
-    
-//    init() {
-//       UITableView.appearance().separatorStyle = .none
-//       UITableViewCell.appearance().backgroundColor = .green
-//       UITableView.appearance().backgroundColor = .green
-//    }
+        
+        Spacer()
+        ButtonView(title: "сохраниить",  color: "main_color") {
+            isSaveExpertise.toggle()
+            viewModel.saveExpertiseInfo(email: user.email, expertises: expertises)
+            presentationMode.wrappedValue.dismiss()
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: CustomBackButton(text: "навыки"))
+        .onAppear {
+            expertises = user.expertise!
+            print(expertises)
+        }
+    }
+        
 }
 
 struct ExpertiseView_Previews: PreviewProvider {
@@ -49,3 +48,4 @@ struct ExpertiseView_Previews: PreviewProvider {
         ExpertiseView()
     }
 }
+

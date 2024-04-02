@@ -25,19 +25,19 @@ struct RegisterFirstView: View {
     @State private var isSignUp: Bool = false
     
     
-//    func signUp(email: String, password: String) {
-//        authFirebase.signUp(email: email, password: password) { result in
-//            switch result {
-//            case (.success(_)) :
-//                isNext = true
-//                isSignUp =  true
-//                //viewModel.insertNewUser(email: email)
-//            case(.failure(let error)):
-//                alertMessage = error.errorMessage
-//                isAlertShow = true
-//            }
-//        }
-//    }
+    func signUp(email: String, password: String) {
+        authFirebase.signUp(email: email, password: password) { result in
+            switch result {
+            case (.success(_)) :
+                isNext = true
+                isSignUp =  true
+                //viewModel.insertNewUser(email: email)
+            case(.failure(let error)):
+                alertMessage = error.errorMessage
+                isAlertShow = true
+            }
+        }
+    }
     
     var body: some View {
         VStack {
@@ -51,7 +51,7 @@ struct RegisterFirstView: View {
             Spacer()
             ButtonView(title: "далее",  color: "main_color") {
                 isNext.toggle()
-                //signUp(email: email, password: password)
+                signUp(email: email, password: password)
                 //presentationMode.wrappedValue.dismiss()
             } 
 //            .navigationBarBackButtonHidden(true)

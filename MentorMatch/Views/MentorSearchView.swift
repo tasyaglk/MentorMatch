@@ -145,11 +145,11 @@ struct MentorSearchView: View {
             //            .padding(.horizontal, 80)
             
             
-            
+            Spacer()
         }
         
         .navigationBarTitle("New Order")
-        //.padding(.top, 70)
+        .padding(.top, 70)
     }
 }
 

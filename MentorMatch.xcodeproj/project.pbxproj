@@ -52,6 +52,9 @@
 		0062D85E2BA397DD00219D5A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0062D85D2BA397DD00219D5A /* FirebaseStorage */; };
 		0062D8602BA39F1D00219D5A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0062D85F2BA39F1D00219D5A /* GoogleService-Info.plist */; };
 		0062D8622BA5C47E00219D5A /* RegistrationWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0062D8612BA5C47E00219D5A /* RegistrationWorkView.swift */; };
+		00719F9A2BBC5D1700C98F49 /* SkillsFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719F992BBC5D1700C98F49 /* SkillsFirebase.swift */; };
+		00719F9C2BBC9C3500C98F49 /* SaveFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719F9B2BBC9C3500C98F49 /* SaveFirebase.swift */; };
+		007AE0442BAA3CC200E4367E /* RegistrationExpertiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +117,9 @@
 		0062D83B2BA35CA600219D5A /* AuthFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebase.swift; sourceTree = "<group>"; };
 		0062D85F2BA39F1D00219D5A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0062D8612BA5C47E00219D5A /* RegistrationWorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationWorkView.swift; sourceTree = "<group>"; };
+		00719F992BBC5D1700C98F49 /* SkillsFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsFirebase.swift; sourceTree = "<group>"; };
+		00719F9B2BBC9C3500C98F49 /* SaveFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFirebase.swift; sourceTree = "<group>"; };
+		007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationExpertiseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +233,7 @@
 				0062D82D2BA0641100219D5A /* RegisterFirstView.swift */,
 				0062D82F2BA0840000219D5A /* RegistrationEdView.swift */,
 				0062D8612BA5C47E00219D5A /* RegistrationWorkView.swift */,
+				007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,6 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				0062D83B2BA35CA600219D5A /* AuthFirebase.swift */,
+				00719F992BBC5D1700C98F49 /* SkillsFirebase.swift */,
+				00719F9B2BBC9C3500C98F49 /* SaveFirebase.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -418,6 +427,7 @@
 				001A67712B9DEE76006C9425 /* FieldView.swift in Sources */,
 				0062D81E2B9F1AAE00219D5A /* Expertise.swift in Sources */,
 				0062D82C2B9FC09500219D5A /* EducationAndExperienceView.swift in Sources */,
+				00719F9C2BBC9C3500C98F49 /* SaveFirebase.swift in Sources */,
 				0062D82A2B9FB19000219D5A /* OrderSearchView.swift in Sources */,
 				001A67312B9BC23C006C9425 /* Education.swift in Sources */,
 				001A67792B9E1297006C9425 /* EducationView.swift in Sources */,
@@ -425,6 +435,7 @@
 				001A677F2B9E6B83006C9425 /* ExperienceView.swift in Sources */,
 				0062D8382BA24F8200219D5A /* Order.swift in Sources */,
 				0062D8622BA5C47E00219D5A /* RegistrationWorkView.swift in Sources */,
+				007AE0442BAA3CC200E4367E /* RegistrationExpertiseView.swift in Sources */,
 				0062D8302BA0840000219D5A /* RegistrationEdView.swift in Sources */,
 				001A671F2B9B9BA9006C9425 /* LoginView.swift in Sources */,
 				0062D8362BA248D100219D5A /* SmallUserView.swift in Sources */,
@@ -433,6 +444,7 @@
 				001A67232B9BB837006C9425 /* TabBar.swift in Sources */,
 				001A66EA2B99F0EE006C9425 /* WelcomeView.swift in Sources */,
 				001A67332B9BC254006C9425 /* WorkExperience.swift in Sources */,
+				00719F9A2BBC5D1700C98F49 /* SkillsFirebase.swift in Sources */,
 				0062D83C2BA35CA600219D5A /* AuthFirebase.swift in Sources */,
 				001A67772B9E02AC006C9425 /* ArrowButtonView.swift in Sources */,
 				001A67292B9BBD0A006C9425 /* NewOrderView.swift in Sources */,
@@ -605,6 +617,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MentorMatch/Preview Content\"";
+				DEVELOPMENT_TEAM = 88J8J7P9S6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -612,6 +625,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -633,6 +647,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MentorMatch/Preview Content\"";
+				DEVELOPMENT_TEAM = 88J8J7P9S6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -640,6 +655,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

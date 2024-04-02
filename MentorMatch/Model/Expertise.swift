@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Expertise: Identifiable {
+struct Expertise: Identifiable, Hashable {
     let id = UUID()
     let name: String
     var rating: Int

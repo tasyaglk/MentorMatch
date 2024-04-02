@@ -68,12 +68,12 @@ extension UserM {
     init() {
         firstName = "Таисия"
         lastName = "Галкина"
-        status = "лалала"
-        description = "лалала2"
+        status = "Всем привет!"
+        description = "Изучаю ios-разработку"
         email = "tasya@mail.ru"
         education = Education(place: "ВШЭ", degree: "Бакалавриат", startYear: "2021", endYear: "2025")
-        workExperience = WorkExperience(companyName: "Моя", position: "СЕО", startYear: "2003", endYear: "2025")
-        expertise = [Expertise(name: "lala", rating: 3, isChecked: true)]
+        workExperience = WorkExperience(companyName: "", position: "", startYear: "", endYear: "")
+        expertise = [Expertise(name: "ios-разработка", rating: 5, isChecked: true), Expertise(name: "С++", rating: 4, isChecked: true)]
 //        rate = 5
 //        cntReviews = 100
     }

@@ -11,14 +11,18 @@ import SwiftUI
 struct EducationView: View {
     @State private var isYearPickerPresented = false
     @Environment(\.presentationMode) private var presentationMode
-    @State private var educationPlace: String = ""
-    @State private var educationLevel: String = ""
-    @State private var educationStartYear: String = ""
-    @State private var educationEndYear: String = ""
     
-    private let user = UserM()
+    @State  var educationPlace: String = ""
+    @State  var educationLevel: String = ""
+    @State  var educationStartYear: String = ""
+    @State  var educationEndYear: String = ""
+    
+    
+    @ObservedObject var viewModel = AuthFirebase()
+//    let user = viewModel.getUser() ?? UserM()
     
     var body: some View {
+        let user = viewModel.getUser() ?? UserM()
         VStack {
             FieldView(maxLength: 239, labelText: "образование", type: "settings", prevText: user.education?.place ?? "", keyboardType: .default, text: $educationPlace)
                 .padding(.top, 15)
@@ -32,6 +36,7 @@ struct EducationView: View {
             
             Spacer()
             ButtonView(title: "сохранить",  color: "main_color") {
+                viewModel.saveEducationInfo(email: user.email, newEducationData: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear))
                 presentationMode.wrappedValue.dismiss()
             }
             .padding(.horizontal, 100)
@@ -47,6 +52,14 @@ struct EducationView: View {
 //                    startYear = selectedYearIndex
 //                }
 //        }
+        .onAppear {
+            let user = viewModel.getUser() ?? UserM()
+
+             educationPlace  = (user.education?.place ?? "")
+            educationLevel  = (user.education?.degree ?? "")
+             educationStartYear  = (user.education?.startYear ?? "")
+            educationEndYear  = (user.education?.endYear ?? "")
+        }
     }
 }
 

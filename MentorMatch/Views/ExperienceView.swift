@@ -11,15 +11,23 @@ import SwiftUI
 struct ExperienceView: View {
     @State var isSaveEducation: Bool = false
     @State var isBack: Bool = false
+    
+    
+    
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    private let user = UserM()
+    
+    @ObservedObject var viewModel = AuthFirebase()
+   
     
     @State private var workPlace: String = ""
     @State private var workLevel: String = ""
     @State private var workStartYear: String = ""
     @State private var workEndYear: String = ""
     
+    
+    
     var body: some View {
+        let user = viewModel.getUser() ?? UserM()
         VStack {
             
             FieldView(maxLength: 239, labelText: "место работы", type: "settings", prevText: user.workExperience?.companyName  ?? "", keyboardType: .default, text: $workPlace)
@@ -31,13 +39,21 @@ struct ExperienceView: View {
             }
             Spacer()
             ButtonView(title: "сохранить",  color: "main_color") {
-                isSaveEducation.toggle()
+//                isSaveEducation.toggle()
+                viewModel.saveWorkInfo(email: user.email, newWorkData: WorkExperience(companyName: workPlace, position:workLevel, startYear: workStartYear, endYear: workEndYear))
                 presentationMode.wrappedValue.dismiss()
             }
             .padding(.horizontal, 100)
             .padding(.bottom, 15)
             
         }
+            .onAppear {
+                let user = viewModel.getUser() ?? UserM()
+                workPlace  = (user.workExperience?.companyName ?? "")
+                workLevel  = (user.workExperience?.position ?? "")
+                workStartYear  = (user.workExperience?.startYear ?? "")
+                workEndYear  = (user.workExperience?.endYear ?? "")
+            }
         .padding(.top, 5)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton(text: "опыт"))

@@ -47,6 +47,7 @@ struct WelcomeView: View {
                     .navigationDestination(
                         isPresented: $isRegistrated) {
                             RegisterFirstView()
+//                            RegistrationExpertiseView(firstName: "", lastName: "", email: "", password: "", educationPlace: "", educationLevel: "", educationStartYear: "", educationEndYear: "", workPlacePlace: "", position: "", workStartYear: "", workEndYear: "")
                         }
                     //.padding(.horizontal, 40)
                     .padding(.horizontal, 40)
@@ -78,3 +79,7 @@ struct WelcomeView_Previews: PreviewProvider {
         WelcomeView()
     }
 }
+
+
+// t4@t.ru
+// tttttt

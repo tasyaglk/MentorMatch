@@ -19,12 +19,15 @@ struct ProfileView: View {
     
     //private var user = UserM()
     @ObservedObject var viewModel = AuthFirebase()
-    
+//    t4@t.ru
+//    tttttt
     
     
     var body: some View {
         //GeometryReader { geometry in
         let userr = viewModel.getUser() ?? UserM()
+//        let userr = UserM()
+
         //        let userr = UserM(firstName: "Таисия",
         //                          lastName: "Галкина",
         //                          status: "лалала",
@@ -43,11 +46,11 @@ struct ProfileView: View {
                     Image(systemName: "gear")
                         .foregroundColor(.black)
                 }
-                .navigationBarHidden(true)
-                .navigationDestination(
-                    isPresented: $isSettingsTapped) {
-                        SettingsView()
-                    }
+//                .navigationBarHidden(true)
+//                .navigationDestination(
+//                    isPresented: $isSettingsTapped) {
+//                        SettingsView()
+//                    }
             }
             .padding()
             Image(systemName: "person")
@@ -96,17 +99,17 @@ struct ProfileView: View {
                 .font(.custom("SourceSansPro-Regular", size: 18))
                 .foregroundColor(.gray)
             
-            Button(action: {
-                // Действие при нажатии на кнопку "Написать"
-            }) {
-                Text("Написать")
-                    .fontWeight(.bold)
-                    .font(.system(size: 20))
-                    .foregroundColor(.black)
-                    .padding()
-                    .background(Color("main_color"))
-                    .cornerRadius(15)
-            }
+//            Button(action: {
+//                // Действие при нажатии на кнопку "Написать"
+//            }) {
+//                Text("Написать")
+//                    .fontWeight(.bold)
+//                    .font(.system(size: 20))
+//                    .foregroundColor(.black)
+//                    .padding()
+//                    .background(Color("main_color"))
+//                    .cornerRadius(15)
+//            }
             .padding(.vertical, 10)
             .padding(.horizontal, 100)
             
@@ -156,18 +159,22 @@ struct ProfileView: View {
                     VStack {
                         ForEach(userr.expertise!) { expertiseItem in
                             // Вывод экспертиз
-                            HStack {
-                                Text("\(expertiseItem.name)")
-                                    .padding(.horizontal, 5)
-                                
-                                
-                                ForEach(1..<6) { index in
-                                    Image(systemName: index <= expertiseItem.rating ? "star.fill" : "star")
-                                        .foregroundColor(.yellow)
+                            if expertiseItem.isChecked == true {
+                                HStack {
+                                    Text("\(expertiseItem.name)")
+                                        //.padding(.horizontal, 5)
+                                    
+                                    Spacer()
+                                    ForEach(1..<6) { index in
+                                        Image(systemName: index <= expertiseItem.rating ? "star.fill" : "star")
+                                            .foregroundColor(.yellow)
+                                    }
                                 }
+                                .padding(.horizontal, 5)
                             }
+                            
                         }
-                        //.padding(.horizontal, 5)
+                        //.padding(.leading, 5)
                     }
                 } else {
                     VStack {
@@ -246,8 +253,17 @@ struct ProfileView: View {
                 //                            //.padding(.horizontal, 5)
                 //                    }
             }
-            Spacer()
+            //Spacer()
         }
+        .navigationBarHidden(true)
+        .navigationDestination(
+            isPresented: $isSettingsTapped) {
+                SettingsView()
+            }
+//        NavigationLink(destination: SettingsView(), isActive: $isSettingsTapped) {
+//            EmptyView()
+//        }
+//        .hidden()
         .scrollIndicators(.hidden)
         .padding()
         //            .fullScreenCover(isPresented: $isSettingsTapped) {

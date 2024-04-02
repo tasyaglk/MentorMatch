@@ -98,8 +98,8 @@ struct OrderSearchView: View {
             }
             
             ScrollView {
-                WhichOrderView(order: Order(selectedSkills: ["iOS Development", "UI/UX Design1", "UI/UX Design2", "UI/UX Design3", "UI/UX Design4"], comment: "Нужен опытный разработчик", byUser: UserM()))
-                WhichOrderView(order: Order(selectedSkills: ["iOS Development", "UI/UX Design1", "UI/UX Design2", "UI/UX Design3", "UI/UX Design4"], comment: "Нужен опытный разработчик", byUser: UserM()))
+                WhichOrderView(order: Order(selectedSkills: ["iOS Development", "UI/UX Design1", "UI/UX Design"], comment: "Нужен опытный разработчик", byUser: UserM()))
+                WhichOrderView(order: Order(selectedSkills: ["iOS Development"], comment: "Нужен опытный разработчик", byUser: UserM()))
             }
 //            ScrollView(.horizontal, showsIndicators: false) {
 //                HStack {

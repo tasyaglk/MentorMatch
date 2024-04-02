@@ -19,24 +19,24 @@ struct TabBar: View {
                 }
                 .tag(0)
             
-            MessageView()
-                .tabItem {
-                    Image(systemName: "bubble.left.and.bubble.right")
-                }
-                .tag(1)
+//            MessageView()
+//                .tabItem {
+//                    Image(systemName: "bubble.left.and.bubble.right")
+//                }
+//                .tag(1)
             
             NewOrderView()
                 .tabItem {
                     Image(systemName: "plus.circle")
                 }
-                .tag(2)
+                .tag(1)
             
             
                 ProfileView()
                     .tabItem {
                         Image(systemName: "person")
                     }
-                    .tag(3)
+                    .tag(2)
             
             
         }

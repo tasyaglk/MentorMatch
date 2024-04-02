@@ -1,11 +1,11 @@
+////
+////  ExpertiseRowView.swift
+////  MentorMatch
+////
+////  Created by Тася Галкина on 11.03.2024.
+////
 //
-//  ExpertiseRowView.swift
-//  MentorMatch
 //
-//  Created by Тася Галкина on 11.03.2024.
-//
-
-
 import Foundation
 import SwiftUI
 
@@ -36,9 +36,10 @@ struct ExpertiseRowView: View {
                 }
             }
         }
+        .padding(.leading, 0)
     }
 }
 
 //#Preview {
-//    ExpertiseRowView(expertise: $(Expertise(name: "Web Development", rating: 0, isChecked: false)))
+//    ExpertiseRowView(expertise: [Expertise(name: "w", rating: 3, isChecked: false)])
 //}

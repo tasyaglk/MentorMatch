@@ -11,12 +11,12 @@ import SwiftUI
 struct RegistrationEdView: View {
     
     let firstName: String
-        let lastName: String
-        let email: String
-        let password: String
+    let lastName: String
+    let email: String
+    let password: String
     
     @State var isNext: Bool = false
-   // @Environment(\.presentationMode) private var presentationMode
+    // @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject var authFirebase: AuthFirebase
     @State private var educationPlace: String = ""
     @State private var educationLevel: String = ""
@@ -29,9 +29,9 @@ struct RegistrationEdView: View {
     
     
     var body: some View {
-//        HStack {
-//            Text(firstName + lastName + email + password)
-//        }
+        //        HStack {
+        //            Text(firstName + lastName + email + password)
+        //        }
         VStack {
             FieldView(maxLength: 239, labelText: "образование", type: "preUsual", prevText: "введите название учебного заведения", keyboardType: .default, text: $educationPlace)
                 .padding(.top, 15)
@@ -48,53 +48,53 @@ struct RegistrationEdView: View {
             ButtonView(title: "далее",  color: "main_color") {
                 //isNext.toggle()
                 isNext.toggle()
-//                signUp(email: email, password: password)
-//                authFirebase.insertNewUser(firstName: firstName, lastName: lastName, email: email, password: password, education: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear), workExperience: WorkExperience(companyName: "", position: "", startYear: "", endYear: ""), expertise: Expertise(name: "", rating: 5, isChecked: true)) { result in
-//                    switch result {
-//                    case (.success(_)) :
-//                        isNext = true
-//                    case(.failure(let error)):
-//                        //authFirebase.errorMessage = error.errorMessage
-//                        alertMessage = error.errorMessage
-//                        isAlertShow = true
-//                    }
-//                }
+                //                signUp(email: email, password: password)
+                //                authFirebase.insertNewUser(firstName: firstName, lastName: lastName, email: email, password: password, education: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear), workExperience: WorkExperience(companyName: "", position: "", startYear: "", endYear: ""), expertise: Expertise(name: "", rating: 5, isChecked: true)) { result in
+                //                    switch result {
+                //                    case (.success(_)) :
+                //                        isNext = true
+                //                    case(.failure(let error)):
+                //                        //authFirebase.errorMessage = error.errorMessage
+                //                        alertMessage = error.errorMessage
+                //                        isAlertShow = true
+                //                    }
+                //                }
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(
-//                                leading: CustomBackButton(text: ""),
-                                trailing:  Button(action: {
-                                    isNext.toggle()
-                                    educationPlace = ""
-                                     educationLevel = ""
-                                     educationStartYear  = ""
-                                      educationEndYear  = ""
-                                    //presentationMode.wrappedValue.dismiss()
-                                }) {
-                                    Text("пропустить")
-                                        .foregroundColor(Color("main_color"))
-                                }
-                            )
+                //                                leading: CustomBackButton(text: ""),
+                trailing:  Button(action: {
+                    isNext.toggle()
+                    educationPlace = ""
+                    educationLevel = ""
+                    educationStartYear  = ""
+                    educationEndYear  = ""
+                    //presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("пропустить")
+                        .foregroundColor(Color("main_color"))
+                }
+            )
             .navigationDestination(
                 isPresented: $isNext) {
                     RegistrationWorkView(firstName: firstName, lastName: lastName, email: email, password: password, educationPlace: educationPlace, educationLevel: educationLevel, educationStartYear: educationStartYear, educationEndYear: educationEndYear)
                 }
-            .padding(.horizontal, 100)
-            .padding(.bottom, 15)
+                .padding(.horizontal, 100)
+                .padding(.bottom, 15)
         }
         .padding(.top, 5)
         .alert(isPresented: $isAlertShow) {
             Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
-//        .navigationBarBackButtonHidden(true)
-//        .navigationBarItems(leading: CustomBackButton(text: "образование"))
-//        .sheet(isPresented: $isYearPickerPresented) {
-//            YearPicker(start: 2000, end: 2020)
-//                .onDisappear {
-//                    // Обновляем выбранный год начала образования
-//                    startYear = selectedYearIndex
-//                }
-//        }
+        //        .navigationBarBackButtonHidden(true)
+        //        .navigationBarItems(leading: CustomBackButton(text: "образование"))
+        //        .sheet(isPresented: $isYearPickerPresented) {
+        //            YearPicker(start: 2000, end: 2020)
+        //                .onDisappear {
+        //                    // Обновляем выбранный год начала образования
+        //                    startYear = selectedYearIndex
+        //                }
+        //        }
     }
 }
 

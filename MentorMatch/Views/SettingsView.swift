@@ -19,51 +19,24 @@ struct SettingsView: View {
     @State var isExperience: Bool = false
     @State var isExpertise: Bool = false
     @State var isLogOut: Bool = false
-    
+    @State private var isAlertShow: Bool = false
+    @State private var alertMessage: String = ""
+    //    @State  var user: UserM
     
     @State private var firstName: String = ""
     @State private var lastName: String = ""
     @State private var status: String = ""
     @State private var description: String = ""
+    @State private var email: String = ""
     
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        
         let user = viewModel.getUser() ?? UserM()
-        ScrollView {
-            //            HStack {
-            //                Spacer()
-            //                Button(action: {
-            //                    isSave.toggle()
-            //                    //presentationMode.wrappedValue.dismiss()
-            //                    viewModel.selectedTab = 3
-            //                }) {
-            //                    Text("Сохранить")
-            //                        .foregroundColor(Color("main_color"))
-            //                        .font(.system(size: 18))
-            //                        .padding(.trailing, 15)
-            //                }
-            //            }
-            // Фотография с возможностью замены
-//            Button(action: {
-//                // Действие при нажатии на фотографию
-//                // Здесь можно добавить код для выбора новой фотографии из фотопленки
-//            }) {
-//                profileImage
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width: 100, height: 100)
-//                    .clipShape(Circle())
-//                    .overlay(Circle().stroke(Color.gray, lineWidth: 2))
-//                    .padding()
-//            }
-            
-            // Ячейка для имени
+        
+//        ScrollView {
             VStack {
-                
                 FieldView(maxLength: 239, labelText: "имя", type: "settings", prevText: user.firstName, keyboardType: .default, text: $firstName)
-                    //.padding(.top, 15)
                 FieldView(maxLength: 239, labelText: "фамилия", type: "settings", prevText: user.lastName, keyboardType: .default, text: $lastName)
                 FieldView(maxLength: 20, labelText: "Статус", type: "settings", prevText: user.status, keyboardType: .default, text: $status)
                 FieldView(maxLength: 20, labelText: "Описание", type: "settings", prevText: user.description, keyboardType: .default, text: $description)
@@ -72,27 +45,34 @@ struct SettingsView: View {
                     isExpertise.toggle()
                 }
                 .navigationBarBackButtonHidden(true)
-                .navigationBarItems(leading: CustomBackButton(text: ""))
                 .navigationDestination(
                     isPresented: $isExpertise) {
                         ExpertiseView()
                     }
-                .padding(.top, 10)
+                    .padding(.top, 10)
                 ArrowButtonView(title: "образование") {
                     isEducation.toggle()
                 }
                 .navigationBarBackButtonHidden(true)
-                //.navigationBarItems(leading: CustomBackButton(text: ""))
                 .navigationBarItems(
-                                    leading: CustomBackButton(text: ""),
-                                    trailing:  Button(action: {
-                                        isSave.toggle()
-                                        presentationMode.wrappedValue.dismiss()
-                                    }) {
-                                        Text("Сохранить")
-                                            .foregroundColor(Color("main_color"))
-                                    }
-                                )
+                    leading: CustomBackButton(text: ""),
+                    trailing:  Button(action: {
+                        isSave.toggle()
+                        viewModel.saveNewMainInfo(firstName: firstName, lastName: lastName, email: email, status: status, description: description) {  result in
+                            switch result {
+                            case (.success(_)) :
+                                isSave.toggle()
+                            case(.failure(let error)):
+                                alertMessage = "ошибка входа"
+                                isAlertShow.toggle()
+                            }
+                        }
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Сохранить")
+                            .foregroundColor(Color("main_color"))
+                    }
+                )
                 .navigationDestination(
                     isPresented: $isEducation) {
                         EducationView()
@@ -110,24 +90,26 @@ struct SettingsView: View {
                 Spacer()
                 
                 ButtonView(title: "выйти", height: 50, color: "main_color") {
-                    isLogOut.toggle()
-                    presentationMode.wrappedValue.dismiss()
-                    //// костыль
+                    viewModel.handleSignOut()
                     
                 }
-                .padding(.bottom, 5)
                 .padding(.horizontal, 100)
-                
-            }
+//            }
         }
-        //        .fullScreenCover(isPresented: $isSave) {
-        //            TabBar()
-        //        }
-        //        .fullScreenCover(isPresented: $isEducation) {
-        //            EducationView()
-        //        }
+        .onAppear {
+            let user = viewModel.getUser() ?? UserM()
+            email = user.email
+            firstName = user.firstName
+            lastName = user.lastName
+            status = user.status
+            description = user.description
+        }
+        .navigationDestination(isPresented: $viewModel.isUserLoggedOut) {
+            WelcomeView()
+        }
         
     }
+    
 }
 
 

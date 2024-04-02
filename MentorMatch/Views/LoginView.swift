@@ -30,7 +30,7 @@ struct LoginView: View {
         }
     }
     
-    var body: some View {
+    var content: some View {
         VStack {
             Text("Добро пожаловать!")
                 .fontWeight(.bold)
@@ -74,6 +74,14 @@ struct LoginView: View {
                 Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
             
+        }
+    }
+    
+    var body: some View {
+        if authFirebase.signedIn {
+            TabBar()
+        } else {
+            content
         }
     }
 }
