@@ -28,11 +28,9 @@ enum FBError: Error, Identifiable {
 class AuthFirebase: ObservableObject {
     @Published var users = [UserM]()
     @Published var skillsName = [String]()
-    //@Published var tasks = [Task]()
-    //@Published var anotherTasks = [Task]()
-    //@Published var subscriptions = [UserM]()
+    @Published var orders = [Order]()
+    @Published var strangersOrders = [Order]()
     @Published var isUserLoggedOut = false
-    //@Published var subTasks = [Task]()
     let auth = Auth.auth()
     let db = Firestore.firestore()
     @Published var errorMessage: String?
@@ -43,6 +41,21 @@ class AuthFirebase: ObservableObject {
         }
         fetchData()
         getSkillsName()
+//        getOrders()
+        for i in orders {
+            print(i)
+        }
+//        fetchAllStrangersOrders()
+        
+    }
+    
+    
+    func fetchAllStrangersOrders() {
+        strangersOrders = [Order]()
+        for user in users {
+            print("zalupa \(user.email)")
+            fetchStrangersOrders(email: user.email)
+        }
     }
     
     func handleSignOut() {
@@ -59,24 +72,26 @@ class AuthFirebase: ObservableObject {
         if (signedIn) {
             let db = Firestore.firestore()
             
-            db.collection("users").addSnapshotListener { querySnapshot, error in
-                guard let documents = querySnapshot?.documents else {
+            db.collection("users").addSnapshotListener { [self] (querySnapshot, error) in
+                guard let users = querySnapshot?.documents else {
                     print("Error fetching documents: \(error!)")
                     return
                 }
                 
-                self.users = documents.compactMap { document -> UserM? in
-                    let data = document.data()
+                self.users = users.compactMap { queryDocumentSnapshot -> UserM? in
+                    let data = queryDocumentSnapshot.data()
                     
                     let firstName = data["firstName"] as? String ?? ""
                     let lastName = data["lastName"] as? String ?? ""
                     let status = data["status"] as? String ?? ""
                     let description = data["description"] as? String ?? ""
                     let email = data["email"] as? String ?? ""
+                    print(email)
                     
                     let educationData = data["education"] as? [String: Any] ?? [:]
                     let workData = data["work"] as? [String: Any] ?? [:]
                     let expertisesData = data["expertises"] as? [[String: Any]]  ?? [[:]]
+                    let ordersData = data["orders"] as? [[String: Any]]  ?? [[:]]
                     
                     let place = educationData["place"] as? String ?? ""
                     let degree = educationData["degree"] as? String ?? ""
@@ -99,11 +114,22 @@ class AuthFirebase: ObservableObject {
                         let expertise = Expertise(name: name, rating: rating, isChecked: isChecked)
                         expertises.append(expertise)
                     }
-                    
                     return UserM(firstName: firstName, lastName: lastName, status: status, description: description, email: email, education: education, workExperience: workExperience, expertise: expertises)
                 }
+//                fetchAllStrangersOrders()
             }
         }
+        
+//        getSkillsName()
+////        getOrders()
+//        for i in users {
+//            print("123 \(i)")
+//        }
+//        
+//        for user in users {
+//            fetchStrangersOrders(email: user.email)
+//            print(user.email)
+//        }
     }
     
     
@@ -118,16 +144,15 @@ class AuthFirebase: ObservableObject {
         }
         return nil
     }
-    //
-    //    func getUserByEmail(email: String) -> User? {
-    //        for user in users {
-    //            if user.email == email {
-    //                return user
-    //            }
-    //        }
-    //
-    //        return nil
-    //    }
+    
+        func getUserByEmail(email: String) -> UserM {
+            for user in users {
+                if user.email == email {
+                    return user
+                }
+            }
+            return UserM(firstName: "", lastName: "", status: "", description: "", email: "")
+        }
     
     
     func signIn (email: String, password: String, complition: @escaping (Result<Bool, FBError>) -> Void) {

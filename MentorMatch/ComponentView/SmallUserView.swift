@@ -10,33 +10,50 @@ import SwiftUI
 
 struct SmallUserView: View {
     
+    var buttonClicked: (() -> Void)?
+    
     var user: UserM
     
+    @State var viewUserProfile: Bool = false
     // MARK: - Body
     var body: some View {
-        HStack {
-//            Image("user")
-//                .resizable()
-//                .frame(width: Constants.imageWidth, height: Constants.imageWidth)
-            Image(systemName: "person")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 36, height: 36)
-                .clipShape(Circle())
-//                .padding(.top, 20)
-//                .aspectRatio(contentMode: .fit)
-            VStack(alignment: .leading) {
-                Text(user.firstName + " " + user.lastName)
-                    //.font(.title)
-                    .font(.system(size: 12))
-                    .fontWeight(.bold)
-                Text(user.status)
-                    //.font(.title)
-                    .fontWeight(.thin)
-                    .font(.system(size: 12))
+        
+        Button(action: {
+//            UserView(userr: user)
+            viewUserProfile.toggle()
+        }, label: {
+            HStack {
+                Image(systemName: "person")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 36, height: 36)
+                    .clipShape(Circle())
+                VStack(alignment: .leading) {
+                    Text(user.firstName + " " + user.lastName)
+                        .font(.system(size: 12))
+                        .fontWeight(.bold)
+                    Text(user.status)
+                        //.font(.title)
+                        .fontWeight(.thin)
+                        .font(.system(size: 12))
+                }
             }
-        }
-        //.padding(.trailing)
+            Spacer()
+        })
+        .navigationBarBackButtonHidden(true)
+        //.navigationBarItems(leading: CustomBackButton(text: "3"))
+        .navigationDestination(
+            isPresented: $viewUserProfile) {
+                UserView(userr: user)
+    //                            RegistrationExpertiseView(firstName: "", lastName: "", email: "", password: "", educationPlace: "", educationLevel: "", educationStartYear: "", educationEndYear: "", workPlacePlace: "", position: "", workStartYear: "", workEndYear: "")
+            }
+        .foregroundColor(.black)
+    }
+    
+    
+    init(user: UserM, buttonClicked: (() -> Void)? = nil) {
+        self.user = user
+        self.buttonClicked = buttonClicked
     }
 }
 

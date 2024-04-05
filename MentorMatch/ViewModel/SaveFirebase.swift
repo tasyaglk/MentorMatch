@@ -12,13 +12,13 @@ extension AuthFirebase {
     func saveNewMainInfo(firstName: String, lastName: String, email: String, status: String, description: String, completion: @escaping (Result<Bool, FBError>) -> Void) {
         
         let db = Firestore.firestore()
-            
-            // Получаем документ пользователя по его адресу электронной почты
+        
+        // Получаем документ пользователя по его адресу электронной почты
         db.collection("users").document(email).getDocument { document, error in
             if let document = document, document.exists {
                 // Данные пользователя
                 var userData = document.data() ?? [:]
-//                let educationData = data["education"] as? [String: Any] ?? [:]
+                //                let educationData = data["education"] as? [String: Any] ?? [:]
                 
                 // Обновляем имя и фамилию
                 userData["firstName"] = firstName
@@ -84,37 +84,91 @@ extension AuthFirebase {
     }
     
     func saveExpertiseInfo(email: String, expertises: [Expertise]) {
-//        let db = Firestore.firestore()
-////        var userData: [String: Any] = [
-////            "expertises": expertises
-////            ]
-//        
-//        db.collection("users").document(email).updateData(["expertises": expertises]) { error in
+        let db = Firestore.firestore()
+        
+        var expertisesData = [[String: Any]]()
+        
+        for expertise in expertises {
+            let expertiseData: [String: Any] = [
+                "name": expertise.name,
+                "rating": expertise.rating,
+                "isChecked": expertise.isChecked
+            ]
+            expertisesData.append(expertiseData)
+        }
+        
+        db.collection("users").document(email).updateData(["expertises": expertisesData]) { error in
+            if let error = error {
+                print("Ошибка при обновлении данных об навыках: \(error.localizedDescription)")
+            } else {
+                print("Данные об навыках пользователя успешно обновлены.")
+            }
+        }
+    }
+    
+    func saveOrder(email: String, order: Order) {
+        let db = Firestore.firestore()
+        
+        var ref: DocumentReference? = nil
+        
+        ref = db.collection("users").document(auth.currentUser?.email ?? "").collection("orders").addDocument(data: [
+            "isActive": order.isActive,
+            "skills": order.selectedSkills,
+            "comment": order.comment,
+            "customerEmail": order.byUserEmail
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+        
+        db.collection("orders").addDocument(data: [
+            "isActive": order.isActive,
+            "skills": order.selectedSkills,
+            "comment": order.comment,
+            "customerEmail": order.byUserEmail
+        ]) { error in
+            if let error = error {
+                print("Ошибка при сохранении заказа: \(error.localizedDescription)")
+            } else {
+                print("Заказ успешно сохранен.")
+            }
+        }
+        
+        
+//        let newOrderDataDict: [String: Any] = [
+//            "isActive": order.isActive,
+//            "skills": order.selectedSkills,
+//            "comment": order.comment,
+//            "customerEmail": order.byUserEmail
+//        ]
+        
+//        print(order.id)
+        
+//        db.collection("users").document(email).updateData([
+//            "orders": FieldValue.arrayUnion([newOrderDataDict])
+//        ]) { error in
 //            if let error = error {
 //                print("Ошибка при обновлении данных об навыках: \(error.localizedDescription)")
 //            } else {
 //                print("Данные об навыках пользователя успешно обновлены.")
 //            }
 //        }
-        let db = Firestore.firestore()
-            
-            var expertisesData = [[String: Any]]()
-
-            for expertise in expertises {
-                let expertiseData: [String: Any] = [
-                    "name": expertise.name,
-                    "rating": expertise.rating,
-                    "isChecked": expertise.isChecked
-                ]
-                expertisesData.append(expertiseData)
-            }
-
-            db.collection("users").document(email).updateData(["expertises": expertisesData]) { error in
-                if let error = error {
-                    print("Ошибка при обновлении данных об навыках: \(error.localizedDescription)")
-                } else {
-                    print("Данные об навыках пользователя успешно обновлены.")
-                }
-            }
+//        
+//        db.collection("orders").addDocument(data: [
+//            "isActive": order.isActive,
+//            "skills": order.selectedSkills,
+//            "comment": order.comment,
+//            "customerEmail": order.byUserEmail
+//        ]) { error in
+//            if let error = error {
+//                print("Ошибка при сохранении заказа: \(error.localizedDescription)")
+//            } else {
+//                print("Заказ успешно сохранен.")
+//            }
+//        }
+        
     }
 }

@@ -15,34 +15,9 @@ struct NewOrderView: View {
     @State private var isDropdownVisible = false
     @State private var isPublic = false
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var viewModel: AuthFirebase
     
-    
-    
-    let allSkills = [
-        "iOS Development",
-        "Android Development",
-        "Web Development",
-        "UI/UX Design",
-        "Lolkek",
-        "Database Management",
-        "Project Management",
-        "Graphic Design",
-        "iOS Development",
-        "Android Development",
-        "Web Development",
-        "UI/UX Design",
-        "Database Management",
-        "Project Management",
-        "Graphic Design",
-        "iOS Development",
-        "Android Development",
-        "Web Development",
-        "UI/UX Design",
-        "тыква",
-        "тамя",
-        "тася",
-        
-    ]
+    @State var allSkills = [String]()
     
     var filteredSkills: [String] {
         if searchText.isEmpty {
@@ -53,18 +28,16 @@ struct NewOrderView: View {
     }
     
     var body: some View {
+        let user = viewModel.getUser() ?? UserM()
         VStack {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.black)
-                    //.padding(.horizontal)
                 
                 TextField("Необходимые навыки..", text: $searchText)
-                    //.padding(.horizontal)
-                    .padding(.vertical, 8)
+//                    .padding(.vertical, 8)
                     .background(.white)
                     .cornerRadius(10)
-                    //.padding()
                     .onTapGesture {
                         self.isDropdownVisible = true
                     }
@@ -90,14 +63,12 @@ struct NewOrderView: View {
                                 }
                             }
                         }
-                        .padding()
-                        .frame(maxWidth: .infinity)
                         .background(Color(.systemBackground))
                         .cornerRadius(10)
                     }
                 }
-                .padding(.horizontal)
-                .padding(.bottom, 5)
+//                .padding(.horizontal)
+//                .padding(.bottom, 5)
                 .onTapGesture {
                     // Скрытие списка при нажатии вне него
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -127,21 +98,24 @@ struct NewOrderView: View {
             Spacer()
             ButtonView(title: "опубликовать", height: 50, color: "main_color") {
                 isPublic.toggle()
-                //presentationMode.wrappedValue.dismiss()
-                //// костыль
-                
+//                TabBar()
+                let newOrderId = UUID().uuidString
+                viewModel.saveOrder(email: user.email, order: Order(id: newOrderId, isActive: true, selectedSkills: selectedSkills, comment: comment, byUserEmail: user.email))
             }
             .navigationBarBackButtonHidden(true)
-            //.navigationBarItems(leading: CustomBackButton(text: ""))
             .navigationDestination(
                 isPresented: $isPublic) {
-                    CommunityView()
+                    TabBar()
                 }
             .padding(.bottom, 5)
             .padding(.horizontal, 80)
             
             
             
+        }
+        .onAppear {
+            allSkills = viewModel.skillsName
+            print("lalal \(allSkills)")
         }
         .navigationBarTitle("New Order")
     }

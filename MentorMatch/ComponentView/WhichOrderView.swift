@@ -40,11 +40,11 @@ struct WhichOrderView: View {
                 
                 //Spacer().frame(height: 20)
                 
-                Text(order.byUser.firstName + " " + order.byUser.lastName)
-                //.font(.title)
-                    .fontWeight(.thin)
-                    .font(.system(size: 12))
-                    .padding(.trailing)
+//                Text(order.byUser.firstName + " " + order.byUser.lastName)
+//                //.font(.title)
+//                    .fontWeight(.thin)
+//                    .font(.system(size: 12))
+//                    .padding(.trailing)
             }
             .padding()
         }
@@ -60,9 +60,9 @@ struct WhichOrderView: View {
 //    }
 //}
 
-struct WhichOrderView_Previews: PreviewProvider {
-    static var previews: some View {
-        WhichOrderView(order: Order(selectedSkills: ["iOS Development", "UI/UX Design1", "UI/UX Design2", "UI/UX Design3", "UI/UX Design4"], comment: "Нужен опытный разработчик", byUser: UserM()))
-    }
-}
+//struct WhichOrderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WhichOrderView(order: Order(id: <#String#>, isActive: true,selectedSkills: ["iOS Development", "UI/UX Design1", "UI/UX Design2", "UI/UX Design3", "UI/UX Design4"], comment: "Нужен опытный разработчик", byUserEmail: "lala@lala.ru"))
+//    }
+//}
 

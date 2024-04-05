@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ProfileView: View {
+    
     @State private var username = "Taisiia Galkina"
     @State private var rate = "5.0"
     @State private var cntRevie = "239"
@@ -17,25 +18,13 @@ struct ProfileView: View {
     @State private var description = "Senior"
     @State var isSettingsTapped: Bool = false
     
-    //private var user = UserM()
     @ObservedObject var viewModel = AuthFirebase()
 //    t4@t.ru
 //    tttttt
     
     
     var body: some View {
-        //GeometryReader { geometry in
         let userr = viewModel.getUser() ?? UserM()
-//        let userr = UserM()
-
-        //        let userr = UserM(firstName: "Таисия",
-        //                          lastName: "Галкина",
-        //                          status: "лалала",
-        //                          description: "лалала2",
-        //                          email: "tasya@mail.ru",
-        //                          education:  Education(place: "ВШЭ", degree: "Бакалавриат", startYear: "2021", endYear: "2025"),
-        //                          workExperience:  WorkExperience(companyName: "Моя", position: "СЕО", startYear: "2003", endYear: "2025"))
-        //print(userr)
         
         ScrollView {
             HStack {

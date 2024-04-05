@@ -19,6 +19,7 @@ struct SettingsView: View {
     @State var isExperience: Bool = false
     @State var isExpertise: Bool = false
     @State var isLogOut: Bool = false
+    @State var isOrder: Bool = false
     @State private var isAlertShow: Bool = false
     @State private var alertMessage: String = ""
     //    @State  var user: UserM
@@ -85,6 +86,16 @@ struct SettingsView: View {
                 .navigationDestination(
                     isPresented: $isExperience) {
                         ExperienceView()
+                    }
+                
+                ArrowButtonView(title: "заказы") {
+                    isOrder.toggle()
+                }
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(leading: CustomBackButton(text: ""))
+                .navigationDestination(
+                    isPresented: $isOrder) {
+                        OrdersView()
                     }
                 
                 Spacer()

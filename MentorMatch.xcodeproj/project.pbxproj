@@ -54,6 +54,12 @@
 		0062D8622BA5C47E00219D5A /* RegistrationWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0062D8612BA5C47E00219D5A /* RegistrationWorkView.swift */; };
 		00719F9A2BBC5D1700C98F49 /* SkillsFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719F992BBC5D1700C98F49 /* SkillsFirebase.swift */; };
 		00719F9C2BBC9C3500C98F49 /* SaveFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719F9B2BBC9C3500C98F49 /* SaveFirebase.swift */; };
+		00719F9E2BBEDE4400C98F49 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719F9D2BBEDE4300C98F49 /* OrdersView.swift */; };
+		00719FA02BBF221E00C98F49 /* OrderFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719F9F2BBF221E00C98F49 /* OrderFirebase.swift */; };
+		00719FA22BC03C4500C98F49 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FA12BC03C4500C98F49 /* OrderView.swift */; };
+		00719FA42BC053E200C98F49 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FA32BC053E200C98F49 /* UserView.swift */; };
+		00719FA62BC0782600C98F49 /* StrangerOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FA52BC0782600C98F49 /* StrangerOrderView.swift */; };
+		00719FA82BC079CC00C98F49 /* FullOrderDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FA72BC079CC00C98F49 /* FullOrderDescription.swift */; };
 		007AE0442BAA3CC200E4367E /* RegistrationExpertiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +125,12 @@
 		0062D8612BA5C47E00219D5A /* RegistrationWorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationWorkView.swift; sourceTree = "<group>"; };
 		00719F992BBC5D1700C98F49 /* SkillsFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsFirebase.swift; sourceTree = "<group>"; };
 		00719F9B2BBC9C3500C98F49 /* SaveFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFirebase.swift; sourceTree = "<group>"; };
+		00719F9D2BBEDE4300C98F49 /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
+		00719F9F2BBF221E00C98F49 /* OrderFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFirebase.swift; sourceTree = "<group>"; };
+		00719FA12BC03C4500C98F49 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		00719FA32BC053E200C98F49 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		00719FA52BC0782600C98F49 /* StrangerOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerOrderView.swift; sourceTree = "<group>"; };
+		00719FA72BC079CC00C98F49 /* FullOrderDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderDescription.swift; sourceTree = "<group>"; };
 		007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationExpertiseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,22 +230,25 @@
 		001A671D2B9B9B92006C9425 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				001A66E92B99F0EE006C9425 /* WelcomeView.swift */,
-				001A671E2B9B9BA9006C9425 /* LoginView.swift */,
 				001A67242B9BBBD9006C9425 /* CommunityView.swift */,
-				001A67262B9BBCE3006C9425 /* MessageView.swift */,
-				001A67282B9BBD0A006C9425 /* NewOrderView.swift */,
-				001A672A2B9BBD24006C9425 /* ProfileView.swift */,
-				001A67742B9DFCCB006C9425 /* SettingsView.swift */,
 				001A67782B9E1297006C9425 /* EducationView.swift */,
 				001A677E2B9E6B83006C9425 /* ExperienceView.swift */,
 				0062D81F2B9F1AD100219D5A /* ExpertiseView.swift */,
+				00719FA72BC079CC00C98F49 /* FullOrderDescription.swift */,
+				001A671E2B9B9BA9006C9425 /* LoginView.swift */,
 				0062D8272B9FB0DD00219D5A /* MentorSearchView.swift */,
+				001A67262B9BBCE3006C9425 /* MessageView.swift */,
+				001A67282B9BBD0A006C9425 /* NewOrderView.swift */,
 				0062D8292B9FB19000219D5A /* OrderSearchView.swift */,
+				00719F9D2BBEDE4300C98F49 /* OrdersView.swift */,
+				001A672A2B9BBD24006C9425 /* ProfileView.swift */,
 				0062D82D2BA0641100219D5A /* RegisterFirstView.swift */,
 				0062D82F2BA0840000219D5A /* RegistrationEdView.swift */,
-				0062D8612BA5C47E00219D5A /* RegistrationWorkView.swift */,
 				007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */,
+				0062D8612BA5C47E00219D5A /* RegistrationWorkView.swift */,
+				001A67742B9DFCCB006C9425 /* SettingsView.swift */,
+				00719FA32BC053E200C98F49 /* UserView.swift */,
+				001A66E92B99F0EE006C9425 /* WelcomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -244,6 +259,7 @@
 				0062D83B2BA35CA600219D5A /* AuthFirebase.swift */,
 				00719F992BBC5D1700C98F49 /* SkillsFirebase.swift */,
 				00719F9B2BBC9C3500C98F49 /* SaveFirebase.swift */,
+				00719F9F2BBF221E00C98F49 /* OrderFirebase.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -272,6 +288,8 @@
 				0062D8332BA1C6F000219D5A /* YearPickerTextField.swift */,
 				0062D8352BA248D100219D5A /* SmallUserView.swift */,
 				0062D8392BA24FDA00219D5A /* WhichOrderView.swift */,
+				00719FA12BC03C4500C98F49 /* OrderView.swift */,
+				00719FA52BC0782600C98F49 /* StrangerOrderView.swift */,
 			);
 			path = ComponentView;
 			sourceTree = "<group>";
@@ -429,6 +447,8 @@
 				0062D82C2B9FC09500219D5A /* EducationAndExperienceView.swift in Sources */,
 				00719F9C2BBC9C3500C98F49 /* SaveFirebase.swift in Sources */,
 				0062D82A2B9FB19000219D5A /* OrderSearchView.swift in Sources */,
+				00719FA42BC053E200C98F49 /* UserView.swift in Sources */,
+				00719FA02BBF221E00C98F49 /* OrderFirebase.swift in Sources */,
 				001A67312B9BC23C006C9425 /* Education.swift in Sources */,
 				001A67792B9E1297006C9425 /* EducationView.swift in Sources */,
 				001A67272B9BBCE3006C9425 /* MessageView.swift in Sources */,
@@ -441,6 +461,7 @@
 				0062D8362BA248D100219D5A /* SmallUserView.swift in Sources */,
 				001A67752B9DFCCB006C9425 /* SettingsView.swift in Sources */,
 				0062D8282B9FB0DD00219D5A /* MentorSearchView.swift in Sources */,
+				00719FA22BC03C4500C98F49 /* OrderView.swift in Sources */,
 				001A67232B9BB837006C9425 /* TabBar.swift in Sources */,
 				001A66EA2B99F0EE006C9425 /* WelcomeView.swift in Sources */,
 				001A67332B9BC254006C9425 /* WorkExperience.swift in Sources */,
@@ -452,8 +473,11 @@
 				001A677D2B9E65C5006C9425 /* CustomBackButton.swift in Sources */,
 				001A67252B9BBBD9006C9425 /* CommunityView.swift in Sources */,
 				0062D8202B9F1AD100219D5A /* ExpertiseView.swift in Sources */,
+				00719F9E2BBEDE4400C98F49 /* OrdersView.swift in Sources */,
 				001A66E82B99F0EE006C9425 /* MentorMatchApp.swift in Sources */,
 				0062D82E2BA0641100219D5A /* RegisterFirstView.swift in Sources */,
+				00719FA82BC079CC00C98F49 /* FullOrderDescription.swift in Sources */,
+				00719FA62BC0782600C98F49 /* StrangerOrderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

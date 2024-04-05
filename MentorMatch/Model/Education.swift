@@ -21,12 +21,4 @@ struct Education{
     }
 }
 
-//extension Education {
-//    init(place: String, degree: String, startYear: String, endYear: String) {
-//        self.place = place
-//        self.degree = degree
-//        self.startYear = startYear
-//        self.endYear = endYear
-//    }
-//}
 

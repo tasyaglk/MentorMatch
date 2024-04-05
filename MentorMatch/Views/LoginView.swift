@@ -47,19 +47,6 @@ struct LoginView: View {
             
             ButtonView(title: "Войти") {
                 logIn(email: email, password: password)
-//                AuthFirebase.shared.signUp(email: email, password: password) { result in
-//                    switch result {
-//                    case .success(let user):
-//                        isLoggedIn.toggle()
-//                        
-//                        
-//                    case .failure(let error):
-//                        alertMessage = "ошибка регистрации"
-//                        isAlertShow.toggle()
-//                    }
-//                
-//                }
-                
                 
             }
             .navigationBarBackButtonHidden(true)

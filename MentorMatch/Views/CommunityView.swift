@@ -40,7 +40,7 @@ struct CommunityView: View {
                     }
                     .background(isScreenOneActive ? Color("main_color").opacity(0.7) : Color.clear)
                     .cornerRadius(80)
-
+                    Spacer()
                     // Кнопка для второго экрана
                     Button(action: {
                         withAnimation {
@@ -71,6 +71,6 @@ struct CommunityView: View {
     }
 }
 
-#Preview {
-    CommunityView()
-}
+//#Preview {
+//    CommunityView()
+//}
