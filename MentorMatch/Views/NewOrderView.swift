@@ -17,6 +17,12 @@ struct NewOrderView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var viewModel: AuthFirebase
     
+    @State private var isAlertShow: Bool = false
+    @State private var alertMessage: String = ""
+    @State private var isSkillsEmptyAlertShown = false
+    
+    @State private var hasEmptyFields: Bool = false
+    
     @State var allSkills = [String]()
     
     var filteredSkills: [String] {
@@ -35,7 +41,6 @@ struct NewOrderView: View {
                     .foregroundColor(.black)
                 
                 TextField("Необходимые навыки..", text: $searchText)
-//                    .padding(.vertical, 8)
                     .background(.white)
                     .cornerRadius(10)
                     .onTapGesture {
@@ -43,6 +48,8 @@ struct NewOrderView: View {
                     }
             }
             .padding(.horizontal)
+            
+            
             if isDropdownVisible {
                 ScrollView {
                     ForEach(filteredSkills, id: \.self) { skill in
@@ -63,14 +70,14 @@ struct NewOrderView: View {
                                 }
                             }
                         }
+                        .padding(.horizontal, 15)
                         .background(Color(.systemBackground))
                         .cornerRadius(10)
                     }
                 }
-//                .padding(.horizontal)
-//                .padding(.bottom, 5)
+                .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 4))
+                .padding(.horizontal)
                 .onTapGesture {
-                    // Скрытие списка при нажатии вне него
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     self.isDropdownVisible = false
                 }
@@ -91,16 +98,28 @@ struct NewOrderView: View {
             }
             
             VStack {
-                FieldView(maxLength: 600, labelText: "", type: "usual", prevText: "опишите свой запрос", keyboardType: .default, text: $comment)
+                FieldView(isError: hasEmptyFields && comment.isEmpty, maxLength: 600, labelText: "", type: "usual", prevText: "опишите свой запрос", keyboardType: .default, text: $comment)
             }
             .padding(.top, 20)
             
             Spacer()
             ButtonView(title: "опубликовать", height: 50, color: "main_color") {
-                isPublic.toggle()
-//                TabBar()
-                let newOrderId = UUID().uuidString
-                viewModel.saveOrder(email: user.email, order: Order(id: newOrderId, isActive: true, selectedSkills: selectedSkills, comment: comment, byUserEmail: user.email))
+                
+                let areSkillsNotSelected = selectedSkills.isEmpty
+                
+                if areSkillsNotSelected {
+                    isSkillsEmptyAlertShown = true
+                    alertMessage = "Необходимо выбрать навыки"
+                    return
+                }
+                
+                if selectedSkills.isEmpty || comment.isEmpty  {
+                    hasEmptyFields = true
+                } else {
+                    isPublic.toggle()
+                    let newOrderId = UUID().uuidString
+                    viewModel.saveOrder(email: user.email, order: Order(id: newOrderId, isActive: true, selectedSkills: selectedSkills, comment: comment, byUserEmail: user.email))
+                }
             }
             .navigationBarBackButtonHidden(true)
             .navigationDestination(
@@ -109,8 +128,18 @@ struct NewOrderView: View {
                 }
             .padding(.bottom, 5)
             .padding(.horizontal, 80)
+//            
             
             
+        }
+        .alert(isPresented: $isSkillsEmptyAlertShown) {
+            Alert(title: Text("Предупреждение"),
+                  message: Text("Необходимо выбрать навыки"),
+                  dismissButton: .default(Text("OK")) {
+                print("OK button pressed")
+                self.isSkillsEmptyAlertShown = false
+            }
+            )
             
         }
         .onAppear {

@@ -170,6 +170,7 @@ class AuthFirebase: ObservableObject {
     }
     
     func signUp (email: String, password: String, complition: @escaping (Result<Bool, FBError>) -> Void) {
+        print(email + " " + password)
         auth.createUser(withEmail: email, password: password) { result, error in
             if let error {
                 DispatchQueue.main.async {

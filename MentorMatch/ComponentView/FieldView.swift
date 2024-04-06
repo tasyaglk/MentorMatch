@@ -10,12 +10,15 @@ import SwiftUI
 
 struct FieldView: View {
     
+    let isError: Bool
     let maxLength: Int
     let labelText: String
     let type: String
     let prevText: String
     let keyboardType: UIKeyboardType
     @Binding var text: String
+    
+    /*@State private */
    // @State private var hideText: String = ""
     //@State private var text: String = ""
     
@@ -34,13 +37,14 @@ struct FieldView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(labelText)
                     .font(.headline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(isError ? Color("attention") : Color.gray)
                 
                 TextField(prevText, text: $text)
                     .padding()
                     .background(Color.white)
                     .cornerRadius(15)
-                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 8))
+                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(isError ? Color("attention") : Color.gray, lineWidth: 8)) // Изменяем цвет рамки в зависимости от ошибки
+
                     .cornerRadius(15)
                     .keyboardType(keyboardType)
                     .onChange(of: text) { newValue in
@@ -49,7 +53,9 @@ struct FieldView: View {
                         }
                     }
                     .onTapGesture {
-                                text = prevText // Сохраняем предыдущее значение при нажатии
+                                text = prevText
+//                        isError = false
+                        // Сохраняем предыдущее значение при нажатии
                             }
                 if maxLength != 239 {
                     Text("\(text.count)/\(maxLength)")
@@ -68,7 +74,7 @@ struct FieldView: View {
                     .cornerRadius(15)
                     .foregroundColor(.black)
                     .keyboardType(keyboardType)
-                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 8))
+                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(isError ? Color("attention") : Color.gray, lineWidth: 8))
                     .cornerRadius(15)
                     //.padding(.horizontal, 15)
                     //.padding(.top, 100)
@@ -88,14 +94,14 @@ struct FieldView: View {
                 if labelText != "" {
                     Text(labelText)
                         .font(.headline)
-                        .foregroundColor(.gray)
+                        .foregroundColor(isError ? Color("attention") : Color.gray)
                 }
                 SecureField(prevText, text: $text)
                     .padding()
                     .background(Color.white)
                     .cornerRadius(15)
                     .keyboardType(keyboardType)
-                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 8))
+                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(isError ? Color("attention") : Color.gray, lineWidth: 8))
                     .cornerRadius(15)
                     //.padding(.horizontal, 15)
                     //.padding(.top, 10)
@@ -108,14 +114,14 @@ struct FieldView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(labelText)
                     .font(.headline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(isError ? Color("attention") : Color.gray)
                 TextField(prevText, text: $text, axis: .vertical)
                     .padding()
                     .background(Color.white)
                     .cornerRadius(15)
                     .foregroundColor(.black)
                     .keyboardType(keyboardType)
-                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 8))
+                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(isError ? Color("attention") : Color.gray, lineWidth: 8))
                     .cornerRadius(15)
                     //.padding(.horizontal, 15)
                     //.padding(.top, 100)
@@ -136,14 +142,14 @@ struct FieldView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(labelText)
                     .font(.headline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(isError ? Color("attention") : Color.gray)
                 TextField(prevText, text: $text, axis: .vertical)
                     .padding()
                     .background(Color.white)
                     .cornerRadius(15)
                     .foregroundColor(.black)
                     .keyboardType(keyboardType)
-                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 8))
+                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(isError ? Color("attention") : Color.gray, lineWidth: 8))
                     .cornerRadius(15)
                 .textContentType(.emailAddress)
                 .autocapitalization(.none)

@@ -30,6 +30,8 @@ struct RegistrationWorkView: View {
     @State private var isAlertShow: Bool = false
     @State private var alertMessage: String = ""
     
+    @State private var hasEmptyFields: Bool = false
+    
     private let user = UserM()
     
     
@@ -38,21 +40,27 @@ struct RegistrationWorkView: View {
         //            Text(firstName + lastName + email + password)
         //        }
         VStack {
-            FieldView(maxLength: 239, labelText: "место работы", type: "preUsual", prevText: "введите название места раюоты", keyboardType: .default, text: $workPlace)
+            FieldView(isError: hasEmptyFields && workPlace.isEmpty,maxLength: 239, labelText: "место работы", type: "preUsual", prevText: "введите название места работы", keyboardType: .default, text: $workPlace)
                 .padding(.top, 15)
-            FieldView(maxLength: 239, labelText: "должность", type: "preUsual", prevText: "введите должность", keyboardType: .default, text: $position)
+            FieldView(isError: hasEmptyFields && position.isEmpty,maxLength: 239, labelText: "должность", type: "preUsual", prevText: "введите должность", keyboardType: .default, text: $position)
             
             HStack {
-                FieldView(maxLength: 239, labelText: "год начала", type: "preUsual", prevText: "введите год", keyboardType: .numberPad, text: $workStartYear)
+                FieldView(isError: hasEmptyFields && workStartYear.isEmpty,maxLength: 239, labelText: "год начала", type: "preUsual", prevText: "введите год", keyboardType: .numberPad, text: $workStartYear)
                 
-                FieldView(maxLength: 239, labelText: "год окончания", type: "preUsual", prevText: "введите год", keyboardType: .numberPad, text: $workEndYear)
+                FieldView(isError: hasEmptyFields && workEndYear.isEmpty,maxLength: 239, labelText: "год окончания", type: "preUsual", prevText: "введите год", keyboardType: .numberPad, text: $workEndYear)
             }
             
             
             Spacer()
             ButtonView(title: "далее",  color: "main_color") {
                 //isNext.toggle()
-                isNext.toggle()
+                if workPlace.isEmpty || position.isEmpty || workStartYear.isEmpty || workEndYear.isEmpty {
+                    hasEmptyFields = true
+                } else {
+                    isNext.toggle()
+                }
+                
+                
                 //                signUp(email: email, password: password)
 //                                authFirebase.insertNewUser(firstName: firstName, lastName: lastName, email: email, password: password, education: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear), workExperience: WorkExperience(companyName: workPlace, position: position, startYear: workStartYear, endYear: workEndYear), expertises: [Expertise(name: "lala", rating: 5, isChecked: true), Expertise(name: "blabla", rating: 5, isChecked: true)]) { result in
 //                                    switch result {

@@ -24,6 +24,7 @@ struct RegistrationEdView: View {
     @State private var educationEndYear: String = ""
     @State private var isAlertShow: Bool = false
     @State private var alertMessage: String = ""
+    @State private var hasEmptyFields: Bool = false
     
     private let user = UserM()
     
@@ -33,32 +34,26 @@ struct RegistrationEdView: View {
         //            Text(firstName + lastName + email + password)
         //        }
         VStack {
-            FieldView(maxLength: 239, labelText: "образование", type: "preUsual", prevText: "введите название учебного заведения", keyboardType: .default, text: $educationPlace)
+            FieldView(isError: hasEmptyFields && educationPlace.isEmpty,maxLength: 239, labelText: "образование", type: "preUsual", prevText: "введите название учебного заведения", keyboardType: .default, text: $educationPlace)
                 .padding(.top, 15)
-            FieldView(maxLength: 239, labelText: "степень", type: "preUsual", prevText: "введите полученную степень", keyboardType: .default, text: $educationLevel)
+            FieldView(isError: hasEmptyFields && educationLevel.isEmpty,maxLength: 239, labelText: "степень", type: "preUsual", prevText: "введите полученную степень", keyboardType: .default, text: $educationLevel)
             
             HStack {
-                FieldView(maxLength: 239, labelText: "год начала", type: "preUsual", prevText: "введите год", keyboardType: .numberPad, text: $educationStartYear)
+                FieldView(isError: hasEmptyFields && educationStartYear.isEmpty,maxLength: 239, labelText: "год начала", type: "preUsual", prevText: "введите год", keyboardType: .numberPad, text: $educationStartYear)
                 
-                FieldView(maxLength: 239, labelText: "год окончания", type: "preUsual", prevText: "введите год", keyboardType: .numberPad, text: $educationEndYear)
+                FieldView(isError: hasEmptyFields && educationEndYear.isEmpty,maxLength: 239, labelText: "год окончания", type: "preUsual", prevText: "введите год", keyboardType: .numberPad, text: $educationEndYear)
             }
             
             
             Spacer()
             ButtonView(title: "далее",  color: "main_color") {
-                //isNext.toggle()
-                isNext.toggle()
-                //                signUp(email: email, password: password)
-                //                authFirebase.insertNewUser(firstName: firstName, lastName: lastName, email: email, password: password, education: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear), workExperience: WorkExperience(companyName: "", position: "", startYear: "", endYear: ""), expertise: Expertise(name: "", rating: 5, isChecked: true)) { result in
-                //                    switch result {
-                //                    case (.success(_)) :
-                //                        isNext = true
-                //                    case(.failure(let error)):
-                //                        //authFirebase.errorMessage = error.errorMessage
-                //                        alertMessage = error.errorMessage
-                //                        isAlertShow = true
-                //                    }
-                //                }
+                if educationLevel.isEmpty || educationPlace.isEmpty || educationStartYear.isEmpty || educationEndYear.isEmpty {
+                    hasEmptyFields = true
+                } else {
+                    isNext.toggle()
+                }
+                
+                
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(

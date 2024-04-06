@@ -15,6 +15,7 @@ struct LoginView: View {
     @State var isLoggedIn: Bool = false
     @State private var isAlertShow: Bool = false
     @State private var alertMessage: String = ""
+    @State private var hasEmptyFields: Bool = false
     @EnvironmentObject var authFirebase: AuthFirebase
     
     func logIn(email: String, password: String) {
@@ -24,7 +25,7 @@ struct LoginView: View {
                 isLoggedIn.toggle()
             case(.failure(let error)):
                 //authFirebase.errorMessage = error.errorMessage
-                alertMessage = "ошибка входа"
+                alertMessage = "неверно введенные данные"
                 isAlertShow.toggle()
             }
         }
@@ -38,15 +39,20 @@ struct LoginView: View {
                 .multilineTextAlignment(.center)
                 .padding(.top, 50)
             
-            FieldView(maxLength: 239,labelText: "", type: "usual", prevText: "введите почту", keyboardType: .emailAddress, text: $email )
+            FieldView(isError: hasEmptyFields && email.isEmpty, maxLength: 239,labelText: "", type: "usual", prevText: "введите почту", keyboardType: .emailAddress, text: $email )
                 //.padding(.top, 100)
-            FieldView(maxLength: 239,labelText: "", type: "password", prevText: "введите пароль", keyboardType: .emailAddress, text: $password )
+            FieldView(isError: hasEmptyFields && password.isEmpty, maxLength: 239,labelText: "", type: "password", prevText: "введите пароль", keyboardType: .emailAddress, text: $password )
                 .padding(.horizontal, 15)
             
             Spacer()
             
             ButtonView(title: "Войти") {
-                logIn(email: email, password: password)
+                if  email.isEmpty || password.isEmpty {
+                    hasEmptyFields = true
+                } else {
+                    logIn(email: email, password: password)
+                }
+                
                 
             }
             .navigationBarBackButtonHidden(true)
