@@ -60,6 +60,9 @@
 		00719FA42BC053E200C98F49 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FA32BC053E200C98F49 /* UserView.swift */; };
 		00719FA62BC0782600C98F49 /* StrangerOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FA52BC0782600C98F49 /* StrangerOrderView.swift */; };
 		00719FA82BC079CC00C98F49 /* FullOrderDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FA72BC079CC00C98F49 /* FullOrderDescription.swift */; };
+		00719FAA2BC20D0700C98F49 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FA92BC20D0700C98F49 /* Validator.swift */; };
+		00719FAC2BC2139C00C98F49 /* BottomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FAB2BC2139C00C98F49 /* BottomAlert.swift */; };
+		00719FAF2BC2165100C98F49 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 00719FAE2BC2165100C98F49 /* Toast */; };
 		007AE0442BAA3CC200E4367E /* RegistrationExpertiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +134,8 @@
 		00719FA32BC053E200C98F49 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		00719FA52BC0782600C98F49 /* StrangerOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerOrderView.swift; sourceTree = "<group>"; };
 		00719FA72BC079CC00C98F49 /* FullOrderDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderDescription.swift; sourceTree = "<group>"; };
+		00719FA92BC20D0700C98F49 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		00719FAB2BC2139C00C98F49 /* BottomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomAlert.swift; sourceTree = "<group>"; };
 		007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationExpertiseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +149,7 @@
 				0062D85C2BA397DD00219D5A /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				0062D8582BA397DD00219D5A /* FirebaseFirestore in Frameworks */,
 				0062D85A2BA397DD00219D5A /* FirebaseInAppMessaging-Beta in Frameworks */,
+				00719FAF2BC2165100C98F49 /* Toast in Frameworks */,
 				0062D85E2BA397DD00219D5A /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,6 +204,7 @@
 				001A66ED2B99F0EF006C9425 /* Preview Content */,
 				001A67222B9BB837006C9425 /* TabBar.swift */,
 				0062D85F2BA39F1D00219D5A /* GoogleService-Info.plist */,
+				00719FA92BC20D0700C98F49 /* Validator.swift */,
 			);
 			path = MentorMatch;
 			sourceTree = "<group>";
@@ -290,6 +297,7 @@
 				0062D8392BA24FDA00219D5A /* WhichOrderView.swift */,
 				00719FA12BC03C4500C98F49 /* OrderView.swift */,
 				00719FA52BC0782600C98F49 /* StrangerOrderView.swift */,
+				00719FAB2BC2139C00C98F49 /* BottomAlert.swift */,
 			);
 			path = ComponentView;
 			sourceTree = "<group>";
@@ -317,6 +325,7 @@
 				0062D8592BA397DD00219D5A /* FirebaseInAppMessaging-Beta */,
 				0062D85B2BA397DD00219D5A /* FirebaseInAppMessagingSwift-Beta */,
 				0062D85D2BA397DD00219D5A /* FirebaseStorage */,
+				00719FAE2BC2165100C98F49 /* Toast */,
 			);
 			productName = MentorMatch;
 			productReference = 001A66E42B99F0EE006C9425 /* MentorMatch.app */;
@@ -392,6 +401,7 @@
 			mainGroup = 001A66DB2B99F0EE006C9425;
 			packageReferences = (
 				0062D8522BA397DD00219D5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				00719FAD2BC2165100C98F49 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 001A66E52B99F0EE006C9425 /* Products */;
 			projectDirPath = "";
@@ -441,6 +451,7 @@
 				001A672F2B9BC11A006C9425 /* UserM.swift in Sources */,
 				001A672B2B9BBD24006C9425 /* ProfileView.swift in Sources */,
 				0062D81C2B9F1A5C00219D5A /* ExpertiseRowView.swift in Sources */,
+				00719FAA2BC20D0700C98F49 /* Validator.swift in Sources */,
 				001A676F2B9DEA09006C9425 /* ButtonView.swift in Sources */,
 				001A67712B9DEE76006C9425 /* FieldView.swift in Sources */,
 				0062D81E2B9F1AAE00219D5A /* Expertise.swift in Sources */,
@@ -458,6 +469,7 @@
 				007AE0442BAA3CC200E4367E /* RegistrationExpertiseView.swift in Sources */,
 				0062D8302BA0840000219D5A /* RegistrationEdView.swift in Sources */,
 				001A671F2B9B9BA9006C9425 /* LoginView.swift in Sources */,
+				00719FAC2BC2139C00C98F49 /* BottomAlert.swift in Sources */,
 				0062D8362BA248D100219D5A /* SmallUserView.swift in Sources */,
 				001A67752B9DFCCB006C9425 /* SettingsView.swift in Sources */,
 				0062D8282B9FB0DD00219D5A /* MentorSearchView.swift in Sources */,
@@ -815,6 +827,14 @@
 				minimumVersion = 10.22.1;
 			};
 		};
+		00719FAD2BC2165100C98F49 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -847,6 +867,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0062D8522BA397DD00219D5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		00719FAE2BC2165100C98F49 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00719FAD2BC2165100C98F49 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

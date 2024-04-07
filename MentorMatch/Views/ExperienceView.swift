@@ -30,12 +30,12 @@ struct ExperienceView: View {
         let user = viewModel.getUser() ?? UserM()
         VStack {
             
-            FieldView(isError: false, maxLength: 239, labelText: "место работы", type: "settings", prevText: user.workExperience?.companyName  ?? "", keyboardType: .default, text: $workPlace)
+            FieldView(isError: false, isError2: false, maxLength: 239, labelText: "место работы", type: "settings", prevText: user.workExperience?.companyName  ?? "", keyboardType: .default, text: $workPlace)
                 .padding(.top, 15)
-            FieldView(isError: false, maxLength: 239, labelText: "должность", type: "settings", prevText: user.workExperience?.position  ?? "", keyboardType: .default, text: $workLevel)
+            FieldView(isError: false, isError2: false, maxLength: 239, labelText: "должность", type: "settings", prevText: user.workExperience?.position  ?? "", keyboardType: .default, text: $workLevel)
             HStack {
-                FieldView(isError: false, maxLength: 239, labelText: "год начала", type: "settings", prevText: user.workExperience?.startYear  ?? "", keyboardType: .numberPad, text: $workStartYear)
-                FieldView(isError: false, maxLength: 239, labelText: "год окончания", type: "settings", prevText: user.workExperience?.endYear ?? "", keyboardType: .numberPad, text: $workEndYear)
+                FieldView(isError: false, isError2: false, maxLength: 239, labelText: "год начала", type: "settings", prevText: user.workExperience?.startYear  ?? "", keyboardType: .numberPad, text: $workStartYear)
+                FieldView(isError: false, isError2: false, maxLength: 239, labelText: "год окончания", type: "settings", prevText: user.workExperience?.endYear ?? "", keyboardType: .numberPad, text: $workEndYear)
             }
             Spacer()
             ButtonView(title: "сохранить",  color: "main_color") {

@@ -96,18 +96,9 @@ struct OrderSearchView: View {
         }
         .onAppear {
             allSkills = viewModel.skillsName
-//                            viewModel.fetchData()
             viewModel.fetchAllStrangersOrders()
-//            viewModel.hui()
-            //                strangersOrder = viewModel.strangersOrders
         }
         .navigationBarTitle("New Order")
         .padding(.top, 70)
     }
 }
-    
-    ////struct MentorSearchView_Previews: PreviewProvider {
-    ////    static var previews: some View {
-    ////        MentorSearchView()
-    ////    }
-    ////}

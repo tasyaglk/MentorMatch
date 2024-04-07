@@ -19,9 +19,6 @@ struct ProfileView: View {
     @State var isSettingsTapped: Bool = false
     
     @ObservedObject var viewModel = AuthFirebase()
-//    t4@t.ru
-//    tttttt
-    
     
     var body: some View {
         let userr = viewModel.getUser() ?? UserM()
@@ -34,6 +31,7 @@ struct ProfileView: View {
                 }) {
                     Image(systemName: "gear")
                         .foregroundColor(.black)
+                        .fixedSize()
                 }
 //                .navigationBarHidden(true)
 //                .navigationDestination(
@@ -41,44 +39,13 @@ struct ProfileView: View {
 //                        SettingsView()
 //                    }
             }
-            .padding()
+//            .padding()
             Image(systemName: "person")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 100, height: 100)
                 .clipShape(Circle())
                 .padding(.top, 20)
-            
-            //                HStack {
-            //                    VStack {
-            //                        Text(rate)
-            //                            .fontWeight(.bold)
-            //                            .font(.system(size: 18))
-            //                            .foregroundColor(.black)
-            //                            .padding(.horizontal, 10)
-            //                            .padding(.vertical, 5)
-            //                            .background(Color("light_main_color"))
-            //                            .cornerRadius(10)
-            //                        Text("⭐")
-            //                            .font(.subheadline)
-            //                            .foregroundColor(Color("light_main_color"))
-            //                    }
-            //                    .padding()
-            //
-            //                    VStack {
-            //                        Text(cntRevie)
-            //                            .fontWeight(.bold)
-            //                            .font(.system(size: 18))
-            //                            .padding(.horizontal, 10)
-            //                            .padding(.vertical, 5)
-            //                            .background(Color("light_main_color"))
-            //                            .cornerRadius(10)
-            //                        Text("💬")
-            //                            .font(.subheadline)
-            //                            .foregroundColor(.gray)
-            //                    }
-            //                    .padding()
-            //                }
             
             Text(userr.firstName + " " + userr.lastName)
                 .font(.title)
@@ -87,34 +54,12 @@ struct ProfileView: View {
             Text(userr.status)
                 .font(.custom("SourceSansPro-Regular", size: 18))
                 .foregroundColor(.gray)
-            
-//            Button(action: {
-//                // Действие при нажатии на кнопку "Написать"
-//            }) {
-//                Text("Написать")
-//                    .fontWeight(.bold)
-//                    .font(.system(size: 20))
-//                    .foregroundColor(.black)
-//                    .padding()
-//                    .background(Color("main_color"))
-//                    .cornerRadius(15)
-//            }
+
             .padding(.vertical, 10)
             .padding(.horizontal, 100)
             
             
             VStack(alignment: .leading) {
-                //                    HStack {
-                //                        Text("📍")
-                //                            .font(.subheadline)
-                //                            .foregroundColor(.gray)
-                //                            .padding(.horizontal, -15)
-                //                        Text(city)
-                //                            .fontWeight(.bold)
-                //                            .font(.system(size: 18))
-                //                    }
-                
-                //.padding()
                 Text("Описание")
                     .fontWeight(.medium)
                     .font(.system(size: 13))
@@ -129,10 +74,7 @@ struct ProfileView: View {
                     .padding(.horizontal, 5)
                     .padding(.vertical, 5)
                     .background(Color("light_main_color"))
-                //.frame(width: geometry.size.width)
-                //.fixedSize(horizontal: false, vertical: true)
                     .cornerRadius(15)
-                // if userr.expertise != nil {
                 HStack {
                     Text("💡")
                         .font(.subheadline)
@@ -161,21 +103,13 @@ struct ProfileView: View {
                                 }
                                 .padding(.horizontal, 5)
                             }
-                            
                         }
-                        //.padding(.leading, 5)
                     }
                 } else {
                     VStack {
                         Text(":|")
                     }
-                    //.padding(.horizontal, 5)
                 }
-                
-                //}
-                
-                
-                
                 
                 HStack {
                     Text("🎓")
@@ -192,14 +126,11 @@ struct ProfileView: View {
                     VStack {
                         Text(":|")
                     }
-                    //.padding(.horizontal, 5)
                 } else {
                     VStack {
                         EducationAndExperienceView(label1: userr.education?.place ?? "", label2: userr.education?.degree ?? "", label3: userr.education?.startYear ?? "", label4: userr.education?.endYear ?? "")
                             .padding(.horizontal, 5)
                     }
-                    //.padding(.horizontal, 5)
-                    
                 }
                 
                 HStack {
@@ -220,47 +151,18 @@ struct ProfileView: View {
                         EducationAndExperienceView(label1: userr.workExperience?.companyName ?? "", label2: userr.workExperience?.position ?? "", label3: userr.workExperience?.startYear ?? "", label4: userr.workExperience?.endYear ?? "")
                             .padding(.horizontal, 5)
                     }
-                    //.padding(.vertical, 10)
-                    
                 }
-                
-                //                    VStack {
-                //                        EducationAndExperienceView(label1: "Me", label2: "CEO", label3: "2003", label4: "2025")
-                //                            .padding(.horizontal, 5)
-                //                    }
-                //Spacer()
-                
-                //                    Divider()
-                //                    Text("Отзывы")
-                //                        .fontWeight(.bold)
-                //                        .font(.system(size: 18))
-                //                        .padding(.horizontal, -15)
-                //                        .padding()
-                //
-                //                    VStack {
-                //                        Text("list")
-                //                            //.padding(.horizontal, 5)
-                //                    }
             }
-            //Spacer()
         }
         .navigationBarHidden(true)
         .navigationDestination(
             isPresented: $isSettingsTapped) {
                 SettingsView()
             }
-//        NavigationLink(destination: SettingsView(), isActive: $isSettingsTapped) {
-//            EmptyView()
-//        }
-//        .hidden()
         .scrollIndicators(.hidden)
         .padding()
-        //            .fullScreenCover(isPresented: $isSettingsTapped) {
-        //                SettingsView()
-        //            }
     }
 }
-//}
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {

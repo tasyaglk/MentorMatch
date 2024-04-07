@@ -39,9 +39,9 @@ struct LoginView: View {
                 .multilineTextAlignment(.center)
                 .padding(.top, 50)
             
-            FieldView(isError: hasEmptyFields && email.isEmpty, maxLength: 239,labelText: "", type: "usual", prevText: "введите почту", keyboardType: .emailAddress, text: $email )
+            FieldView(isError: hasEmptyFields && email.isEmpty, isError2: hasEmptyFields && email.isEmpty, maxLength: 239,labelText: "", type: "usual", prevText: "введите почту", keyboardType: .emailAddress, text: $email )
                 //.padding(.top, 100)
-            FieldView(isError: hasEmptyFields && password.isEmpty, maxLength: 239,labelText: "", type: "password", prevText: "введите пароль", keyboardType: .emailAddress, text: $password )
+            FieldView(isError: hasEmptyFields && password.isEmpty,isError2: hasEmptyFields && password.isEmpty, maxLength: 239,labelText: "", type: "password", prevText: "введите пароль", keyboardType: .emailAddress, text: $password )
                 .padding(.horizontal, 15)
             
             Spacer()

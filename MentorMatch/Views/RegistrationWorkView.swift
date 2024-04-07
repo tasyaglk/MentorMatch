@@ -40,21 +40,21 @@ struct RegistrationWorkView: View {
         //            Text(firstName + lastName + email + password)
         //        }
         VStack {
-            FieldView(isError: hasEmptyFields && workPlace.isEmpty,maxLength: 239, labelText: "место работы", type: "preUsual", prevText: "введите название места работы", keyboardType: .default, text: $workPlace)
+            FieldView(isError: hasEmptyFields && workPlace.isEmpty,isError2: hasEmptyFields && workPlace.isEmpty,maxLength: 239, labelText: "место работы", type: "preUsual", prevText: "введите название места работы", keyboardType: .default, text: $workPlace)
                 .padding(.top, 15)
-            FieldView(isError: hasEmptyFields && position.isEmpty,maxLength: 239, labelText: "должность", type: "preUsual", prevText: "введите должность", keyboardType: .default, text: $position)
+            FieldView(isError: hasEmptyFields && position.isEmpty,isError2: hasEmptyFields && position.isEmpty,maxLength: 239, labelText: "должность", type: "preUsual", prevText: "введите должность", keyboardType: .default, text: $position)
             
             HStack {
-                FieldView(isError: hasEmptyFields && workStartYear.isEmpty,maxLength: 239, labelText: "год начала", type: "preUsual", prevText: "введите год", keyboardType: .numberPad, text: $workStartYear)
+                FieldView(isError: hasEmptyFields && workStartYear.isEmpty,isError2: hasEmptyFields && workStartYear.isEmpty,maxLength: 239, labelText: "год начала", type: "digitals", prevText: "введите год", keyboardType: .numberPad, text: $workStartYear)
                 
-                FieldView(isError: hasEmptyFields && workEndYear.isEmpty,maxLength: 239, labelText: "год окончания", type: "preUsual", prevText: "введите год", keyboardType: .numberPad, text: $workEndYear)
+                FieldView(isError: hasEmptyFields && workEndYear.isEmpty,isError2: hasEmptyFields && workEndYear.isEmpty,maxLength: 239, labelText: "год окончания", type: "digitals", prevText: "введите год", keyboardType: .numberPad, text: $workEndYear)
             }
             
             
             Spacer()
             ButtonView(title: "далее",  color: "main_color") {
                 //isNext.toggle()
-                if workPlace.isEmpty || position.isEmpty || workStartYear.isEmpty || workEndYear.isEmpty {
+                if workPlace.isEmpty || position.isEmpty || workStartYear.isEmpty || workEndYear.isEmpty || (workStartYear > workEndYear){
                     hasEmptyFields = true
                 } else {
                     isNext.toggle()

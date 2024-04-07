@@ -37,10 +37,10 @@ struct SettingsView: View {
         
 //        ScrollView {
             VStack {
-                FieldView(isError: false, maxLength: 239, labelText: "имя", type: "settings", prevText: user.firstName, keyboardType: .default, text: $firstName)
-                FieldView(isError: false,maxLength: 239, labelText: "фамилия", type: "settings", prevText: user.lastName, keyboardType: .default, text: $lastName)
-                FieldView(isError: false,maxLength: 20, labelText: "Статус", type: "settings", prevText: user.status, keyboardType: .default, text: $status)
-                FieldView(isError: false,maxLength: 20, labelText: "Описание", type: "settings", prevText: user.description, keyboardType: .default, text: $description)
+                FieldView(isError: false, isError2: false, maxLength: 239, labelText: "имя", type: "settings", prevText: user.firstName, keyboardType: .default, text: $firstName)
+                FieldView(isError: false,isError2: false, maxLength: 239, labelText: "фамилия", type: "settings", prevText: user.lastName, keyboardType: .default, text: $lastName)
+                FieldView(isError: false,isError2: false, maxLength: 20, labelText: "Статус", type: "settings", prevText: user.status, keyboardType: .default, text: $status)
+                FieldView(isError: false,isError2: false, maxLength: 20, labelText: "Описание", type: "settings", prevText: user.description, keyboardType: .default, text: $description)
                 
                 ArrowButtonView(title: "навыки") {
                     isExpertise.toggle()
@@ -95,7 +95,7 @@ struct SettingsView: View {
                 .navigationBarItems(leading: CustomBackButton(text: ""))
                 .navigationDestination(
                     isPresented: $isOrder) {
-                        OrdersView()
+                        OrdersView() //
                     }
                 
                 Spacer()

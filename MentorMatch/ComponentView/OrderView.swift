@@ -10,6 +10,12 @@ import SwiftUI
 
 struct OrderView: View {
     
+    let columns: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        // Добавьте больше GridItem для управления количеством элементов в строке в зависимости от доступного пространства
+    ]
+    
     var order: Order
     @State var isActive: Bool
     @ObservedObject private var viewModel = AuthFirebase()
@@ -17,19 +23,20 @@ struct OrderView: View {
     var body: some View  {
         HStack {
 //            ScrollView(.horizontal) {
-                HStack {
+            LazyVGrid(columns: columns) {
                     ForEach(order.selectedSkills, id: \.self) { skill in
                         Text(skill)
-                            .padding(8)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal)
                             .background(Color("main_color"))
                             .foregroundColor(.black)
-                            .cornerRadius(8)
-                            .padding(.horizontal, 4)
+                            .font(.system(size: 12))
+                            .cornerRadius(30)
                     }
                 }
 //            }
             
-            Spacer()
+//            Spacer()
             
             Toggle(isOn: $isActive, label: {
             })

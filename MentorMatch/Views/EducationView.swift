@@ -24,14 +24,14 @@ struct EducationView: View {
     var body: some View {
         let user = viewModel.getUser() ?? UserM()
         VStack {
-            FieldView(isError: false, maxLength: 239, labelText: "образование", type: "settings", prevText: user.education?.place ?? "", keyboardType: .default, text: $educationPlace)
+            FieldView(isError: false, isError2: false, maxLength: 239, labelText: "образование", type: "settings", prevText: user.education?.place ?? "", keyboardType: .default, text: $educationPlace)
                 .padding(.top, 15)
-            FieldView(isError: false, maxLength: 239, labelText: "степень", type: "settings", prevText: user.education?.degree  ?? "", keyboardType: .default, text: $educationLevel)
+            FieldView(isError: false, isError2: false, maxLength: 239, labelText: "степень", type: "settings", prevText: user.education?.degree  ?? "", keyboardType: .default, text: $educationLevel)
             
             HStack {
-                FieldView(isError: false, maxLength: 239, labelText: "год начала", type: "settings", prevText: user.education?.startYear  ?? "", keyboardType: .numberPad, text: $educationStartYear)
+                FieldView(isError: false, isError2: false, maxLength: 239, labelText: "год начала", type: "settings", prevText: user.education?.startYear  ?? "", keyboardType: .numberPad, text: $educationStartYear)
                 
-                FieldView(isError: false, maxLength: 239, labelText: "год окончания", type: "settings", prevText: user.education?.endYear  ?? "", keyboardType: .numberPad, text: $educationEndYear)
+                FieldView(isError: false, isError2: false, maxLength: 239, labelText: "год окончания", type: "settings", prevText: user.education?.endYear  ?? "", keyboardType: .numberPad, text: $educationEndYear)
             }
             
             Spacer()

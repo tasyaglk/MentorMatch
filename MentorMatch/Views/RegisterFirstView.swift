@@ -13,18 +13,18 @@
 //    //@Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 //    private let user = UserM()
 //    @ObservedObject var authFirebase = AuthFirebase()
-//    
+//
 //    @State private var firstName: String = ""
 //    @State private var lastName: String = ""
 //    @State private var email: String = ""
 //    @State private var password: String = ""
-//    
+//
 //    @State private var isAlertShow: Bool = false
 //    @State private var alertMessage: String = ""
-//    
+//
 //    @State private var isSignUp: Bool = false
-//    
-//    
+//
+//
 //    func signUp(email: String, password: String) {
 //        authFirebase.signUp(email: email, password: password) { result in
 //            switch result {
@@ -37,10 +37,10 @@
 //            }
 //        }
 //    }
-//    
+//
 //    var body: some View {
 //        VStack {
-//            
+//
 //            FieldView(maxLength: 239, labelText: "имя", type: "preUsual", prevText: "введите имя", keyboardType: .default, text: $firstName)
 //            FieldView(maxLength: 239, labelText: "фамилия", type: "preUsual", prevText: "введите фамилию", keyboardType: .default, text: $lastName)
 //            FieldView(maxLength: 239, labelText: "почта", type: "email", prevText: "введите почту", keyboardType: .emailAddress, text: $email)
@@ -53,7 +53,7 @@
 //            }
 //            .navigationDestination(
 //                isPresented: $isNext) {
-//                    
+//
 //                    RegistrationEdView(firstName: firstName, lastName: lastName, email: email, password: password)
 //                }
 //            .padding(.horizontal, 100)
@@ -105,13 +105,13 @@ struct RegisterFirstView: View {
     
     var body: some View {
         VStack {
-            FieldView(isError: hasEmptyFields && firstName.isEmpty, maxLength: 239, labelText: "имя", type: "preUsual", prevText: "введите имя", keyboardType: .default, text: $firstName )
+            FieldView(isError: hasEmptyFields && firstName.isEmpty, isError2: hasEmptyFields && firstName.isEmpty, maxLength: 239, labelText: "имя", type: "preUsual", prevText: "введите имя", keyboardType: .default, text: $firstName )
 //                .border(hasEmptyFields && firstName.isEmpty ? Color.red : Color.clear)
-            FieldView(isError: hasEmptyFields && lastName.isEmpty, maxLength: 239, labelText: "фамилия", type: "preUsual", prevText: "введите фамилию", keyboardType: .default, text: $lastName)
+            FieldView(isError: hasEmptyFields && lastName.isEmpty, isError2: hasEmptyFields && lastName.isEmpty, maxLength: 239, labelText: "фамилия", type: "preUsual", prevText: "введите фамилию", keyboardType: .default, text: $lastName)
 //                .border(hasEmptyFields && lastName.isEmpty ? Color.red : Color.clear)
-            FieldView(isError: hasEmptyFields && email.isEmpty, maxLength: 239, labelText: "почта", type: "email", prevText: "введите почту", keyboardType: .emailAddress, text: $email)
+            FieldView(isError: hasEmptyFields && email.isEmpty, isError2: hasEmptyFields && email.isEmpty, maxLength: 239, labelText: "почта", type: "email", prevText: "введите почту", keyboardType: .emailAddress, text: $email)
 //                .border(hasEmptyFields && email.isEmpty ? Color.red : Color.clear)
-            FieldView(isError: hasEmptyFields && password.isEmpty, maxLength: 239, labelText: "пароль", type: "password", prevText: "введите пароль", keyboardType: .default, text: $password)
+            FieldView(isError: hasEmptyFields && password.isEmpty, isError2: hasEmptyFields && password.isEmpty, maxLength: 239, labelText: "пароль", type: "password", prevText: "введите пароль", keyboardType: .default, text: $password)
 //                .border(hasEmptyFields && password.isEmpty ? Color.red : Color.clear)
                 .padding(.horizontal, 15)
             

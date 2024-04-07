@@ -41,17 +41,30 @@ class AuthFirebase: ObservableObject {
         }
         fetchData()
         getSkillsName()
-//        getOrders()
+        //        getOrders()
         for i in orders {
             print(i)
         }
-//        fetchAllStrangersOrders()
+        //        fetchAllStrangersOrders()
         
+    }
+    
+    //    func fetchAllsOrders() {
+    //        orders = [Order]()
+    //        getOrders(email: auth.currentUser?.email ?? "")
+    //    }
+    
+    func fetchAllOrders() {
+        self.orders.removeAll()
+        for user in users {
+            print("zalupa \(user.email)")
+            getOrders(email: user.email)
+        }
     }
     
     
     func fetchAllStrangersOrders() {
-        strangersOrders = [Order]()
+        self.strangersOrders.removeAll()
         for user in users {
             print("zalupa \(user.email)")
             fetchStrangersOrders(email: user.email)
@@ -116,20 +129,20 @@ class AuthFirebase: ObservableObject {
                     }
                     return UserM(firstName: firstName, lastName: lastName, status: status, description: description, email: email, education: education, workExperience: workExperience, expertise: expertises)
                 }
-//                fetchAllStrangersOrders()
+                //                fetchAllStrangersOrders()
             }
         }
         
-//        getSkillsName()
-////        getOrders()
-//        for i in users {
-//            print("123 \(i)")
-//        }
-//        
-//        for user in users {
-//            fetchStrangersOrders(email: user.email)
-//            print(user.email)
-//        }
+        //        getSkillsName()
+        ////        getOrders()
+        //        for i in users {
+        //            print("123 \(i)")
+        //        }
+        //
+        //        for user in users {
+        //            fetchStrangersOrders(email: user.email)
+        //            print(user.email)
+        //        }
     }
     
     
@@ -145,14 +158,14 @@ class AuthFirebase: ObservableObject {
         return nil
     }
     
-        func getUserByEmail(email: String) -> UserM {
-            for user in users {
-                if user.email == email {
-                    return user
-                }
+    func getUserByEmail(email: String) -> UserM {
+        for user in users {
+            if user.email == email {
+                return user
             }
-            return UserM(firstName: "", lastName: "", status: "", description: "", email: "")
         }
+        return UserM(firstName: "", lastName: "", status: "", description: "", email: "")
+    }
     
     
     func signIn (email: String, password: String, complition: @escaping (Result<Bool, FBError>) -> Void) {
@@ -187,7 +200,7 @@ class AuthFirebase: ObservableObject {
     func insertNewUser(firstName: String, lastName: String, email: String, password: String, education: Education, workExperience: WorkExperience, expertises: [Expertise], completion: @escaping (Result<Bool, FBError>) -> Void) {
         
         var expertisesData = [[String: Any]]()
-
+        
         for expertise in expertises {
             let expertiseData: [String: Any] = [
                 "name": expertise.name,
@@ -229,6 +242,55 @@ class AuthFirebase: ObservableObject {
             }
         }
     }
+    
+//    func checkExistingUserAndSignUp(email: String) -> Bool {
+//        let db = Firestore.firestore()
+//        var ans: Bool = false
+//        
+//        // Запрашиваем документ с данными пользователя по его email
+//        db.collection("users").document(email).getDocument(completion: <#T##(DocumentSnapshot?, Error?) -> Void#>){ (querySnapshot, error) in
+//            if let error = error {
+//                // Обработка ошибки запроса
+//                print("Ошибка при запросе пользователя: \(error.localizedDescription)")
+//                return
+//            }
+//            
+//            guard let documents = querySnapshot?.documents else {
+//                // Документы не найдены
+//                print("Документы не найдены")
+//                return
+//            }
+//            
+//            if documents.isEmpty {
+//                // Пользователь с такой почтой не найден, регистрируемся
+//                ans = false
+//                print("hjhfbvovboevbqoieboervboierbqoiebqirbvpqirbvqpibvqperibvpqebpqeirbpqerpqeribuvpqeir")
+//            } else {
+//                // Пользователь с такой почтой уже существует, выводим алерт
+//                ans = true
+//            }
+//        }
+//        return ans
+//    }
+    
+    func checkUserExists(email: String, completion: @escaping (Bool) -> Void) {
+        db.collection("users").whereField("email", isEqualTo: email).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+                completion(false)
+            } else {
+                if let documents = querySnapshot?.documents, !documents.isEmpty {
+                    // Пользователь с такой почтой найден
+                    completion(true)
+                } else {
+                    // Пользователь с такой почтой не найден
+                    completion(false)
+                }
+            }
+            print("hghkgchcciuctutc")
+        }
+    }
+
     
     
 }

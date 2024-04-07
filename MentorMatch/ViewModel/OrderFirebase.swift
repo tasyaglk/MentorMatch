@@ -34,25 +34,36 @@ extension AuthFirebase {
         }
     }
     
-    func getOrders() {
-        db.collection("users").document(auth.currentUser?.email ?? "").collection("orders").addSnapshotListener { (querySnapshot, error) in
-            guard let orders = querySnapshot?.documents else {
-                print("No documents")
-                return
-            }
-            
-            self.orders = orders.map { queryDocumentSnapshot -> Order in
-                let data = queryDocumentSnapshot.data()
-                let id = queryDocumentSnapshot.documentID
-                let comment = data["comment"] as? String ?? ""
-                let isActive = data["isActive"] as? Bool ?? true
-                let skills = data["skills"] as? [String] ?? [""]
-                let byUser = data["customerEmail"] as? String ?? ""
-                print(" 111 \(Order(id: id, isActive: isActive, selectedSkills: skills, comment: comment, byUserEmail: byUser))")
-                return Order(id: id, isActive: isActive, selectedSkills: skills, comment: comment, byUserEmail: byUser)
+    func getOrders(email: String) {
+//        for user in users {
+//            print("!!! \(email)")
+            db.collection("users").document(email).collection("orders").addSnapshotListener { (querySnapshot, error) in
+                guard let orders = querySnapshot?.documents else {
+                    print("No documents")
+                    return
+                }
+                print("?? \(email)")
+//                }
+                
+                self.orders.removeAll()
+                
+                var newOrders = [Order]()
+                    
+                    for document in orders {
+                        let data = document.data()
+                        let id = document.documentID
+                        let comment = data["comment"] as? String ?? ""
+                        let isActive = data["isActive"] as? Bool ?? true
+                        let skills = data["skills"] as? [String] ?? [""]
+                        let byUser = data["customerEmail"] as? String ?? ""
+                        let newOrder = Order(id: id, isActive: isActive, selectedSkills: skills, comment: comment, byUserEmail: byUser)
+                        newOrders.append(newOrder)
+                    }
+                    
+                    // Добавляем новые заказы в массив strangersOrders
+                    self.orders += newOrders
             }
         }
-    }
     
     func fetchStrangersOrders(email: String) {
 //        for user in users {
@@ -63,16 +74,10 @@ extension AuthFirebase {
                     return
                 }
                 print("!!! \(email)")
-//                self.strangersOrders = orders.map { queryDocumentSnapshot -> Order in
-//                    let data = queryDocumentSnapshot.data()
-//                    let id = queryDocumentSnapshot.documentID
-//                    let comment = data["comment"] as? String ?? ""
-//                    let isActive = data["isActive"] as? Bool ?? true
-//                    let skills = data["skills"] as? [String] ?? [""]
-//                    let byUser = data["customerEmail"] as? String ?? ""
-//                    print(" 222 \(Order(id: id, isActive: isActive, selectedSkills: skills, comment: comment, byUserEmail: byUser))")
-//                    return Order(id: id, isActive: isActive, selectedSkills: skills, comment: comment, byUserEmail: byUser)
 //                }
+                
+//                self.strangersOrders.removeAll()
+                
                 var newOrders = [Order]()
                     
                     for document in orders {
