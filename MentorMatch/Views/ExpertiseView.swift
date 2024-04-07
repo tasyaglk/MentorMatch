@@ -26,18 +26,21 @@ struct ExpertiseView: View {
             .background(Color.white)
             .scrollContentBackground(.hidden)
         }
+        .padding(.horizontal)
         
         Spacer()
-        ButtonView(title: "сохраниить",  color: "main_color") {
+        ButtonView(title: "сохранить",  color: "main_color") {
             isSaveExpertise.toggle()
             viewModel.saveExpertiseInfo(email: user.email, expertises: expertises)
             presentationMode.wrappedValue.dismiss()
         }
+        .padding(.horizontal, 100)
+        .padding(.bottom, 15)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton(text: "навыки"))
         .onAppear {
             expertises = user.expertise!
-            print(expertises)
+//            print(expertises)
         }
     }
         

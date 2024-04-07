@@ -22,6 +22,7 @@ struct ProfileView: View {
     
     var body: some View {
         let userr = viewModel.getUser() ?? UserM()
+//        Text(userr.email)
         
         ScrollView {
             HStack {
@@ -33,13 +34,13 @@ struct ProfileView: View {
                         .foregroundColor(.black)
                         .fixedSize()
                 }
-//                .navigationBarHidden(true)
-//                .navigationDestination(
-//                    isPresented: $isSettingsTapped) {
-//                        SettingsView()
-//                    }
+                //                .navigationBarHidden(true)
+                //                .navigationDestination(
+                //                    isPresented: $isSettingsTapped) {
+                //                        SettingsView()
+                //                    }
             }
-//            .padding()
+            //            .padding()
             Image(systemName: "person")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -51,30 +52,49 @@ struct ProfileView: View {
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text(userr.status)
-                .font(.custom("SourceSansPro-Regular", size: 18))
-                .foregroundColor(.gray)
-
-            .padding(.vertical, 10)
-            .padding(.horizontal, 100)
+            if !userr.status.isEmpty {
+                Text(userr.status)
+                    .font(.custom("SourceSansPro-Regular", size: 18))
+                    .foregroundColor(.gray)
+                
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 100)
+            }
+            
             
             
             VStack(alignment: .leading) {
-                Text("Описание")
+                Text("Моя почта для связи:)")
                     .fontWeight(.medium)
                     .font(.system(size: 13))
                     .foregroundColor(.gray)
                     .padding(.horizontal, 5)
-                
-                
-                Text(userr.description)
+                Text(userr.email)
                     .fontWeight(.regular)
                     .font(.system(size: 18))
                     .foregroundColor(.black)
                     .padding(.horizontal, 5)
                     .padding(.vertical, 5)
-                    .background(Color("light_main_color"))
+                //                    .background(Color("light_main_color"))
                     .cornerRadius(15)
+                if !userr.description.isEmpty {
+                    Text("Описание")
+                        .fontWeight(.medium)
+                        .font(.system(size: 13))
+                        .foregroundColor(.gray)
+                        .padding(.horizontal, 5)
+                    
+                    
+                    Text(userr.description)
+                        .fontWeight(.regular)
+                        .font(.system(size: 18))
+                        .foregroundColor(.black)
+                        .padding(.horizontal, 5)
+                        .padding(.vertical, 5)
+                        .background(Color("light_main_color"))
+                        .cornerRadius(15)
+                }
+                
                 HStack {
                     Text("💡")
                         .font(.subheadline)
@@ -86,14 +106,15 @@ struct ProfileView: View {
                         .font(.system(size: 18))
                 }
                 .padding(.vertical, 10)
-                if userr.expertise != nil {
+                let allSkillsSelected = !userr.expertise!.contains { $0.isChecked }
+                if !allSkillsSelected {
                     VStack {
                         ForEach(userr.expertise!) { expertiseItem in
                             // Вывод экспертиз
                             if expertiseItem.isChecked == true {
                                 HStack {
                                     Text("\(expertiseItem.name)")
-                                        //.padding(.horizontal, 5)
+                                    //.padding(.horizontal, 5)
                                     
                                     Spacer()
                                     ForEach(1..<6) { index in
@@ -159,8 +180,8 @@ struct ProfileView: View {
             isPresented: $isSettingsTapped) {
                 SettingsView()
             }
-        .scrollIndicators(.hidden)
-        .padding()
+            .scrollIndicators(.hidden)
+            .padding()
     }
 }
 

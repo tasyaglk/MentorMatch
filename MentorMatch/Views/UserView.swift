@@ -24,39 +24,52 @@ struct UserView: View {
     
     var body: some View {
         ScrollView {
-//            HStack {
-//                Spacer()
-//                Button(action: {
-//                    isSettingsTapped = true
-//                }) {
-//                    Image(systemName: "gear")
-//                        .foregroundColor(.black)
-//                }
-//            }
-//            .padding()
-            Image(systemName: "person")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100, height: 100)
-                .clipShape(Circle())
-                .padding(.top, 20)
+//                HStack {
+            
+        //            .padding()
+        Image(systemName: "person")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 100, height: 100)
+            .clipShape(Circle())
+            .padding(.top, 20)
         
         Text(userr.firstName + " " + userr.lastName)
             .font(.title)
             .fontWeight(.bold)
         
-        Text(userr.status)
-            .font(.custom("SourceSansPro-Regular", size: 18))
-            .foregroundColor(.gray)
-            .padding(.vertical, 10)
-            .padding(.horizontal, 100)
+        if !userr.status.isEmpty {
+            Text(userr.status)
+                .font(.custom("SourceSansPro-Regular", size: 18))
+                .foregroundColor(.gray)
+            
+                .padding(.vertical, 10)
+                .padding(.horizontal, 100)
+        }
         
-            VStack(alignment: .leading) {
+        
+        
+        VStack(alignment: .leading) {
+            Text("Моя почта для связи:)")
+                .fontWeight(.medium)
+                .font(.system(size: 13))
+                .foregroundColor(.gray)
+                .padding(.horizontal, 5)
+            Text(userr.email)
+                .fontWeight(.regular)
+                .font(.system(size: 18))
+                .foregroundColor(.black)
+                .padding(.horizontal, 5)
+                .padding(.vertical, 5)
+            //                    .background(Color("light_main_color"))
+                .cornerRadius(15)
+            if !userr.description.isEmpty {
                 Text("Описание")
                     .fontWeight(.medium)
                     .font(.system(size: 13))
                     .foregroundColor(.gray)
                     .padding(.horizontal, 5)
+                
                 
                 Text(userr.description)
                     .fontWeight(.regular)
@@ -66,84 +79,88 @@ struct UserView: View {
                     .padding(.vertical, 5)
                     .background(Color("light_main_color"))
                     .cornerRadius(15)
-                HStack {
-                    Text("💡")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                        .padding(.horizontal, 0)
-                    
-                    Text("Мои профессиональные интересы")
-                        .fontWeight(.bold)
-                        .font(.system(size: 18))
-                }
-                .padding(.vertical, 10)
-                if userr.expertise != nil {
-                    VStack {
-                        ForEach(userr.expertise!) { expertiseItem in
-                            if expertiseItem.isChecked == true {
-                                HStack {
-                                    Text("\(expertiseItem.name)")
-                                    Spacer()
-                                    ForEach(1..<6) { index in
-                                        Image(systemName: index <= expertiseItem.rating ? "star.fill" : "star")
-                                            .foregroundColor(.yellow)
-                                    }
+            }
+            
+            HStack {
+                Text("💡")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                    .padding(.horizontal, 0)
+                
+                Text("Мои профессиональные интересы")
+                    .fontWeight(.bold)
+                    .font(.system(size: 18))
+            }
+            .padding(.vertical, 10)
+            let allSkillsSelected = !userr.expertise!.contains { $0.isChecked } 
+            if !allSkillsSelected {
+                VStack {
+                    ForEach(userr.expertise!) { expertiseItem in
+                        // Вывод экспертиз
+                        if expertiseItem.isChecked == true {
+                            HStack {
+                                Text("\(expertiseItem.name)")
+                                //.padding(.horizontal, 5)
+                                
+                                Spacer()
+                                ForEach(1..<6) { index in
+                                    Image(systemName: index <= expertiseItem.rating ? "star.fill" : "star")
+                                        .foregroundColor(.yellow)
                                 }
-                                .padding(.horizontal, 5)
                             }
+                            .padding(.horizontal, 5)
                         }
                     }
-                } else {
-                    VStack {
-                        Text(":|")
-                    }
                 }
-                
-                HStack {
-                    Text("🎓")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                        .padding(.horizontal, 0)
-                    Text("Образование")
-                        .fontWeight(.bold)
-                        .font(.system(size: 18))
-                }
-                .padding(.vertical, 10)
-                
-                if userr.education!.place == "" {
-                    VStack {
-                        Text(":|")
-                    }
-                } else {
-                    VStack {
-                        EducationAndExperienceView(label1: userr.education?.place ?? "", label2: userr.education?.degree ?? "", label3: userr.education?.startYear ?? "", label4: userr.education?.endYear ?? "")
-                            .padding(.horizontal, 5)
-                    }
-                    
-                }
-                
-                HStack {
-                    Text("💼")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                        .padding(.horizontal, 0)
-                    Text("Место работы")
-                        .fontWeight(.bold)
-                        .font(.system(size: 18))
-                }
-                .padding(.vertical, 10)
-                
-                if userr.workExperience!.companyName == "" {
+            } else {
+                VStack {
                     Text(":|")
-                } else {
-                    VStack {
-                        EducationAndExperienceView(label1: userr.workExperience?.companyName ?? "", label2: userr.workExperience?.position ?? "", label3: userr.workExperience?.startYear ?? "", label4: userr.workExperience?.endYear ?? "")
-                            .padding(.horizontal, 5)
-                    }
-                    
+                }
+            }
+            
+            HStack {
+                Text("🎓")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                    .padding(.horizontal, 0)
+                Text("Образование")
+                    .fontWeight(.bold)
+                    .font(.system(size: 18))
+            }
+            .padding(.vertical, 10)
+            
+            if userr.education!.place == "" {
+                VStack {
+                    Text(":|")
+                }
+            } else {
+                VStack {
+                    EducationAndExperienceView(label1: userr.education?.place ?? "", label2: userr.education?.degree ?? "", label3: userr.education?.startYear ?? "", label4: userr.education?.endYear ?? "")
+                        .padding(.horizontal, 5)
+                }
+            }
+            
+            HStack {
+                Text("💼")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                    .padding(.horizontal, 0)
+                Text("Место работы")
+                    .fontWeight(.bold)
+                    .font(.system(size: 18))
+            }
+            .padding(.vertical, 10)
+            
+            if userr.workExperience!.companyName == "" {
+                Text(":|")
+            } else {
+                VStack {
+                    EducationAndExperienceView(label1: userr.workExperience?.companyName ?? "", label2: userr.workExperience?.position ?? "", label3: userr.workExperience?.startYear ?? "", label4: userr.workExperience?.endYear ?? "")
+                        .padding(.horizontal, 5)
                 }
             }
         }
+    }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton(text: ""))
         .scrollIndicators(.hidden)

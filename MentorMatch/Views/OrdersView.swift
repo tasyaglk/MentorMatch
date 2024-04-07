@@ -61,25 +61,27 @@ struct OrdersView: View {
     @State var allOrders = [Order]()
     
     var body: some View {
-       
-            
+        let user = viewModel.getUser() ?? UserM()
             ScrollView {
-                VStack(alignment: .leading) {
-                    
-                    ForEach(viewModel.orders, id: \.self) { order in
-                        //                                Text(order.byUserEmail)
-                        if order.byUserEmail == viewModel.auth.currentUser?.email{
-                            let user = viewModel.getUserByEmail(email: order.byUserEmail)
-                            if viewModel.zalupa(selectedSkills: selectedSkills, order: order) {
-//                                StrangerOrderView(order: order, user: user)
-                                OrderView(order: order, isActive: order.isActive)
-                                    .padding(.horizontal)
-                                Divider()
+                if viewModel.orders.isEmpty {
+                    Text("Заказов пока нет")
+                } else {
+                    VStack(alignment: .leading) {
+                        
+                        ForEach(viewModel.orders, id: \.self) { order in
+                            //                                Text(order.byUserEmail)
+                            if order.byUserEmail == user.email{
+                                if viewModel.zalupa(selectedSkills: selectedSkills, order: order) {
+                                    //                                StrangerOrderView(order: order, user: user)
+                                    OrderView(order: order, isActive: order.isActive)
+                                        .padding(.horizontal)
+                                    Divider()
+                                }
+                                
                             }
-                            
                         }
+                        
                     }
-                    
                 }
                 
             }
@@ -93,7 +95,7 @@ struct OrdersView: View {
         }
         .navigationBarBackButtonHidden(true)
                 .navigationBarItems(leading: CustomBackButton(text: "заказы"))
-        .padding(.top, 70)
+//        .padding(.top, 70)
     }
 }
     

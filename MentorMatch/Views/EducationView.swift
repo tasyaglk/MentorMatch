@@ -16,6 +16,8 @@ struct EducationView: View {
     @State  var educationLevel: String = ""
     @State  var educationStartYear: String = ""
     @State  var educationEndYear: String = ""
+    @State private var errorMessage: String = ""
+    @State private var hasEmptyFields: Bool = false
     
     
     @ObservedObject var viewModel = AuthFirebase()
@@ -24,20 +26,42 @@ struct EducationView: View {
     var body: some View {
         let user = viewModel.getUser() ?? UserM()
         VStack {
-            FieldView(isError: false, isError2: false, maxLength: 239, labelText: "образование", type: "settings", prevText: user.education?.place ?? "", keyboardType: .default, text: $educationPlace)
+            FieldView(isError: hasEmptyFields && educationPlace.isEmpty,isError2: hasEmptyFields && educationPlace.isEmpty,maxLength: 239, labelText: "образование", type: "settings", prevText: user.education?.place ?? "", keyboardType: .default, text: $educationPlace)
                 .padding(.top, 15)
-            FieldView(isError: false, isError2: false, maxLength: 239, labelText: "степень", type: "settings", prevText: user.education?.degree  ?? "", keyboardType: .default, text: $educationLevel)
+            FieldView(isError: hasEmptyFields && educationLevel.isEmpty,isError2: hasEmptyFields && educationLevel.isEmpty, maxLength: 239, labelText: "степень", type: "settings", prevText: user.education?.degree  ?? "", keyboardType: .default, text: $educationLevel)
             
             HStack {
-                FieldView(isError: false, isError2: false, maxLength: 239, labelText: "год начала", type: "settings", prevText: user.education?.startYear  ?? "", keyboardType: .numberPad, text: $educationStartYear)
+                FieldView(isError: hasEmptyFields && educationStartYear.isEmpty,isError2: hasEmptyFields && educationStartYear.isEmpty,maxLength: 239, labelText: "год начала", type: "digitals", prevText: user.education?.startYear  ?? "", keyboardType: .numberPad, text: $educationStartYear)
                 
-                FieldView(isError: false, isError2: false, maxLength: 239, labelText: "год окончания", type: "settings", prevText: user.education?.endYear  ?? "", keyboardType: .numberPad, text: $educationEndYear)
+                FieldView(isError: hasEmptyFields && educationEndYear.isEmpty,isError2: hasEmptyFields && educationEndYear.isEmpty,maxLength: 239, labelText: "год окончания", type: "digitals", prevText: user.education?.endYear  ?? "", keyboardType: .numberPad, text: $educationEndYear)
             }
             
             Spacer()
+            if !errorMessage.isEmpty {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .padding(.bottom, 10)
+                    }
             ButtonView(title: "сохранить",  color: "main_color") {
-                viewModel.saveEducationInfo(email: user.email, newEducationData: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear))
-                presentationMode.wrappedValue.dismiss()
+                if educationLevel.isEmpty || educationPlace.isEmpty || educationStartYear.isEmpty || educationEndYear.isEmpty  {
+                    hasEmptyFields = true
+                } else {
+                    // Проверка условия start <= end
+                    if let startYear = Int(educationStartYear), let endYear = Int(educationEndYear) {
+                                        if startYear <= endYear {
+                                            viewModel.saveEducationInfo(email: user.email, newEducationData: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear))
+                                            presentationMode.wrappedValue.dismiss()
+                                        } else {
+                                            // Показываем ошибку
+                                            errorMessage = "Год окончания образования должен быть больше или равен году начала"
+                                        }
+                                    } else {
+                                        // Если введены некорректные годы
+                                        errorMessage = "Некорректно введены годы начала и окончания образования"
+                                    }
+                }
+//                viewModel.saveEducationInfo(email: user.email, newEducationData: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear))
+//                presentationMode.wrappedValue.dismiss()
             }
             .padding(.horizontal, 100)
             .padding(.bottom, 15)

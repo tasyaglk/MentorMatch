@@ -10,8 +10,8 @@ import Firebase
 
 
 extension AuthFirebase {
-    func updateOrderStatusInUserDocument(orderID: String, isDone: Bool) {
-        let docRef = db.collection("users").document(auth.currentUser?.email ?? "").collection("orders").document(orderID)
+    func updateOrderStatusInUserDocument(email: String, orderID: String, isDone: Bool) {
+        let docRef = db.collection("users").document(email).collection("orders").document(orderID)
         docRef.updateData([
             "isActive": isDone
         ]) { error in
@@ -42,7 +42,7 @@ extension AuthFirebase {
                     print("No documents")
                     return
                 }
-                print("?? \(email)")
+//                print("?? \(email)")
 //                }
                 
                 self.orders.removeAll()
@@ -57,7 +57,9 @@ extension AuthFirebase {
                         let skills = data["skills"] as? [String] ?? [""]
                         let byUser = data["customerEmail"] as? String ?? ""
                         let newOrder = Order(id: id, isActive: isActive, selectedSkills: skills, comment: comment, byUserEmail: byUser)
+                        print(newOrder)
                         newOrders.append(newOrder)
+                        
                     }
                     
                     // Добавляем новые заказы в массив strangersOrders
@@ -73,7 +75,7 @@ extension AuthFirebase {
                     print("No documents")
                     return
                 }
-                print("!!! \(email)")
+//                print("!!! \(email)")
 //                }
                 
 //                self.strangersOrders.removeAll()

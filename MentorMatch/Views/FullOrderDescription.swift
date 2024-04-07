@@ -27,7 +27,7 @@ struct FullOrderDescription: View {
                 ForEach(order.selectedSkills, id: \.self) { skill in
                     Text(skill)
                         .padding(8)
-                        .background(Color("main_color"))
+                        .background(Color("light_main_color"))
                         .foregroundColor(.gray)
                         .cornerRadius(8)
                         .padding(.horizontal, 4)

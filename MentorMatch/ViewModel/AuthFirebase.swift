@@ -42,10 +42,11 @@ class AuthFirebase: ObservableObject {
         fetchData()
         getSkillsName()
         //        getOrders()
-        for i in orders {
-            print(i)
-        }
-        //        fetchAllStrangersOrders()
+//        for i in orders {
+////            print(i)
+//        }
+        fetchAllOrders()
+        fetchAllStrangersOrders()
         
     }
     
@@ -57,8 +58,12 @@ class AuthFirebase: ObservableObject {
     func fetchAllOrders() {
         self.orders.removeAll()
         for user in users {
-            print("zalupa \(user.email)")
-            getOrders(email: user.email)
+//            print("zalupa \(user.email)")
+            if user.email.lowercased() == getUser()?.email.lowercased() {
+                print("zalupa \(user.email)")
+                getOrders(email: user.email)
+            }
+            
         }
     }
     
@@ -66,14 +71,14 @@ class AuthFirebase: ObservableObject {
     func fetchAllStrangersOrders() {
         self.strangersOrders.removeAll()
         for user in users {
-            print("zalupa \(user.email)")
+//            print("zalupa \(user.email)")
             fetchStrangersOrders(email: user.email)
         }
     }
     
     func handleSignOut() {
         isUserLoggedOut.toggle()
-        print(isUserLoggedOut)
+//        print(isUserLoggedOut)
         try? auth.signOut()
     }
     
@@ -82,7 +87,7 @@ class AuthFirebase: ObservableObject {
     }
     
     func fetchData() {
-        if (signedIn) {
+//        if (signedIn) {
             let db = Firestore.firestore()
             
             db.collection("users").addSnapshotListener { [self] (querySnapshot, error) in
@@ -99,7 +104,7 @@ class AuthFirebase: ObservableObject {
                     let status = data["status"] as? String ?? ""
                     let description = data["description"] as? String ?? ""
                     let email = data["email"] as? String ?? ""
-                    print(email)
+//                    print(email)
                     
                     let educationData = data["education"] as? [String: Any] ?? [:]
                     let workData = data["work"] as? [String: Any] ?? [:]
@@ -143,7 +148,7 @@ class AuthFirebase: ObservableObject {
         //            fetchStrangersOrders(email: user.email)
         //            print(user.email)
         //        }
-    }
+//    }
     
     
     func getUser() -> UserM? {
@@ -151,7 +156,7 @@ class AuthFirebase: ObservableObject {
         
         for user in users {
             print(user.email)
-            if user.email == auth.currentUser?.email {
+            if user.email.lowercased() == auth.currentUser?.email {
                 return user
             }
         }
@@ -160,6 +165,7 @@ class AuthFirebase: ObservableObject {
     
     func getUserByEmail(email: String) -> UserM {
         for user in users {
+//            print(user.email)
             if user.email == email {
                 return user
             }
@@ -287,7 +293,7 @@ class AuthFirebase: ObservableObject {
                     completion(false)
                 }
             }
-            print("hghkgchcciuctutc")
+//            print("hghkgchcciuctutc")
         }
     }
 

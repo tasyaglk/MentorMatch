@@ -41,56 +41,116 @@ struct OrderSearchView: View {
                     }
             }
             .padding(.horizontal)
-            if isDropdownVisible {
-                ScrollView {
-                    ForEach(filteredSkills, id: \.self) { skill in
-                        Button(action: {
-                            if self.selectedSkills.contains(skill) {
-                                self.selectedSkills.removeAll(where: { $0 == skill })
-                            } else {
-                                self.selectedSkills.append(skill)
-                            }
-                        }) {
-                            HStack {
-                                Text(skill)
-                                    .foregroundColor(.primary)
-                                Spacer()
-                                if self.selectedSkills.contains(skill) {
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(Color("main_color"))
-                                }
-                            }
-                        }
-                        .background(Color(.systemBackground))
-                        .cornerRadius(10)
-                    }
-                }
-                .padding(.horizontal)
-                .onTapGesture {
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    self.isDropdownVisible = false
-                }
-            }
-
             
-            ScrollView {
-                VStack(alignment: .leading) {
-                    ForEach(viewModel.strangersOrders, id: \.self) { order in
-                        //                                Text(order.byUserEmail)
-                        if order.byUserEmail != viewModel.auth.currentUser?.email && order.isActive == true {
-                            let user = viewModel.getUserByEmail(email: order.byUserEmail)
-                            if viewModel.zalupa(selectedSkills: selectedSkills, order: order) {
-                                StrangerOrderView(order: order, user: user)
-                                    .padding(.horizontal)
-                                Divider()
+            ZStack {
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        ForEach(viewModel.strangersOrders, id: \.self) { order in
+                            //                                Text(order.byUserEmail)
+                            if order.byUserEmail.lowercased() != viewModel.auth.currentUser?.email && order.isActive == true {
+                                let user = viewModel.getUserByEmail(email: order.byUserEmail)
+                                if viewModel.zalupa(selectedSkills: selectedSkills, order: order) {
+                                    StrangerOrderView(order: order, user: user)
+                                        .padding(.horizontal)
+                                    Divider()
+                                }
+                                
                             }
-                            
                         }
+                        
                     }
                     
                 }
+                .allowsHitTesting(!isDropdownVisible)
+                .blur(radius: isDropdownVisible ? 3 : 0)
                 
+                if isDropdownVisible {
+                    ScrollView {
+                        ForEach(filteredSkills, id: \.self) { skill in
+                            Button(action: {
+                                if self.selectedSkills.contains(skill) {
+                                    self.selectedSkills.removeAll(where: { $0 == skill })
+                                } else {
+                                    self.selectedSkills.append(skill)
+                                }
+                            }) {
+                                HStack {
+                                    Text(skill)
+                                        .foregroundColor(.primary)
+                                    Spacer()
+                                    if self.selectedSkills.contains(skill) {
+                                        Image(systemName: "checkmark")
+                                            .foregroundColor(Color("main_color"))
+                                    }
+                                }
+                            }
+                            .background(Color(.systemBackground))
+                            .cornerRadius(10)
+                        }
+                    }
+                    .padding(.horizontal)
+                    .onTapGesture {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        self.isDropdownVisible = false
+                    }
+                    .background(Color.white)
+                    .cornerRadius(15)
+                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 4))
+                    .padding(.horizontal, 30)
+                }
+                    
+                    
             }
+//            if isDropdownVisible {
+//                ScrollView {
+//                    ForEach(filteredSkills, id: \.self) { skill in
+//                        Button(action: {
+//                            if self.selectedSkills.contains(skill) {
+//                                self.selectedSkills.removeAll(where: { $0 == skill })
+//                            } else {
+//                                self.selectedSkills.append(skill)
+//                            }
+//                        }) {
+//                            HStack {
+//                                Text(skill)
+//                                    .foregroundColor(.primary)
+//                                Spacer()
+//                                if self.selectedSkills.contains(skill) {
+//                                    Image(systemName: "checkmark")
+//                                        .foregroundColor(Color("main_color"))
+//                                }
+//                            }
+//                        }
+//                        .background(Color(.systemBackground))
+//                        .cornerRadius(10)
+//                    }
+//                }
+//                .padding(.horizontal)
+//                .onTapGesture {
+//                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//                    self.isDropdownVisible = false
+//                }
+//            }
+//
+//            
+//            ScrollView {
+//                VStack(alignment: .leading) {
+//                    ForEach(viewModel.strangersOrders, id: \.self) { order in
+//                        //                                Text(order.byUserEmail)
+//                        if order.byUserEmail != viewModel.auth.currentUser?.email && order.isActive == true {
+//                            let user = viewModel.getUserByEmail(email: order.byUserEmail)
+//                            if viewModel.zalupa(selectedSkills: selectedSkills, order: order) {
+//                                StrangerOrderView(order: order, user: user)
+//                                    .padding(.horizontal)
+//                                Divider()
+//                            }
+//                            
+//                        }
+//                    }
+//                    
+//                }
+//                
+//            }
             
             Spacer()
         }

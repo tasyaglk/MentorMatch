@@ -41,47 +41,99 @@ struct MentorSearchView: View {
                     }
             }
             .padding(.horizontal)
-            if isDropdownVisible {
+            
+            ZStack {
+                
                 ScrollView {
-                    ForEach(filteredSkills, id: \.self) { skill in
-                        Button(action: {
-                            if self.selectedSkills.contains(skill) {
-                                self.selectedSkills.removeAll(where: { $0 == skill })
-                            } else {
-                                self.selectedSkills.append(skill)
-                            }
-                        }) {
-                            HStack {
-                                Text(skill)
-                                    .foregroundColor(.primary)
-                                Spacer()
-                                if self.selectedSkills.contains(skill) {
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(Color("main_color"))
-                                }
+                    ForEach(viewModel.users) { user in
+                        if user.email.lowercased() != viewModel.auth.currentUser?.email {
+                            if viewModel.hui(selectedSkills: self.selectedSkills, user: user) {
+                                SmallUserView(user: user)
+                                    .padding(.horizontal)
                             }
                         }
-                        .background(Color(.systemBackground))
-                        .cornerRadius(10)
                     }
                 }
-                .padding(.horizontal)
-                .onTapGesture {
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    self.isDropdownVisible = false
+                .allowsHitTesting(!isDropdownVisible)
+                .blur(radius: isDropdownVisible ? 3 : 0)
+                
+                if isDropdownVisible {
+                    ScrollView {
+                        ForEach(filteredSkills, id: \.self) { skill in
+                            Button(action: {
+                                if self.selectedSkills.contains(skill) {
+                                    self.selectedSkills.removeAll(where: { $0 == skill })
+                                } else {
+                                    self.selectedSkills.append(skill)
+                                }
+                            }) {
+                                HStack {
+                                    Text(skill)
+                                        .foregroundColor(.primary)
+                                    Spacer()
+                                    if self.selectedSkills.contains(skill) {
+                                        Image(systemName: "checkmark")
+                                            .foregroundColor(Color("main_color"))
+                                    }
+                                }
+                            }
+                            .background(Color(.systemBackground))
+                            .cornerRadius(10)
+                        }
+                    }
+                    .padding(.horizontal)
+                    .onTapGesture {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        self.isDropdownVisible = false
+                    }
+                    .background(Color.white)
+                    .cornerRadius(15)
+                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 4))
+                    .padding(.horizontal, 30)
                 }
             }
             
-            ScrollView {
-                ForEach(viewModel.users) { user in
-                    if user.email != viewModel.auth.currentUser?.email {
-                        if viewModel.hui(selectedSkills: self.selectedSkills, user: user) {
-                            SmallUserView(user: user)
-                                .padding(.horizontal)
-                        }
-                    }
-                }
-            }
+//            if isDropdownVisible {
+//                ScrollView {
+//                    ForEach(filteredSkills, id: \.self) { skill in
+//                        Button(action: {
+//                            if self.selectedSkills.contains(skill) {
+//                                self.selectedSkills.removeAll(where: { $0 == skill })
+//                            } else {
+//                                self.selectedSkills.append(skill)
+//                            }
+//                        }) {
+//                            HStack {
+//                                Text(skill)
+//                                    .foregroundColor(.primary)
+//                                Spacer()
+//                                if self.selectedSkills.contains(skill) {
+//                                    Image(systemName: "checkmark")
+//                                        .foregroundColor(Color("main_color"))
+//                                }
+//                            }
+//                        }
+//                        .background(Color(.systemBackground))
+//                        .cornerRadius(10)
+//                    }
+//                }
+//                .padding(.horizontal)
+//                .onTapGesture {
+//                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//                    self.isDropdownVisible = false
+//                }
+//            }
+//            
+//            ScrollView {
+//                ForEach(viewModel.users) { user in
+//                    if user.email != viewModel.auth.currentUser?.email {
+//                        if viewModel.hui(selectedSkills: self.selectedSkills, user: user) {
+//                            SmallUserView(user: user)
+//                                .padding(.horizontal)
+//                        }
+//                    }
+//                }
+//            }
             
             Spacer()
         }

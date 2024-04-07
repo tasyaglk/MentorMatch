@@ -21,9 +21,15 @@ struct OrderView: View {
     @ObservedObject private var viewModel = AuthFirebase()
     
     var body: some View  {
-        HStack {
-//            ScrollView(.horizontal) {
-            LazyVGrid(columns: columns) {
+        let user = viewModel.getUser() ?? UserM()
+        VStack {
+            Text(order.comment)
+                .bold()
+            HStack {
+                //            ScrollView(.horizontal) {
+                
+                
+                LazyVGrid(columns: columns) {
                     ForEach(order.selectedSkills, id: \.self) { skill in
                         Text(skill)
                             .padding(.vertical, 8)
@@ -34,16 +40,17 @@ struct OrderView: View {
                             .cornerRadius(30)
                     }
                 }
-//            }
-            
-//            Spacer()
-            
-            Toggle(isOn: $isActive, label: {
-            })
-            .toggleStyle(SwitchToggleStyle(tint: isActive ? Color("main_color") : .gray))
-            .onChange(of: isActive) { newValue in
-                isActive.toggle()
-                viewModel.updateOrderStatusInUserDocument(orderID: order.id ?? "", isDone: isActive)
+                //            }
+                
+                //            Spacer()
+                
+                Toggle(isOn: $isActive, label: {
+                })
+                .toggleStyle(SwitchToggleStyle(tint: isActive ? Color("main_color") : .gray))
+                .onChange(of: isActive) { newValue in
+                    isActive.toggle()
+                    viewModel.updateOrderStatusInUserDocument(email: user.email, orderID: order.id ?? "", isDone: isActive)
+                }
             }
         }
     }

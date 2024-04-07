@@ -40,7 +40,7 @@ extension AuthFirebase {
                     }
 
                     // Вывод имен в консоль
-                    print("Имена: \(self.skillsName)")
+//                    print("Имена: \(self.skillsName)")
 
             
         }}

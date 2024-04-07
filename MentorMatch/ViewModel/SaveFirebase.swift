@@ -111,7 +111,7 @@ extension AuthFirebase {
         
         var ref: DocumentReference? = nil
         
-        ref = db.collection("users").document(auth.currentUser?.email ?? "").collection("orders").addDocument(data: [
+        ref = db.collection("users").document(email).collection("orders").addDocument(data: [
             "isActive": order.isActive,
             "skills": order.selectedSkills,
             "comment": order.comment,

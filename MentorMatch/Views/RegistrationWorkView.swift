@@ -29,6 +29,7 @@ struct RegistrationWorkView: View {
     @State private var workEndYear: String = ""
     @State private var isAlertShow: Bool = false
     @State private var alertMessage: String = ""
+    @State private var errorMessage: String = ""
     
     @State private var hasEmptyFields: Bool = false
     
@@ -52,12 +53,29 @@ struct RegistrationWorkView: View {
             
             
             Spacer()
+            
+            if !errorMessage.isEmpty {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .padding(.bottom, 10)
+                    }
+            
             ButtonView(title: "далее",  color: "main_color") {
                 //isNext.toggle()
-                if workPlace.isEmpty || position.isEmpty || workStartYear.isEmpty || workEndYear.isEmpty || (workStartYear > workEndYear){
+                if workPlace.isEmpty || position.isEmpty || workStartYear.isEmpty || workEndYear.isEmpty {
                     hasEmptyFields = true
                 } else {
-                    isNext.toggle()
+                    if let startYear = Int(workStartYear), let endYear = Int(workEndYear) {
+                        if startYear <= endYear {
+                            isNext.toggle()
+                        } else {
+                            // Показываем ошибку
+                            errorMessage = "Год окончания опыта работы должен быть больше или равен году начала"
+                        }
+                    } else {
+                        // Если введены некорректные годы
+                        errorMessage = "Некорректно введены годы начала и окончания работы"
+                    }
                 }
                 
                 
@@ -98,7 +116,7 @@ struct RegistrationWorkView: View {
         }
         .padding(.top, 5)
         .alert(isPresented: $isAlertShow) {
-            Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            Alert(title: Text("Ошибка"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
     }
 }

@@ -24,7 +24,9 @@ struct ExperienceView: View {
     @State private var workStartYear: String = ""
     @State private var workEndYear: String = ""
     
+    @State private var errorMessage: String = ""
     
+    @State private var hasEmptyFields: Bool = false
     
     var body: some View {
         let user = viewModel.getUser() ?? UserM()
@@ -38,10 +40,31 @@ struct ExperienceView: View {
                 FieldView(isError: false, isError2: false, maxLength: 239, labelText: "год окончания", type: "settings", prevText: user.workExperience?.endYear ?? "", keyboardType: .numberPad, text: $workEndYear)
             }
             Spacer()
+            if !errorMessage.isEmpty {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .padding(.bottom, 10)
+                    }
             ButtonView(title: "сохранить",  color: "main_color") {
 //                isSaveEducation.toggle()
-                viewModel.saveWorkInfo(email: user.email, newWorkData: WorkExperience(companyName: workPlace, position:workLevel, startYear: workStartYear, endYear: workEndYear))
-                presentationMode.wrappedValue.dismiss()
+               
+                
+                if workPlace.isEmpty || workLevel.isEmpty || workStartYear.isEmpty || workEndYear.isEmpty {
+                    hasEmptyFields = true
+                } else {
+                    if let startYear = Int(workStartYear), let endYear = Int(workEndYear) {
+                        if startYear <= endYear {
+                            viewModel.saveWorkInfo(email: user.email, newWorkData: WorkExperience(companyName: workPlace, position:workLevel, startYear: workStartYear, endYear: workEndYear))
+                            presentationMode.wrappedValue.dismiss()
+                        } else {
+                            // Показываем ошибку
+                            errorMessage = "Год окончания опыта работы должен быть больше или равен году начала"
+                        }
+                    } else {
+                        // Если введены некорректные годы
+                        errorMessage = "Некорректно введены годы начала и окончания работы"
+                    }
+                }
             }
             .padding(.horizontal, 100)
             .padding(.bottom, 15)

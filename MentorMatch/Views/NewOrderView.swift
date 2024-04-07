@@ -166,15 +166,24 @@ struct NewOrderView: View {
                     .background(Color.white)
                     .cornerRadius(15)
                     .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 4))
-                    .padding(.horizontal)
+                    .padding(.horizontal, 30)
                     .onTapGesture {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                         self.isDropdownVisible = false
                     }
+//                    .onTapGesture {
+//                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//                        self.isDropdownVisible = false
+//                    }
 //                    Spacer()
                 }
+                
                 Spacer()
             }
+//            .onTapGesture {
+//                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//                self.isDropdownVisible = false
+//            }
             .background(Color.white)
             
 //            if isDropdownVisible {
@@ -267,7 +276,7 @@ struct NewOrderView: View {
             Alert(title: Text("Предупреждение"),
                   message: Text("Необходимо выбрать навыки"),
                   dismissButton: .default(Text("OK")) {
-                print("OK button pressed")
+//                print("OK button pressed")
                 self.isSkillsEmptyAlertShown = false
             }
             )
@@ -275,7 +284,7 @@ struct NewOrderView: View {
         }
         .onAppear {
             allSkills = viewModel.skillsName
-            print("lalal \(allSkills)")
+//            print("lalal \(allSkills)")
         }
         .navigationBarTitle("New Order")
     }
