@@ -22,9 +22,10 @@ struct OrderView: View {
     
     var body: some View  {
         let user = viewModel.getUser() ?? UserM()
-        VStack {
+        VStack(alignment: .leading) {
             Text(order.comment)
                 .bold()
+                
             HStack {
                 //            ScrollView(.horizontal) {
                 

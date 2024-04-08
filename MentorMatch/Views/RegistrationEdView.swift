@@ -33,9 +33,9 @@ struct RegistrationEdView: View {
     
     
     var body: some View {
-                HStack {
-                    Text(firstName + lastName + email + password)
-                }
+//                HStack {
+//                    Text(firstName + lastName + email + password)
+//                }
         VStack {
             FieldView(isError: hasEmptyFields && educationPlace.isEmpty,isError2: hasEmptyFields && educationPlace.isEmpty,maxLength: 239, labelText: "образование", type: "preUsual", prevText: "введите название учебного заведения", keyboardType: .default, text: $educationPlace)
                 .padding(.top, 15)

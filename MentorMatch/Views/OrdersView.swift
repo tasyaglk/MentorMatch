@@ -66,6 +66,13 @@ struct OrdersView: View {
                 if viewModel.orders.isEmpty {
                     Text("Заказов пока нет")
                 } else {
+                    HStack {
+                        Text("Описание заказа")
+                        Spacer()
+                        Text("Статус заказа")
+                    }
+                    .padding(.horizontal)
+                    Divider()
                     VStack(alignment: .leading) {
                         
                         ForEach(viewModel.orders, id: \.self) { order in

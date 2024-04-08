@@ -64,19 +64,23 @@ struct ProfileView: View {
             
             
             VStack(alignment: .leading) {
-                Text("Моя почта для связи:)")
-                    .fontWeight(.medium)
-                    .font(.system(size: 13))
-                    .foregroundColor(.gray)
-                    .padding(.horizontal, 5)
-                Text(userr.email)
-                    .fontWeight(.regular)
-                    .font(.system(size: 18))
-                    .foregroundColor(.black)
-                    .padding(.horizontal, 5)
-                    .padding(.vertical, 5)
+                VStack(alignment: .leading) {
+                    Text("Моя почта для связи:)")
+                        .fontWeight(.medium)
+                        .font(.system(size: 13))
+                        .foregroundColor(.gray)
+                        .padding(.horizontal, 5)
+                        
+                    Text(userr.email)
+                        .fontWeight(.regular)
+                        .font(.system(size: 18))
+                        .foregroundColor(.black)
+                        .padding(.horizontal, 5)
+                    //                    .padding(.vertical, 5)
+                }
+                .padding(.vertical, 15)
                 //                    .background(Color("light_main_color"))
-                    .cornerRadius(15)
+//                    .cornerRadius(15)
                 if !userr.description.isEmpty {
                     Text("Описание")
                         .fontWeight(.medium)
@@ -174,6 +178,9 @@ struct ProfileView: View {
                     }
                 }
             }
+        }
+        .onAppear {
+            viewModel.fetchData()
         }
         .navigationBarHidden(true)
         .navigationDestination(

@@ -21,6 +21,7 @@ struct UserM: Comparable, Identifiable {
     var workExperience: WorkExperience?
     var expertise: [Expertise]?
     var orders: [Order]?
+    var photoURL: String?
     
     static func ==(lhs: UserM, rhs: UserM) -> Bool {
         lhs.firstName == rhs.firstName &&
