@@ -8,47 +8,6 @@
 import Foundation
 import SwiftUI
 
-
-
-//struct OrdersView: View {
-//    @ObservedObject var viewModel = AuthFirebase()
-//    @State var isActive: Bool = false
-//    @State private var sortedOrders = [Order]()
-//    
-//    var user: UserM
-//    
-//    var body: some View {
-////        let user = viewModel.getUser() ?? UserM()
-//        ScrollView {
-//            
-//                VStack(alignment: .leading) {
-//                    ForEach(viewModel.strangersOrders, id: \.self) { order in
-//                        if order.byUserEmail == viewModel.auth.currentUser?.email {
-//                            OrderView(order: order, isActive: order.isActive)
-//                        }
-//                }
-//            }
-//        }
-////        .onAppear {
-//////            viewModel.fetchData()
-//////            viewModel.fetchAllsOrders()
-//////            viewModel.fetchAllStrangersOrders()
-//////            sortedOrders = viewModel.getOrders(email: user.email)
-//////            sortedOrders = viewModel.getOrders(email: user.email)
-////        }
-//        .navigationBarBackButtonHidden(true)
-//        .navigationBarItems(leading: CustomBackButton(text: "заказы"))
-//        //        .navigationBarTitle("Заказы")
-//    }
-//    
-//}
-//
-//struct OrderView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        OrdersView(user: UserM())
-//    }
-//}
-
 struct OrdersView: View {
     @State private var selectedSkills: [String] = []
     @State private var comment: String = ""
@@ -59,9 +18,13 @@ struct OrdersView: View {
     @EnvironmentObject var viewModel: AuthFirebase
     @State var allSkills = [String]()
     @State var allOrders = [Order]()
+    @State var isOut = false
+    @State var isActive = false
     
     var body: some View {
         let user = viewModel.getUser() ?? UserM()
+//        NavigationView{
+            
             ScrollView {
                 if viewModel.orders.isEmpty {
                     Text("Заказов пока нет")
@@ -76,15 +39,13 @@ struct OrdersView: View {
                     VStack(alignment: .leading) {
                         
                         ForEach(viewModel.orders, id: \.self) { order in
-                            //                                Text(order.byUserEmail)
+                            //                        isActive = order.isActive
                             if order.byUserEmail == user.email{
                                 if viewModel.zalupa(selectedSkills: selectedSkills, order: order) {
-                                    //                                StrangerOrderView(order: order, user: user)
                                     OrderView(order: order, isActive: order.isActive)
                                         .padding(.horizontal)
                                     Divider()
                                 }
-                                
                             }
                         }
                         
@@ -92,23 +53,24 @@ struct OrdersView: View {
                 }
                 
             }
+//        }
+//        .navigationViewStyle(.stack)
         .onAppear {
             allSkills = viewModel.skillsName
-//                            viewModel.fetchData()
-//            viewModel.fetchAllStrangersOrders()
             viewModel.fetchAllOrders()
-//            viewModel.hui()
-            //                strangersOrder = viewModel.strangersOrders
         }
         .navigationBarBackButtonHidden(true)
-                .navigationBarItems(leading: CustomBackButton(text: "заказы"))
-//        .padding(.top, 70)
+        .navigationBarItems(
+            leading:  Button(action: {
+                isOut.toggle()
+            }) {
+                CustomBackButton(text: "заказы")
+            }
+        )
+        .navigationDestination(
+            isPresented: $isOut) {
+                SettingsView()
+            }
     }
 }
-    
-    ////struct MentorSearchView_Previews: PreviewProvider {
-    ////    static var previews: some View {
-    ////        MentorSearchView()
-    ////    }
-    ////}
 

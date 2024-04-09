@@ -26,6 +26,12 @@ enum FBError: Error, Identifiable, Equatable {
     }
 }
 
+enum NetworkError: Error {
+    case invalidURL
+    case invalidData
+    case unknown
+}
+
 class AuthFirebase: ObservableObject {
     @Published var users = [UserM]()
     @Published var skillsName = [String]()
@@ -36,30 +42,22 @@ class AuthFirebase: ObservableObject {
     let db = Firestore.firestore()
     @Published var errorMessage: String?
     
+//    @StateObject var unsplashAPIManager = UnsplashAPIManager()
+    
     init() {
         DispatchQueue.main.async {
             self.isUserLoggedOut = self.auth.currentUser?.uid == nil
         }
         fetchData()
         getSkillsName()
-        //        getOrders()
-//        for i in orders {
-////            print(i)
-//        }
         fetchAllOrders()
         fetchAllStrangersOrders()
         
     }
     
-    //    func fetchAllsOrders() {
-    //        orders = [Order]()
-    //        getOrders(email: auth.currentUser?.email ?? "")
-    //    }
-    
     func fetchAllOrders() {
         self.orders.removeAll()
         for user in users {
-//            print("zalupa \(user.email)")
             if user.email.lowercased() == getUser()?.email.lowercased() {
                 print("zalupa \(user.email)")
                 getOrders(email: user.email)
@@ -68,18 +66,15 @@ class AuthFirebase: ObservableObject {
         }
     }
     
-    
     func fetchAllStrangersOrders() {
         self.strangersOrders.removeAll()
         for user in users {
-//            print("zalupa \(user.email)")
             fetchStrangersOrders(email: user.email)
         }
     }
     
     func handleSignOut() {
         isUserLoggedOut.toggle()
-//        print(isUserLoggedOut)
         try? auth.signOut()
     }
     
@@ -88,7 +83,6 @@ class AuthFirebase: ObservableObject {
     }
     
     func fetchData() {
-//        if (signedIn) {
             let db = Firestore.firestore()
             
             db.collection("users").addSnapshotListener { [self] (querySnapshot, error) in
@@ -105,7 +99,6 @@ class AuthFirebase: ObservableObject {
                     let status = data["status"] as? String ?? ""
                     let description = data["description"] as? String ?? ""
                     let email = data["email"] as? String ?? ""
-//                    print(email)
                     
                     let educationData = data["education"] as? [String: Any] ?? [:]
                     let workData = data["work"] as? [String: Any] ?? [:]
@@ -133,23 +126,12 @@ class AuthFirebase: ObservableObject {
                         let expertise = Expertise(name: name, rating: rating, isChecked: isChecked)
                         expertises.append(expertise)
                     }
-                    return UserM(firstName: firstName, lastName: lastName, status: status, description: description, email: email, education: education, workExperience: workExperience, expertise: expertises)
+                    
+                    let photoURL = data["photoURL"] as? String ?? ""
+                    return UserM(firstName: firstName, lastName: lastName, status: status, description: description, email: email, education: education, workExperience: workExperience, expertise: expertises, photoURL: photoURL)
                 }
-                //                fetchAllStrangersOrders()
             }
         }
-        
-        //        getSkillsName()
-        ////        getOrders()
-        //        for i in users {
-        //            print("123 \(i)")
-        //        }
-        //
-        //        for user in users {
-        //            fetchStrangersOrders(email: user.email)
-        //            print(user.email)
-        //        }
-//    }
     
     
     func getUser() -> UserM? {
@@ -204,7 +186,42 @@ class AuthFirebase: ObservableObject {
         }
     }
     
+    func fetchAndSaveRandomImage(completion: @escaping (Result<URL, Error>) -> Void) {
+            guard let url = URL(string: "https://random-image-pepebigotes.vercel.app/api/random-image") else {
+                completion(.failure(NetworkError.invalidURL))
+                return
+            }
+
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(NetworkError.invalidData))
+                    return
+                }
+
+                let storage = Storage.storage()
+                let storageRef = storage.reference()
+                let imageRef = storageRef.child("images/\(UUID().uuidString).jpg")
+
+                let _ = imageRef.putData(data, metadata: nil) { metadata, error in
+                    guard let _ = metadata else {
+                        completion(.failure(error ?? NetworkError.unknown))
+                        return
+                    }
+
+                    imageRef.downloadURL { url, error in
+                        if let url = url {
+                            completion(.success(url))
+                        } else {
+                            completion(.failure(error ?? NetworkError.unknown))
+                        }
+                    }
+                }
+            }.resume()
+        }
+    
     func insertNewUser(firstName: String, lastName: String, email: String, password: String, education: Education, workExperience: WorkExperience, expertises: [Expertise], completion: @escaping (Result<Bool, FBError>) -> Void) {
+        
+        var photoUrl = ""
         
         var expertisesData = [[String: Any]]()
         
@@ -216,6 +233,9 @@ class AuthFirebase: ObservableObject {
             ]
             expertisesData.append(expertiseData)
         }
+        
+       
+
         
         let db = Firestore.firestore()
         var userData: [String: Any] = [
@@ -234,8 +254,11 @@ class AuthFirebase: ObservableObject {
                 "startYear": workExperience.startYear,
                 "endYear": workExperience.endYear
             ],
-            "expertises": expertisesData
+            "expertises": expertisesData,
+            "photoURL": ""
         ]
+        
+        
         
         db.collection("users").document(email).setData(userData) { error in
             if let error = error {
@@ -245,6 +268,23 @@ class AuthFirebase: ObservableObject {
             } else {
                 DispatchQueue.main.async {
                     completion(.success(true))
+                }
+            }
+        }
+        
+        UnsplashAPIManager.getRandomPhoto { result in
+            switch result {
+            case .success(let photoURL):
+                db.collection("users").document(email).updateData(["photoURL": photoURL]) { error in
+                    if let error = error {
+                        print("Ошибка при обновлении данных об обучении: \(error.localizedDescription)")
+                    } else {
+                        print("Данные об обучении пользователя успешно обновлены.")
+                    }
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    completion(.failure(.error(error.localizedDescription)))
                 }
             }
         }
@@ -298,31 +338,31 @@ class AuthFirebase: ObservableObject {
         }
     }
 
-    func savePhotoToFirebase(imageData: Data) {
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-        let photoRef = storageRef.child("photos").child("\(UUID().uuidString).jpg")
-
-        let metadata = StorageMetadata()
-        metadata.contentType = "image/jpeg"
-
-        let _ = photoRef.putData(imageData, metadata: metadata) { metadata, error in
-            guard let _ = metadata else {
-                print("Ошибка при загрузке изображения: \(error?.localizedDescription ?? "Неизвестная ошибка")")
-                return
-            }
-
-            photoRef.downloadURL { url, error in
-                guard let downloadURL = url else {
-                    print("Ошибка при получении ссылки на загруженное изображение: \(error?.localizedDescription ?? "Неизвестная ошибка")")
-                    return
-                }
-                
-                // Обновляем профиль пользователя в базе данных
-                self.updateUserProfile(photoURL: downloadURL.absoluteString)
-            }
-        }
-    }
+//    func savePhotoToFirebase(imageData: Data) {
+//        let storage = Storage.storage()
+//        let storageRef = storage.reference()
+//        let photoRef = storageRef.child("photos").child("\(UUID().uuidString).jpg")
+//
+//        let metadata = StorageMetadata()
+//        metadata.contentType = "image/jpeg"
+//
+//        let _ = photoRef.putData(imageData, metadata: metadata) { metadata, error in
+//            guard let _ = metadata else {
+//                print("Ошибка при загрузке изображения: \(error?.localizedDescription ?? "Неизвестная ошибка")")
+//                return
+//            }
+//
+//            photoRef.downloadURL { url, error in
+//                guard let downloadURL = url else {
+//                    print("Ошибка при получении ссылки на загруженное изображение: \(error?.localizedDescription ?? "Неизвестная ошибка")")
+//                    return
+//                }
+//                
+//                // Обновляем профиль пользователя в базе данных
+//                self.updateUserProfile(photoURL: downloadURL.absoluteString)
+//            }
+//        }
+//    }
 
     func updateUserProfile(photoURL: String) {
         // Получаем ссылку на базу данных Firebase

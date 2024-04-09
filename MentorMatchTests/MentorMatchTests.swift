@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Firebase
 @testable import MentorMatch
 
 final class MentorMatchTests: XCTestCase {

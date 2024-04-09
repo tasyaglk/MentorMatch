@@ -19,6 +19,7 @@ struct UserView: View {
     @State var isSettingsTapped: Bool = false
     
     @ObservedObject var viewModel = AuthFirebase()
+    @StateObject var imageLoader = ImageLoader()
     
     var userr: UserM
     
@@ -27,12 +28,47 @@ struct UserView: View {
 //                HStack {
             
         //            .padding()
-        Image(systemName: "person")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 100, height: 100)
-            .clipShape(Circle())
-            .padding(.top, 20)
+            HStack {
+                Spacer()
+                Button(action: {
+                    isSettingsTapped = true
+                }) {
+                    Image(systemName: "gear")
+                        .foregroundColor(.black)
+                        .fixedSize()
+                }
+                //                .navigationBarHidden(true)
+                //                .navigationDestination(
+                //                    isPresented: $isSettingsTapped) {
+                //                        SettingsView()
+                //                    }
+            }
+            //            .padding()
+            VStack {
+                if userr.photoURL == "" {
+                    Image("Image")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .clipShape(Circle()) // Делает изображение круглым
+                        .frame(width: 150, height: 150) // Устанавливает средний размер
+                } else {
+                    if let image = imageLoader.image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Circle()) // Делает изображение круглым
+                            .frame(width: 150, height: 150) // Устанавливает средний размер
+                    } else {
+                        Text("Загрузка...")
+                            .padding()
+                    }
+                }
+            }
+            .onAppear {
+                if let url = URL(string: userr.photoURL ?? "") {
+                    imageLoader.load(url: url)
+                }
+            }
         
         Text(userr.firstName + " " + userr.lastName)
             .font(.title)

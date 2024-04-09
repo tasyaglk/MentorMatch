@@ -52,6 +52,7 @@ struct MentorMatchApp: App {
                 WelcomeView()
                     .environmentObject(viewModel)
             }
+            .navigationViewStyle(.stack)
         }
     }
     class AppDelegate: NSObject, UIApplicationDelegate {

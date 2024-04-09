@@ -26,9 +26,9 @@ struct Order: Identifiable, Codable, Hashable  {
 //        lhs.isActive > rhs.isActive
 //    }
 //
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(id)
-//    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     
 //    init(id: String, isActive: Bool, selectedSkills: [String], comment: String, byUserEmail: String) {
    //        self.id = id

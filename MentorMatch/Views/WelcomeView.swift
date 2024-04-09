@@ -32,7 +32,6 @@ struct WelcomeView: View {
                         isLogged.toggle()
                     }
                     .navigationBarBackButtonHidden(true)
-                    //.navigationBarItems(leading: CustomBackButton(text: ""))
                     .navigationDestination(
                         isPresented: $isLogged) {
                             LoginView()
@@ -43,27 +42,16 @@ struct WelcomeView: View {
                         isRegistrated.toggle()
                     }
                     .navigationBarBackButtonHidden(true)
-                    //.navigationBarItems(leading: CustomBackButton(text: "3"))
                     .navigationDestination(
                         isPresented: $isRegistrated) {
                             RegisterFirstView()
-//                            RegistrationExpertiseView(firstName: "", lastName: "", email: "", password: "", educationPlace: "", educationLevel: "", educationStartYear: "", educationEndYear: "", workPlacePlace: "", position: "", workStartYear: "", workEndYear: "")
                         }
-                    //.padding(.horizontal, 40)
                     .padding(.horizontal, 40)
                     .padding(.bottom, 35)
                 }
             }
-            
-//            .navigationBarHidden(false)
-//            .navigationDestination(
-//                isPresented: $isLogged) {
-//                    LoginView()
-//                }
-//            .fullScreenCover(isPresented: $isLogged) {
-//                LoginView()
-//            }
         }
+        .navigationViewStyle(.stack)
     }
 }
 

@@ -12,7 +12,9 @@ struct SmallUserView: View {
     
     var buttonClicked: (() -> Void)?
     
-    var user: UserM
+    var userr: UserM
+    
+    @StateObject var imageLoader = ImageLoader()
     
     @State var viewUserProfile: Bool = false
     // MARK: - Body
@@ -23,16 +25,36 @@ struct SmallUserView: View {
             viewUserProfile.toggle()
         }, label: {
             HStack {
-                Image(systemName: "person")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 36, height: 36)
-                    .clipShape(Circle())
+                VStack {
+                    if userr.photoURL == "" {
+                        Image("Image")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Circle()) // Делает изображение круглым
+                            .frame(width: 50, height: 50) // Устанавливает средний размер
+                    } else {
+                        if let image = imageLoader.image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(Circle()) // Делает изображение круглым
+                                .frame(width: 50, height: 50) // Устанавливает средний размер
+                        } else {
+                            Text("Загрузка...")
+                                .padding()
+                        }
+                    }
+                }
+                .onAppear {
+                    if let url = URL(string: userr.photoURL ?? "") {
+                        imageLoader.load(url: url)
+                    }
+                }
                 VStack(alignment: .leading) {
-                    Text(user.firstName + " " + user.lastName)
+                    Text(userr.firstName + " " + userr.lastName)
                         .font(.system(size: 12))
                         .fontWeight(.bold)
-                    Text(user.status)
+                    Text(userr.status)
                         //.font(.title)
                         .fontWeight(.thin)
                         .font(.system(size: 12))
@@ -44,7 +66,7 @@ struct SmallUserView: View {
         //.navigationBarItems(leading: CustomBackButton(text: "3"))
         .navigationDestination(
             isPresented: $viewUserProfile) {
-                UserView(userr: user)
+                UserView(userr: userr)
     //                            RegistrationExpertiseView(firstName: "", lastName: "", email: "", password: "", educationPlace: "", educationLevel: "", educationStartYear: "", educationEndYear: "", workPlacePlace: "", position: "", workStartYear: "", workEndYear: "")
             }
         .foregroundColor(.black)
@@ -52,7 +74,7 @@ struct SmallUserView: View {
     
     
     init(user: UserM, buttonClicked: (() -> Void)? = nil) {
-        self.user = user
+        self.userr = user
         self.buttonClicked = buttonClicked
     }
 }

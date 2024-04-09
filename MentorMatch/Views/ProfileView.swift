@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+
 struct ProfileView: View {
     
     @State private var username = "Taisiia Galkina"
@@ -19,12 +20,16 @@ struct ProfileView: View {
     @State var isSettingsTapped: Bool = false
     
     @ObservedObject var viewModel = AuthFirebase()
+    @StateObject var imageLoader = ImageLoader()
     
     var body: some View {
         let userr = viewModel.getUser() ?? UserM()
-//        Text(userr.email)
+        let imageURL: String = userr.photoURL ?? ""
+        //        Text(userr.email)
         
         ScrollView {
+            
+            
             HStack {
                 Spacer()
                 Button(action: {
@@ -34,19 +39,32 @@ struct ProfileView: View {
                         .foregroundColor(.black)
                         .fixedSize()
                 }
-                //                .navigationBarHidden(true)
-                //                .navigationDestination(
-                //                    isPresented: $isSettingsTapped) {
-                //                        SettingsView()
-                //                    }
             }
-            //            .padding()
-            Image(systemName: "person")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100, height: 100)
-                .clipShape(Circle())
-                .padding(.top, 20)
+            VStack {
+                if imageURL == "" {
+                    Image("Image")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .clipShape(Circle())
+                        .frame(width: 150, height: 150)
+                } else {
+                    if let image = imageLoader.image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Circle())
+                            .frame(width: 150, height: 150)
+                    } else {
+                        Text("Загрузка...")
+                            .padding()
+                    }
+                }
+            }
+            .onAppear {
+                if let url = URL(string: imageURL) {
+                    imageLoader.load(url: url)
+                }
+            }
             
             Text(userr.firstName + " " + userr.lastName)
                 .font(.title)
@@ -70,17 +88,14 @@ struct ProfileView: View {
                         .font(.system(size: 13))
                         .foregroundColor(.gray)
                         .padding(.horizontal, 5)
-                        
+                    
                     Text(userr.email)
                         .fontWeight(.regular)
                         .font(.system(size: 18))
                         .foregroundColor(.black)
                         .padding(.horizontal, 5)
-                    //                    .padding(.vertical, 5)
                 }
                 .padding(.vertical, 15)
-                //                    .background(Color("light_main_color"))
-//                    .cornerRadius(15)
                 if !userr.description.isEmpty {
                     Text("Описание")
                         .fontWeight(.medium)
@@ -114,11 +129,9 @@ struct ProfileView: View {
                 if !allSkillsSelected {
                     VStack {
                         ForEach(userr.expertise!) { expertiseItem in
-                            // Вывод экспертиз
                             if expertiseItem.isChecked == true {
                                 HStack {
                                     Text("\(expertiseItem.name)")
-                                    //.padding(.horizontal, 5)
                                     
                                     Spacer()
                                     ForEach(1..<6) { index in
@@ -183,12 +196,11 @@ struct ProfileView: View {
             viewModel.fetchData()
         }
         .navigationBarHidden(true)
-        .navigationDestination(
-            isPresented: $isSettingsTapped) {
-                SettingsView()
-            }
-            .scrollIndicators(.hidden)
-            .padding()
+        .navigationDestination(isPresented: $isSettingsTapped) {
+            SettingsView()
+        }
+        .scrollIndicators(.hidden)
+        .padding()
     }
 }
 
@@ -197,4 +209,3 @@ struct ProfileView_Previews: PreviewProvider {
         ProfileView()
     }
 }
-

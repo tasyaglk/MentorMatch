@@ -19,9 +19,7 @@ struct EducationView: View {
     @State private var errorMessage: String = ""
     @State private var hasEmptyFields: Bool = false
     
-    
     @ObservedObject var viewModel = AuthFirebase()
-//    let user = viewModel.getUser() ?? UserM()
     
     var body: some View {
         let user = viewModel.getUser() ?? UserM()
@@ -38,30 +36,25 @@ struct EducationView: View {
             
             Spacer()
             if !errorMessage.isEmpty {
-                        Text(errorMessage)
-                            .foregroundColor(.red)
-                            .padding(.bottom, 10)
-                    }
+                Text(errorMessage)
+                    .foregroundColor(.red)
+                    .padding(.bottom, 10)
+            }
             ButtonView(title: "сохранить",  color: "main_color") {
                 if educationLevel.isEmpty || educationPlace.isEmpty || educationStartYear.isEmpty || educationEndYear.isEmpty  {
                     hasEmptyFields = true
                 } else {
-                    // Проверка условия start <= end
                     if let startYear = Int(educationStartYear), let endYear = Int(educationEndYear) {
-                                        if startYear <= endYear {
-                                            viewModel.saveEducationInfo(email: user.email, newEducationData: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear))
-                                            presentationMode.wrappedValue.dismiss()
-                                        } else {
-                                            // Показываем ошибку
-                                            errorMessage = "Год окончания образования должен быть больше или равен году начала"
-                                        }
-                                    } else {
-                                        // Если введены некорректные годы
-                                        errorMessage = "Некорректно введены годы начала и окончания образования"
-                                    }
+                        if startYear <= endYear {
+                            viewModel.saveEducationInfo(email: user.email, newEducationData: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear))
+                            presentationMode.wrappedValue.dismiss()
+                        } else {
+                            errorMessage = "Год окончания образования должен быть больше или равен году начала"
+                        }
+                    } else {
+                        errorMessage = "Некорректно введены годы начала и окончания образования"
+                    }
                 }
-//                viewModel.saveEducationInfo(email: user.email, newEducationData: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear))
-//                presentationMode.wrappedValue.dismiss()
             }
             .padding(.horizontal, 100)
             .padding(.bottom, 15)
@@ -69,19 +62,11 @@ struct EducationView: View {
         .padding(.top, 5)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton(text: "образование"))
-//        .sheet(isPresented: $isYearPickerPresented) {
-//            YearPicker(start: 2000, end: 2020)
-//                .onDisappear {
-//                    // Обновляем выбранный год начала образования
-//                    startYear = selectedYearIndex
-//                }
-//        }
         .onAppear {
             let user = viewModel.getUser() ?? UserM()
-
-             educationPlace  = (user.education?.place ?? "")
+            educationPlace  = (user.education?.place ?? "")
             educationLevel  = (user.education?.degree ?? "")
-             educationStartYear  = (user.education?.startYear ?? "")
+            educationStartYear  = (user.education?.startYear ?? "")
             educationEndYear  = (user.education?.endYear ?? "")
         }
     }

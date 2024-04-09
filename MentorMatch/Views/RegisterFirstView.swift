@@ -90,6 +90,9 @@ struct RegisterFirstView: View {
     // State to track if there are empty fields
     @State private var hasEmptyFields: Bool = false
     
+    @State var image: UIImage?
+
+    
     func signUp() {
         authFirebase.signUp(email: email, password: password) { result in
             switch result {
@@ -107,6 +110,14 @@ struct RegisterFirstView: View {
     var body: some View {
         
 //        ImagePicker()
+        
+//        Button(action: {mustShowIP.toggle()}, label: {})
+//            }
+//            .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
+//                        ImagePicker(image: $image)
+//                            .ignoresSafeArea()
+//                    }
+
         
         VStack {
             FieldView(isError: hasEmptyFields && firstName.isEmpty, isError2: hasEmptyFields && firstName.isEmpty, maxLength: 239, labelText: "имя", type: "preUsual", prevText: "введите имя", keyboardType: .default, text: $firstName )
