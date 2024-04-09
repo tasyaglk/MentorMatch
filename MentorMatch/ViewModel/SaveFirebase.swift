@@ -136,6 +136,7 @@ extension AuthFirebase {
                 print("Заказ успешно сохранен.")
             }
         }
+    }
         
         
 //        let newOrderDataDict: [String: Any] = [
@@ -170,5 +171,5 @@ extension AuthFirebase {
 //            }
 //        }
         
-    }
+//    }
 }

@@ -857,8 +857,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "fetchData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1518,8 +1518,8 @@
             filePath = "MentorMatch/ViewModel/SaveFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "saveOrder(email:order:)"
             landmarkType = "7">
             <Locations>
@@ -1658,8 +1658,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1674,8 +1674,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "init()"
             landmarkType = "7">
             <Locations>
@@ -1801,8 +1801,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "init()"
             landmarkType = "7">
             <Locations>
@@ -1973,8 +1973,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "AuthFirebase"
             landmarkType = "3">
             <Locations>
@@ -2036,8 +2036,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "fetchData()"
             landmarkType = "7">
             <Locations>
@@ -2839,8 +2839,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "getUser()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3073,8 +3073,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "fetchAllStrangersOrders()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3089,8 +3089,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "fetchAllStrangersOrders()"
             landmarkType = "7">
             <Locations>
@@ -3215,8 +3215,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "getUserByEmail(email:)"
             landmarkType = "7">
             <Locations>
@@ -3263,8 +3263,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "checkUserExists(email:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3800,8 +3800,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "fetchAllOrders()"
             landmarkType = "7">
             <Locations>

@@ -63,6 +63,7 @@
 		00719FAA2BC20D0700C98F49 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FA92BC20D0700C98F49 /* Validator.swift */; };
 		00719FAC2BC2139C00C98F49 /* BottomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FAB2BC2139C00C98F49 /* BottomAlert.swift */; };
 		00719FAF2BC2165100C98F49 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 00719FAE2BC2165100C98F49 /* Toast */; };
+		00719FCB2BC49CE700C98F49 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FCA2BC49CE700C98F49 /* ImagePicker.swift */; };
 		007AE0442BAA3CC200E4367E /* RegistrationExpertiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +137,7 @@
 		00719FA72BC079CC00C98F49 /* FullOrderDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderDescription.swift; sourceTree = "<group>"; };
 		00719FA92BC20D0700C98F49 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		00719FAB2BC2139C00C98F49 /* BottomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomAlert.swift; sourceTree = "<group>"; };
+		00719FCA2BC49CE700C98F49 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationExpertiseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -298,6 +300,7 @@
 				00719FA12BC03C4500C98F49 /* OrderView.swift */,
 				00719FA52BC0782600C98F49 /* StrangerOrderView.swift */,
 				00719FAB2BC2139C00C98F49 /* BottomAlert.swift */,
+				00719FCA2BC49CE700C98F49 /* ImagePicker.swift */,
 			);
 			path = ComponentView;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				00719FA22BC03C4500C98F49 /* OrderView.swift in Sources */,
 				001A67232B9BB837006C9425 /* TabBar.swift in Sources */,
 				001A66EA2B99F0EE006C9425 /* WelcomeView.swift in Sources */,
+				00719FCB2BC49CE700C98F49 /* ImagePicker.swift in Sources */,
 				001A67332B9BC254006C9425 /* WorkExperience.swift in Sources */,
 				00719F9A2BBC5D1700C98F49 /* SkillsFirebase.swift in Sources */,
 				0062D83C2BA35CA600219D5A /* AuthFirebase.swift in Sources */,

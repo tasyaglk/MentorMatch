@@ -9,8 +9,9 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseStorage
 
-enum FBError: Error, Identifiable {
+enum FBError: Error, Identifiable, Equatable {
     case error(String)
     
     var id: UUID {
@@ -294,6 +295,55 @@ class AuthFirebase: ObservableObject {
                 }
             }
 //            print("hghkgchcciuctutc")
+        }
+    }
+
+    func savePhotoToFirebase(imageData: Data) {
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let photoRef = storageRef.child("photos").child("\(UUID().uuidString).jpg")
+
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+
+        let _ = photoRef.putData(imageData, metadata: metadata) { metadata, error in
+            guard let _ = metadata else {
+                print("Ошибка при загрузке изображения: \(error?.localizedDescription ?? "Неизвестная ошибка")")
+                return
+            }
+
+            photoRef.downloadURL { url, error in
+                guard let downloadURL = url else {
+                    print("Ошибка при получении ссылки на загруженное изображение: \(error?.localizedDescription ?? "Неизвестная ошибка")")
+                    return
+                }
+                
+                // Обновляем профиль пользователя в базе данных
+                self.updateUserProfile(photoURL: downloadURL.absoluteString)
+            }
+        }
+    }
+
+    func updateUserProfile(photoURL: String) {
+        // Получаем ссылку на базу данных Firebase
+        let db = Firestore.firestore()
+        
+        // Получаем текущего пользователя (предполагается, что у вас есть механизм аутентификации пользователя)
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            print("Пользователь не аутентифицирован")
+            return
+        }
+        
+        // Обновляем данные о фотографии пользователя в базе данных
+        let userRef = db.collection("users").document(currentUserID)
+        userRef.updateData([
+            "photoURL": photoURL
+        ]) { error in
+            if let error = error {
+                print("Ошибка при обновлении профиля пользователя: \(error.localizedDescription)")
+            } else {
+                print("Профиль пользователя успешно обновлен")
+            }
         }
     }
 

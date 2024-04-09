@@ -103,7 +103,11 @@ struct RegisterFirstView: View {
         }
     }
     
+    
     var body: some View {
+        
+//        ImagePicker()
+        
         VStack {
             FieldView(isError: hasEmptyFields && firstName.isEmpty, isError2: hasEmptyFields && firstName.isEmpty, maxLength: 239, labelText: "имя", type: "preUsual", prevText: "введите имя", keyboardType: .default, text: $firstName )
 //                .border(hasEmptyFields && firstName.isEmpty ? Color.red : Color.clear)
