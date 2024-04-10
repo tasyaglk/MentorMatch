@@ -60,7 +60,6 @@
 		00719FA82BC079CC00C98F49 /* FullOrderDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FA72BC079CC00C98F49 /* FullOrderDescription.swift */; };
 		00719FAA2BC20D0700C98F49 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FA92BC20D0700C98F49 /* Validator.swift */; };
 		00719FAF2BC2165100C98F49 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 00719FAE2BC2165100C98F49 /* Toast */; };
-		00719FCD2BC5309400C98F49 /* MentorMatchOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FCC2BC5309400C98F49 /* MentorMatchOrderTests.swift */; };
 		00719FCF2BC5AEDA00C98F49 /* UnsplashAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FCE2BC5AEDA00C98F49 /* UnsplashAPIManager.swift */; };
 		00719FD12BC5B17900C98F49 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FD02BC5B17900C98F49 /* ImageLoader.swift */; };
 		007AE0442BAA3CC200E4367E /* RegistrationExpertiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */; };
@@ -134,7 +133,6 @@
 		00719FA52BC0782600C98F49 /* StrangerOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerOrderView.swift; sourceTree = "<group>"; };
 		00719FA72BC079CC00C98F49 /* FullOrderDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderDescription.swift; sourceTree = "<group>"; };
 		00719FA92BC20D0700C98F49 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		00719FCC2BC5309400C98F49 /* MentorMatchOrderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorMatchOrderTests.swift; sourceTree = "<group>"; };
 		00719FCE2BC5AEDA00C98F49 /* UnsplashAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPIManager.swift; sourceTree = "<group>"; };
 		00719FD02BC5B17900C98F49 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationExpertiseView.swift; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				001A66F82B99F0EF006C9425 /* MentorMatchTests.swift */,
-				00719FCC2BC5309400C98F49 /* MentorMatchOrderTests.swift */,
 			);
 			path = MentorMatchTests;
 			sourceTree = "<group>";
@@ -501,7 +498,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				001A66F92B99F0EF006C9425 /* MentorMatchTests.swift in Sources */,
-				00719FCD2BC5309400C98F49 /* MentorMatchOrderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

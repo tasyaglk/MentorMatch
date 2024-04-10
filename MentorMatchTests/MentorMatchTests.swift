@@ -27,7 +27,8 @@ final class MentorMatchTests: XCTestCase {
     
        func testSuccessfulSignIn() {
            let expectation = XCTestExpectation(description: "Successful sign in")
-           authManager.signIn(email: "meow@meow.ru", password: "meowW123") { result in
+           
+           authManager.signIn(email: "volotova@mail.ru", password: "A123456a") { result in
                switch result {
                case .success(let success):
                    XCTAssertTrue(success, "Sign in should be successful")
