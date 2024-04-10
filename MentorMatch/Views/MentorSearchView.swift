@@ -44,12 +44,28 @@ struct MentorSearchView: View {
             
             ZStack {
                 
-                ScrollView {
-                    ForEach(viewModel.users.reversed()) { user in
-                        if user.email.lowercased() != viewModel.auth.currentUser?.email {
-                            if viewModel.isMentorHasSkills(selectedSkills: self.selectedSkills, user: user) {
-                                SmallUserView(user: user)
-                                    .padding(.horizontal)
+                VStack {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(selectedSkills, id: \.self) { skill in
+                                Text(skill)
+                                    .padding(8)
+                                    .background(Color("main_color"))
+                                    .foregroundColor(.black)
+                                
+                                    .cornerRadius(8)
+                                    .padding(.horizontal, 4)
+                            }
+                        }
+                    }
+                    
+                    ScrollView {
+                        ForEach(viewModel.users.reversed()) { user in
+                            if user.email.lowercased() != viewModel.auth.currentUser?.email {
+                                if viewModel.isMentorHasSkills(selectedSkills: self.selectedSkills, user: user) {
+                                    SmallUserView(user: user)
+                                        .padding(.horizontal)
+                                }
                             }
                         }
                     }

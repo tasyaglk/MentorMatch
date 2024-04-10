@@ -23,39 +23,44 @@ struct OrdersView: View {
     
     var body: some View {
         let user = viewModel.getUser() ?? UserM()
-//        NavigationView{
-            
-            ScrollView {
-                if viewModel.orders.isEmpty {
-                    Text("Заказов пока нет")
-                } else {
-                    HStack {
-                        Text("Описание заказа")
-                        Spacer()
-                        Text("Статус заказа")
-                    }
-                    .padding(.horizontal)
-                    Divider()
-                    VStack(alignment: .leading) {
-                        
-                        ForEach(viewModel.orders, id: \.self) { order in
-                            //                        isActive = order.isActive
-                            if order.byUserEmail == user.email{
-                                if viewModel.isOrderHasSkills(selectedSkills: selectedSkills, order: order) {
-                                    OrderView(order: order, isActive: order.isActive)
-                                        .padding(.horizontal)
-                                    Divider()
-                                }
+        ScrollView {
+            if viewModel.orders.isEmpty {
+                Text("Заказов пока нет")
+            } else {
+                HStack {
+                    Text("Описание заказа")
+                    Spacer()
+                    Text("Статус заказа")
+                }
+                .padding(.horizontal)
+                Divider()
+                VStack(alignment: .leading) {
+                    
+                    ForEach(viewModel.orders, id: \.self) { order in
+                        if order.byUserEmail == user.email{
+                            if viewModel.isOrderHasSkills(selectedSkills: selectedSkills, order: order) {
+                                OrderView(order: order, isActive: order.isActive)
+                                
+                                    .padding(.horizontal)
+                                Divider()
                             }
                         }
-                        
                     }
+                    
                 }
                 
             }
+            
+        }
         .onAppear {
-            allSkills = viewModel.skillsName
             viewModel.fetchAllOrders()
+            allOrders = viewModel.orders.sorted(by: { (firstOrder, secondOrder) -> Bool in
+                if firstOrder.isActive == secondOrder.isActive {
+                    return true
+                } else {
+                    return firstOrder.isActive
+                }
+            })
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(

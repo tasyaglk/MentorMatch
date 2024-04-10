@@ -9,24 +9,19 @@ import Foundation
 import Firebase
 
 extension AuthFirebase {
+    
     func saveNewMainInfo(firstName: String, lastName: String, email: String, status: String, description: String, completion: @escaping (Result<Bool, FBError>) -> Void) {
         
         let db = Firestore.firestore()
-        
-        // Получаем документ пользователя по его адресу электронной почты
+    
         db.collection("users").document(email).getDocument { document, error in
             if let document = document, document.exists {
                 // Данные пользователя
                 var userData = document.data() ?? [:]
-                //                let educationData = data["education"] as? [String: Any] ?? [:]
-                
-                // Обновляем имя и фамилию
                 userData["firstName"] = firstName
                 userData["lastName"] = lastName
                 userData["description"] = description
                 userData["status"] = status
-                
-                // Сохраняем обновленные данные в базе данных
                 db.collection("users").document(email).setData(userData) { error in
                     if let error = error {
                         print("Ошибка при обновлении данных пользователя: \(error.localizedDescription)")
@@ -44,7 +39,6 @@ extension AuthFirebase {
     func saveEducationInfo(email: String, newEducationData: Education) {
         let db = Firestore.firestore()
         
-        // Создаем словарь с новыми данными об обучении
         let newEducationDataDict: [String: Any] = [
             "place": newEducationData.place,
             "degree": newEducationData.degree,
@@ -52,7 +46,6 @@ extension AuthFirebase {
             "endYear": newEducationData.endYear
         ]
         
-        // Обновляем данные пользователя в базе данных
         db.collection("users").document(email).updateData(["education": newEducationDataDict]) { error in
             if let error = error {
                 print("Ошибка при обновлении данных об обучении: \(error.localizedDescription)")
@@ -65,15 +58,12 @@ extension AuthFirebase {
     func saveWorkInfo(email: String, newWorkData: WorkExperience) {
         let db = Firestore.firestore()
         
-        // Создаем словарь с новыми данными об обучении
         let newWorkDataDict: [String: Any] = [
             "companyName": newWorkData.companyName,
             "position": newWorkData.position,
             "startYear": newWorkData.startYear,
             "endYear": newWorkData.endYear
         ]
-        
-        // Обновляем данные пользователя в базе данных
         db.collection("users").document(email).updateData(["work": newWorkDataDict]) { error in
             if let error = error {
                 print("Ошибка при обновлении данных об обучении: \(error.localizedDescription)")

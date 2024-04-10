@@ -35,7 +35,7 @@ struct SettingsView: View {
     var body: some View {
         let user = viewModel.getUser() ?? UserM()
         
-//        ScrollView {
+        ScrollView {
             VStack {
                 FieldView(isError: false, isError2: false, maxLength: 239, labelText: "имя", type: "settings", prevText: user.firstName, keyboardType: .default, text: $firstName)
                 FieldView(isError: false,isError2: false, maxLength: 239, labelText: "фамилия", type: "settings", prevText: user.lastName, keyboardType: .default, text: $lastName)
@@ -105,19 +105,20 @@ struct SettingsView: View {
                     
                 }
                 .padding(.horizontal, 100)
-//            }
+                //            }
+            }
         }
-        .onAppear {
-            let user = viewModel.getUser() ?? UserM()
-            email = user.email
-            firstName = user.firstName
-            lastName = user.lastName
-            status = user.status
-            description = user.description
-        }
-        .navigationDestination(isPresented: $viewModel.isUserLoggedOut) {
-            WelcomeView()
-        }
+            .onAppear {
+                let user = viewModel.getUser() ?? UserM()
+                email = user.email
+                firstName = user.firstName
+                lastName = user.lastName
+                status = user.status
+                description = user.description
+            }
+            .navigationDestination(isPresented: $viewModel.isUserLoggedOut) {
+                WelcomeView()
+            }
         
     }
     

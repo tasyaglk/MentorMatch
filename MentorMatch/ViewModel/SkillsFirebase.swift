@@ -39,7 +39,8 @@ extension AuthFirebase {
     
     func createExpertises() -> [Expertise] {
         var expertises = [Expertise]()
-        for skill in skillsName {
+        var skills = skillsName.sorted()
+        for skill in skills {
             expertises.append(Expertise(name: skill, rating: 0, isChecked: false))
         }
         return expertises

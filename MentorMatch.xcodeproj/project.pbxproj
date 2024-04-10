@@ -68,6 +68,7 @@
 		00719FCF2BC5AEDA00C98F49 /* UnsplashAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FCE2BC5AEDA00C98F49 /* UnsplashAPIManager.swift */; };
 		00719FD12BC5B17900C98F49 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00719FD02BC5B17900C98F49 /* ImageLoader.swift */; };
 		007AE0442BAA3CC200E4367E /* RegistrationExpertiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */; };
+		00CE19D52BC631DE000294B6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00CE19D42BC631DE000294B6 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		00719FCE2BC5AEDA00C98F49 /* UnsplashAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPIManager.swift; sourceTree = "<group>"; };
 		00719FD02BC5B17900C98F49 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		007AE0432BAA3CC200E4367E /* RegistrationExpertiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationExpertiseView.swift; sourceTree = "<group>"; };
+		00CE19D42BC631DE000294B6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 				0062D85F2BA39F1D00219D5A /* GoogleService-Info.plist */,
 				001A676B2B9CC750006C9425 /* AGroticextrabold.ttf */,
 				00719FA92BC20D0700C98F49 /* Validator.swift */,
+				00CE19D42BC631DE000294B6 /* Launch Screen.storyboard */,
 			);
 			path = MentorMatch;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				001A66EF2B99F0EF006C9425 /* Preview Assets.xcassets in Resources */,
 				0062D8602BA39F1D00219D5A /* GoogleService-Info.plist in Resources */,
 				001A66EC2B99F0EF006C9425 /* Assets.xcassets in Resources */,
+				00CE19D52BC631DE000294B6 /* Launch Screen.storyboard in Resources */,
 				001A676C2B9CC750006C9425 /* AGroticextrabold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

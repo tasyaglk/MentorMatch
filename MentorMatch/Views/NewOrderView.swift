@@ -35,116 +35,118 @@ struct NewOrderView: View {
     
     var body: some View {
         let user = viewModel.getUser() ?? UserM()
-        VStack {
-            HStack {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(.black)
+        ScrollView {
+            VStack {
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.black)
+                    
+                    TextField("Необходимые навыки..", text: $searchText)
+                        .background(.white)
+                        .cornerRadius(4)
+                        .onTapGesture {
+                            self.isDropdownVisible = true
+                        }
+                }
+                .padding(.horizontal)
                 
-                TextField("Необходимые навыки..", text: $searchText)
-                    .background(.white)
-                    .cornerRadius(4)
-                    .onTapGesture {
-                        self.isDropdownVisible = true
-                    }
-            }
-            .padding(.horizontal)
-            
-            ZStack {
-                VStack {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(selectedSkills, id: \.self) { skill in
-                                Text(skill)
-                                    .padding(8)
-                                    .background(Color("main_color"))
-                                    .foregroundColor(.black)
-                                
-                                    .cornerRadius(8)
-                                    .padding(.horizontal, 4)
+                ZStack {
+                    VStack {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(selectedSkills, id: \.self) { skill in
+                                    Text(skill)
+                                        .padding(8)
+                                        .background(Color("main_color"))
+                                        .foregroundColor(.black)
+                                    
+                                        .cornerRadius(8)
+                                        .padding(.horizontal, 4)
+                                }
                             }
                         }
-                    }
-                    
-                    VStack {
-                        FieldView(isError: hasEmptyFields && comment.isEmpty, isError2: hasEmptyFields && comment.isEmpty, maxLength: 600, labelText: "", type: "usual", prevText: "опишите свой запрос", keyboardType: .default, text: $comment)
-                    }
-                    .padding(.top, 20)
-                    Spacer()
-                    ButtonView(title: "опубликовать", height: 50, color: "main_color") {
                         
-                        let areSkillsNotSelected = selectedSkills.isEmpty
-                        
-                        if areSkillsNotSelected {
-                            isSkillsEmptyAlertShown = true
-                            alertMessage = "Необходимо выбрать навыки"
-                            return
+                        VStack {
+                            FieldView(isError: hasEmptyFields && comment.isEmpty, isError2: hasEmptyFields && comment.isEmpty, maxLength: 600, labelText: "", type: "usual", prevText: "опишите свой запрос", keyboardType: .default, text: $comment)
                         }
-                        
-                        if selectedSkills.isEmpty || comment.isEmpty  {
-                            hasEmptyFields = true
-                        } else {
-                            isPublic.toggle()
-                            let newOrderId = UUID().uuidString
-                            viewModel.saveOrder(email: user.email, order: Order(id: newOrderId, isActive: true, selectedSkills: selectedSkills, comment: comment, byUserEmail: user.email))
+                        .padding(.top, 20)
+                        Spacer()
+                        ButtonView(title: "опубликовать", height: 50, color: "main_color") {
+                            
+                            let areSkillsNotSelected = selectedSkills.isEmpty
+                            
+                            if areSkillsNotSelected {
+                                isSkillsEmptyAlertShown = true
+                                alertMessage = "Необходимо выбрать навыки"
+                                return
+                            }
+                            
+                            if selectedSkills.isEmpty || comment.isEmpty  {
+                                hasEmptyFields = true
+                            } else {
+                                isPublic.toggle()
+                                let newOrderId = UUID().uuidString
+                                viewModel.saveOrder(email: user.email, order: Order(id: newOrderId, isActive: true, selectedSkills: selectedSkills, comment: comment, byUserEmail: user.email))
+                            }
                         }
+                        .navigationBarBackButtonHidden(true)
+                        .navigationDestination(
+                            isPresented: $isPublic) {
+                                TabBar()
+                            }
+                            .padding(.bottom, 5)
+                            .padding(.horizontal, 80)
                     }
-                    .navigationBarBackButtonHidden(true)
-                    .navigationDestination(
-                        isPresented: $isPublic) {
-                            TabBar()
-                        }
-                    .padding(.bottom, 5)
-                    .padding(.horizontal, 80)
-                }
-                .blur(radius: isDropdownVisible ? 3 : 0)
-                if isDropdownVisible {
-                    ScrollView {
-                        ForEach(filteredSkills, id: \.self) { skill in
-                            Button(action: {
-                                if self.selectedSkills.contains(skill) {
-                                    self.selectedSkills.removeAll(where: { $0 == skill })
-                                } else {
-                                    self.selectedSkills.append(skill)
-                                }
-                            }) {
-                                HStack {
-                                    Text(skill)
-                                        .foregroundColor(.primary)
-                                    Spacer()
+                    .blur(radius: isDropdownVisible ? 3 : 0)
+                    if isDropdownVisible {
+                        ScrollView {
+                            ForEach(filteredSkills, id: \.self) { skill in
+                                Button(action: {
                                     if self.selectedSkills.contains(skill) {
-                                        Image(systemName: "checkmark")
-                                            .foregroundColor(Color("main_color"))
+                                        self.selectedSkills.removeAll(where: { $0 == skill })
+                                    } else {
+                                        self.selectedSkills.append(skill)
+                                    }
+                                }) {
+                                    HStack {
+                                        Text(skill)
+                                            .foregroundColor(.primary)
+                                        Spacer()
+                                        if self.selectedSkills.contains(skill) {
+                                            Image(systemName: "checkmark")
+                                                .foregroundColor(Color("main_color"))
+                                        }
                                     }
                                 }
+                                .padding(.horizontal, 15)
+                                .background(Color(.systemBackground))
+                                .cornerRadius(10)
+                                .listRowInsets(EdgeInsets())
                             }
-                            .padding(.horizontal, 15)
-                            .background(Color(.systemBackground))
-                            .cornerRadius(10)
-                            .listRowInsets(EdgeInsets())
+                        }
+                        .background(Color.white)
+                        .cornerRadius(15)
+                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 4))
+                        .padding(.horizontal, 30)
+                        .onTapGesture {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                            self.isDropdownVisible = false
                         }
                     }
-                    .background(Color.white)
-                    .cornerRadius(15)
-                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 4))
-                    .padding(.horizontal, 30)
-                    .onTapGesture {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                        self.isDropdownVisible = false
-                    }
+                    Spacer()
                 }
-                Spacer()
+                .background(Color.white)
+                
             }
-            .background(Color.white)
-            
-        }
-        .alert(isPresented: $isSkillsEmptyAlertShown) {
-            Alert(title: Text("Предупреждение"),
-                  message: Text("Необходимо выбрать навыки"),
-                  dismissButton: .default(Text("OK")) {
-                self.isSkillsEmptyAlertShown = false
+            .alert(isPresented: $isSkillsEmptyAlertShown) {
+                Alert(title: Text("Предупреждение"),
+                      message: Text("Необходимо выбрать навыки"),
+                      dismissButton: .default(Text("OK")) {
+                    self.isSkillsEmptyAlertShown = false
+                }
+                )
+                
             }
-            )
-            
         }
         .onAppear {
             allSkills = viewModel.skillsName.sorted()

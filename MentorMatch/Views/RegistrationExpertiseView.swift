@@ -34,51 +34,33 @@ struct RegistrationExpertiseView: View {
     private let user = UserM()
     
     var body: some View {
-        VStack {
+        
+        ScrollView {
             VStack {
-                ForEach(expertises.indices, id: \.self) { index in
-                    ExpertiseRowView(expertise: $expertises[index])
+                VStack {
+                    ForEach(expertises.indices, id: \.self) { index in
+                        ExpertiseRowView(expertise: $expertises[index])
+                    }
                 }
-            }
-            .padding(.horizontal)
-            .listStyle(GroupedListStyle())
-            .background(Color.white)
-            .scrollContentBackground(.hidden)
-        }
-        
-        Spacer()
-        
-        ButtonView(title: "далее", color: "main_color") {
-            
-            let allSkillsSelected = !expertises.contains { $0.isChecked }
-            
-            // Если какой-либо из навыков не выбран, выводим сообщение об ошибке
-            if allSkillsSelected {
-                isSkillsEmptyAlertShown = true
-                alertMessage = "Необходимо выбрать навыки"
-                return // Прерываем выполнение функции, чтобы данные не сохранялись
+                .padding(.horizontal)
+                .listStyle(GroupedListStyle())
+                .background(Color.white)
+                .scrollContentBackground(.hidden)
             }
             
+            Spacer()
             
-            isNext.toggle()
-            authFirebase.insertNewUser(firstName: firstName, lastName: lastName, email: email, password: password, education: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear), workExperience: WorkExperience(companyName: workPlace, position: position, startYear: workStartYear, endYear: workEndYear), expertises: expertises) { result in
-                switch result {
-                case (.success(_)) :
-                    isNext = true
-                case(.failure(let error)):
-                    alertMessage = error.errorMessage
-                    isAlertShow = true
+            ButtonView(title: "далее", color: "main_color") {
+                
+                let allSkillsSelected = !expertises.contains { $0.isChecked }
+                if allSkillsSelected {
+                    isSkillsEmptyAlertShown = true
+                    alertMessage = "Необходимо выбрать навыки"
+                    return
                 }
-            }
-            
-        }
-        
-        
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(
-            trailing:  Button(action: {
+                
+                
                 isNext.toggle()
-                expertises = []
                 authFirebase.insertNewUser(firstName: firstName, lastName: lastName, email: email, password: password, education: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear), workExperience: WorkExperience(companyName: workPlace, position: position, startYear: workStartYear, endYear: workEndYear), expertises: expertises) { result in
                     switch result {
                     case (.success(_)) :
@@ -88,35 +70,54 @@ struct RegistrationExpertiseView: View {
                         isAlertShow = true
                     }
                 }
-            }) {
-                Text("пропустить")
-                    .foregroundColor(Color("main_color"))
-            }
-        )
-        .navigationDestination(
-            isPresented: $isNext) {
-                TabBar()
-            }
-        
-            .padding(.horizontal, 100)
-            .padding(.bottom, 15)
-            .padding(.top, 5)
-            .alert(isPresented: $isAlertShow) {
-                Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-            }
-            .alert(isPresented: $isSkillsEmptyAlertShown) {
-                Alert(title: Text("Предупреждение"),
-                      message: Text("Необходимо выбрать навыки"),
-                      dismissButton: .default(Text("OK")) {
-                    print("OK button pressed")
-                    // Этот блок выполнится при нажатии на кнопку "ОК" в алерте
-                    self.isSkillsEmptyAlertShown = false // Устанавливаем значение в false после нажатия кнопки "ОК"
-                }
-                )
                 
             }
+            
+            
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(
+                trailing:  Button(action: {
+                    isNext.toggle()
+                    expertises = []
+                    authFirebase.insertNewUser(firstName: firstName, lastName: lastName, email: email, password: password, education: Education(place: educationPlace, degree: educationLevel, startYear: educationStartYear, endYear: educationEndYear), workExperience: WorkExperience(companyName: workPlace, position: position, startYear: workStartYear, endYear: workEndYear), expertises: expertises) { result in
+                        switch result {
+                        case (.success(_)) :
+                            isNext = true
+                        case(.failure(let error)):
+                            alertMessage = error.errorMessage
+                            isAlertShow = true
+                        }
+                    }
+                }) {
+                    Text("пропустить")
+                        .foregroundColor(Color("main_color"))
+                }
+            )
+            .navigationDestination(
+                isPresented: $isNext) {
+                    TabBar()
+                }
+            
+                .padding(.horizontal, 100)
+                .padding(.bottom, 15)
+                .padding(.top, 5)
+                .alert(isPresented: $isAlertShow) {
+                    Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                }
+                .alert(isPresented: $isSkillsEmptyAlertShown) {
+                    Alert(title: Text("Предупреждение"),
+                          message: Text("Необходимо выбрать навыки"),
+                          dismissButton: .default(Text("OK")) {
+                        print("OK button pressed")
+                        self.isSkillsEmptyAlertShown = false
+                    }
+                    )
+                    
+                }
+        }
             .onAppear {
                 self.expertises = authFirebase.createExpertises()
+                
             }
         
         

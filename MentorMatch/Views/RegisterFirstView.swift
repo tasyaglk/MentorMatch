@@ -118,38 +118,43 @@ struct RegisterFirstView: View {
 //                            .ignoresSafeArea()
 //                    }
 
-        
-        VStack {
-            FieldView(isError: hasEmptyFields && firstName.isEmpty, isError2: hasEmptyFields && firstName.isEmpty, maxLength: 239, labelText: "имя", type: "preUsual", prevText: "введите имя", keyboardType: .default, text: $firstName )
-//                .border(hasEmptyFields && firstName.isEmpty ? Color.red : Color.clear)
-            FieldView(isError: hasEmptyFields && lastName.isEmpty, isError2: hasEmptyFields && lastName.isEmpty, maxLength: 239, labelText: "фамилия", type: "preUsual", prevText: "введите фамилию", keyboardType: .default, text: $lastName)
-//                .border(hasEmptyFields && lastName.isEmpty ? Color.red : Color.clear)
-            FieldView(isError: hasEmptyFields && email.isEmpty, isError2: hasEmptyFields && email.isEmpty, maxLength: 239, labelText: "почта", type: "email", prevText: "введите почту", keyboardType: .emailAddress, text: $email)
-//                .onChange(of: email) { newValue in
-//                        // Приводим текст к нижнему регистру
-//                        email = newValue.lowercased()
-//                    }
-//                .border(hasEmptyFields && email.isEmpty ? Color.red : Color.clear)
-            FieldView(isError: hasEmptyFields && password.isEmpty, isError2: hasEmptyFields && password.isEmpty, maxLength: 239, labelText: "пароль", type: "password", prevText: "введите пароль", keyboardType: .default, text: $password)
-//                .border(hasEmptyFields && password.isEmpty ? Color.red : Color.clear)
-                .padding(.horizontal, 15)
+        ScrollView {
             
-            Spacer()
             
-            ButtonView(title: "далее",  color: "main_color") {
-                // Check for empty fields
-                if firstName.isEmpty || lastName.isEmpty || email.isEmpty || password.isEmpty {
-                    hasEmptyFields = true
-                } else {
-                    isNext.toggle()
-                    signUp()
+            VStack {
+                FieldView(isError: hasEmptyFields && firstName.isEmpty, isError2: hasEmptyFields && firstName.isEmpty, maxLength: 239, labelText: "имя", type: "preUsual", prevText: "введите имя", keyboardType: .default, text: $firstName )
+                //                .border(hasEmptyFields && firstName.isEmpty ? Color.red : Color.clear)
+                FieldView(isError: hasEmptyFields && lastName.isEmpty, isError2: hasEmptyFields && lastName.isEmpty, maxLength: 239, labelText: "фамилия", type: "preUsual", prevText: "введите фамилию", keyboardType: .default, text: $lastName)
+                //                .border(hasEmptyFields && lastName.isEmpty ? Color.red : Color.clear)
+                FieldView(isError: hasEmptyFields && email.isEmpty, isError2: hasEmptyFields && email.isEmpty, maxLength: 239, labelText: "почта", type: "email", prevText: "введите почту", keyboardType: .emailAddress, text: $email)
+                //                .onChange(of: email) { newValue in
+                //                        // Приводим текст к нижнему регистру
+                //                        email = newValue.lowercased()
+                //                    }
+                //                .border(hasEmptyFields && email.isEmpty ? Color.red : Color.clear)
+                FieldView(isError: hasEmptyFields && password.isEmpty, isError2: hasEmptyFields && password.isEmpty, maxLength: 239, labelText: "пароль", type: "password", prevText: "введите пароль", keyboardType: .default, text: $password)
+                //                .border(hasEmptyFields && password.isEmpty ? Color.red : Color.clear)
+                    .padding(.horizontal, 15)
+                
+                Spacer()
+                
+                ButtonView(title: "далее",  color: "main_color") {
+                    // Check for empty fields
+                    if firstName.isEmpty || lastName.isEmpty || email.isEmpty || password.isEmpty || !Validator.isPasswordCorrect(password: password) ||  !Validator.isEmailCorrect(email) {
+                        hasEmptyFields = true
+                    } else {
+                        isNext.toggle()
+                        signUp()
+                    }
                 }
+                .padding(.bottom, 5)
+                .navigationDestination(isPresented: $isNext) {
+                    RegistrationEdView(firstName: firstName, lastName: lastName, email: email, password: password)
+                }
+                .padding(.horizontal, 100)
+                .frame(maxWidth: .infinity)
+                .padding(.bottom, 15)
             }
-            .navigationDestination(isPresented: $isNext) {
-                RegistrationEdView(firstName: firstName, lastName: lastName, email: email, password: password)
-            }
-            .padding(.horizontal, 100)
-            .padding(.bottom, 15)
         }
         .padding(.top, 5)
         .navigationBarBackButtonHidden(true)

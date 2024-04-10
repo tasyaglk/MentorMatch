@@ -42,8 +42,6 @@ class AuthFirebase: ObservableObject {
     let db = Firestore.firestore()
     @Published var errorMessage: String?
     
-//    @StateObject var unsplashAPIManager = UnsplashAPIManager()
-    
     init() {
         DispatchQueue.main.async {
             self.isUserLoggedOut = self.auth.currentUser?.uid == nil
@@ -103,7 +101,6 @@ class AuthFirebase: ObservableObject {
                     let educationData = data["education"] as? [String: Any] ?? [:]
                     let workData = data["work"] as? [String: Any] ?? [:]
                     let expertisesData = data["expertises"] as? [[String: Any]]  ?? [[:]]
-                    let ordersData = data["orders"] as? [[String: Any]]  ?? [[:]]
                     
                     let place = educationData["place"] as? String ?? ""
                     let degree = educationData["degree"] as? String ?? ""
@@ -148,7 +145,6 @@ class AuthFirebase: ObservableObject {
     
     func getUserByEmail(email: String) -> UserM {
         for user in users {
-//            print(user.email)
             if user.email == email {
                 return user
             }
@@ -199,11 +195,8 @@ class AuthFirebase: ObservableObject {
             expertisesData.append(expertiseData)
         }
         
-       
-
-        
         let db = Firestore.firestore()
-        var userData: [String: Any] = [
+        let userData: [String: Any] = [
             "firstName": firstName,
             "lastName": lastName,
             "email": email,
@@ -222,8 +215,6 @@ class AuthFirebase: ObservableObject {
             "expertises": expertisesData,
             "photoURL": ""
         ]
-        
-        
         
         db.collection("users").document(email).setData(userData) { error in
             if let error = error {
@@ -255,36 +246,6 @@ class AuthFirebase: ObservableObject {
         }
     }
     
-//    func checkExistingUserAndSignUp(email: String) -> Bool {
-//        let db = Firestore.firestore()
-//        var ans: Bool = false
-//        
-//        // Запрашиваем документ с данными пользователя по его email
-//        db.collection("users").document(email).getDocument(completion: <#T##(DocumentSnapshot?, Error?) -> Void#>){ (querySnapshot, error) in
-//            if let error = error {
-//                // Обработка ошибки запроса
-//                print("Ошибка при запросе пользователя: \(error.localizedDescription)")
-//                return
-//            }
-//            
-//            guard let documents = querySnapshot?.documents else {
-//                // Документы не найдены
-//                print("Документы не найдены")
-//                return
-//            }
-//            
-//            if documents.isEmpty {
-//                // Пользователь с такой почтой не найден, регистрируемся
-//                ans = false
-//                print("hjhfbvovboevbqoieboervboierbqoiebqirbvpqirbvqpibvqperibvpqebpqeirbpqerpqeribuvpqeir")
-//            } else {
-//                // Пользователь с такой почтой уже существует, выводим алерт
-//                ans = true
-//            }
-//        }
-//        return ans
-//    }
-    
     func checkUserExists(email: String, completion: @escaping (Bool) -> Void) {
         db.collection("users").whereField("email", isEqualTo: email).getDocuments { (querySnapshot, error) in
             if let error = error {
@@ -292,70 +253,11 @@ class AuthFirebase: ObservableObject {
                 completion(false)
             } else {
                 if let documents = querySnapshot?.documents, !documents.isEmpty {
-                    // Пользователь с такой почтой найден
                     completion(true)
                 } else {
-                    // Пользователь с такой почтой не найден
                     completion(false)
                 }
             }
-//            print("hghkgchcciuctutc")
         }
     }
-
-//    func savePhotoToFirebase(imageData: Data) {
-//        let storage = Storage.storage()
-//        let storageRef = storage.reference()
-//        let photoRef = storageRef.child("photos").child("\(UUID().uuidString).jpg")
-//
-//        let metadata = StorageMetadata()
-//        metadata.contentType = "image/jpeg"
-//
-//        let _ = photoRef.putData(imageData, metadata: metadata) { metadata, error in
-//            guard let _ = metadata else {
-//                print("Ошибка при загрузке изображения: \(error?.localizedDescription ?? "Неизвестная ошибка")")
-//                return
-//            }
-//
-//            photoRef.downloadURL { url, error in
-//                guard let downloadURL = url else {
-//                    print("Ошибка при получении ссылки на загруженное изображение: \(error?.localizedDescription ?? "Неизвестная ошибка")")
-//                    return
-//                }
-//                
-//                // Обновляем профиль пользователя в базе данных
-//                self.updateUserProfile(photoURL: downloadURL.absoluteString)
-//            }
-//        }
-//    }
-
-    func updateUserProfile(photoURL: String) {
-        // Получаем ссылку на базу данных Firebase
-        let db = Firestore.firestore()
-        
-        // Получаем текущего пользователя (предполагается, что у вас есть механизм аутентификации пользователя)
-        guard let currentUserID = Auth.auth().currentUser?.uid else {
-            print("Пользователь не аутентифицирован")
-            return
-        }
-        
-        // Обновляем данные о фотографии пользователя в базе данных
-        let userRef = db.collection("users").document(currentUserID)
-        userRef.updateData([
-            "photoURL": photoURL
-        ]) { error in
-            if let error = error {
-                print("Ошибка при обновлении профиля пользователя: \(error.localizedDescription)")
-            } else {
-                print("Профиль пользователя успешно обновлен")
-            }
-        }
-    }
-
-    
-    
 }
-
-
-// t4@t.ru
-/// tttttt
