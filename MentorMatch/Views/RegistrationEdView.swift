@@ -57,16 +57,13 @@ struct RegistrationEdView: View {
                     if educationLevel.isEmpty || educationPlace.isEmpty || educationStartYear.isEmpty || educationEndYear.isEmpty  {
                         hasEmptyFields = true
                     } else {
-                        // Проверка условия start <= end
                         if let startYear = Int(educationStartYear), let endYear = Int(educationEndYear) {
                             if startYear <= endYear {
                                 isNext.toggle()
                             } else {
-                                // Показываем ошибку
                                 errorMessage = "Год окончания образования должен быть больше или равен году начала"
                             }
                         } else {
-                            // Если введены некорректные годы
                             errorMessage = "Некорректно введены годы начала и окончания образования"
                         }
                     }
@@ -74,14 +71,12 @@ struct RegistrationEdView: View {
                 .padding(.bottom, 5)
                 .navigationBarBackButtonHidden(true)
                 .navigationBarItems(
-                    //                                leading: CustomBackButton(text: ""),
                     trailing:  Button(action: {
                         isNext.toggle()
                         educationPlace = ""
                         educationLevel = ""
                         educationStartYear  = ""
                         educationEndYear  = ""
-                        //presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("пропустить")
                             .foregroundColor(Color("main_color"))

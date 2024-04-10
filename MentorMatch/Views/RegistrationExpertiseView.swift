@@ -119,7 +119,5 @@ struct RegistrationExpertiseView: View {
                 self.expertises = authFirebase.createExpertises()
                 
             }
-        
-        
     }
 }

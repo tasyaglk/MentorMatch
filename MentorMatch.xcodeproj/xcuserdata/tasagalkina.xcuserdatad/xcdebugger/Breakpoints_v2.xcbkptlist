@@ -14,10 +14,10 @@
             filePath = "MentorMatch/Views/WelcomeView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "previews"
-            landmarkType = "24">
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,8 +30,8 @@
             filePath = "MentorMatch/Views/SettingsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -93,8 +93,8 @@
             filePath = "MentorMatch/Views/LoginView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "content"
             landmarkType = "24">
          </BreakpointContent>
@@ -513,8 +513,8 @@
             filePath = "MentorMatch/Views/ProfileView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -651,8 +651,8 @@
             filePath = "MentorMatch/Views/ProfileView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -983,10 +983,10 @@
             filePath = "MentorMatch/ViewModel/SaveFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "saveExpertiseInfo(email:expertises:)"
-            landmarkType = "7">
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "AuthFirebase"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -999,8 +999,8 @@
             filePath = "MentorMatch/ViewModel/SaveFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "saveExpertiseInfo(email:expertises:)"
             landmarkType = "7">
             <Locations>
@@ -1077,10 +1077,10 @@
             filePath = "MentorMatch/ViewModel/SaveFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "saveOrder(email:order:)"
-            landmarkType = "7">
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "AuthFirebase"
+            landmarkType = "21">
             <Locations>
                <Location
                   uuid = "54403CC7-6584-4872-841C-A90B33FC47D0 - 2bb62a6d6d777e64"
@@ -1125,10 +1125,10 @@
             filePath = "MentorMatch/ViewModel/SaveFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "AuthFirebase"
-            landmarkType = "21">
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "saveExpertiseInfo(email:expertises:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1522,69 +1522,6 @@
             endingLineNumber = "130"
             landmarkName = "OrderSearchView"
             landmarkType = "14">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2DED83A5-4EF1-4A1D-979D-CF9D46DE31FD"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MentorMatch/Views/RegistrationExpertiseView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "2DED83A5-4EF1-4A1D-979D-CF9D46DE31FD - 4763f483d9aa7603"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentorMatch.RegistrationExpertiseView.body.getter : some"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/Views/RegistrationExpertiseView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108"
-                  offsetFromSymbolStart = "2636">
-               </Location>
-               <Location
-                  uuid = "2DED83A5-4EF1-4A1D-979D-CF9D46DE31FD - 892a2a71279606a1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #8 () -&gt; SwiftUI.Alert in MentorMatch.RegistrationExpertiseView.body.getter : some"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/Views/RegistrationExpertiseView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  uuid = "2DED83A5-4EF1-4A1D-979D-CF9D46DE31FD - 4763f483d9aa71ee"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentorMatch.RegistrationExpertiseView.body.getter : some"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/Views/RegistrationExpertiseView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
-                  offsetFromSymbolStart = "3108">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2852,8 +2789,8 @@
             filePath = "MentorMatch/Views/SettingsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -2868,8 +2805,8 @@
             filePath = "MentorMatch/Views/SettingsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>

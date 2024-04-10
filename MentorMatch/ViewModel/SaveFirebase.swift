@@ -16,7 +16,6 @@ extension AuthFirebase {
     
         db.collection("users").document(email).getDocument { document, error in
             if let document = document, document.exists {
-                // Данные пользователя
                 var userData = document.data() ?? [:]
                 userData["firstName"] = firstName
                 userData["lastName"] = lastName

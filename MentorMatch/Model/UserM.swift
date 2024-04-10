@@ -36,7 +36,6 @@ struct UserM: Comparable, Identifiable {
 
 extension UserM {
     init() {
-//    id = 
         firstName = "Таисия"
         lastName = "Галкина"
         status = "Всем привет!"

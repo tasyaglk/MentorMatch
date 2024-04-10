@@ -55,13 +55,6 @@ struct WelcomeView: View {
     }
 }
 
-
-
-
-//#Preview {
-//    WelcomeView(isLoggedIn: false)
-//}
-
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
         WelcomeView()

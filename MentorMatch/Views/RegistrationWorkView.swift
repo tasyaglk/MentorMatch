@@ -76,14 +76,12 @@ struct RegistrationWorkView: View {
                 }
                 .navigationBarBackButtonHidden(true)
                 .navigationBarItems(
-                    //                                leading: CustomBackButton(text: ""),
                     trailing:  Button(action: {
                         isNext.toggle()
                         workPlace = ""
                         position = ""
                         workStartYear  = ""
                         workEndYear  = ""
-                        //presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("пропустить")
                             .foregroundColor(Color("main_color"))
@@ -91,7 +89,6 @@ struct RegistrationWorkView: View {
                 )
                 .navigationDestination(
                     isPresented: $isNext) {
-                        //                    TabBar()
                         RegistrationExpertiseView(firstName: firstName, lastName: lastName, email: email, password: password, educationPlace: educationPlace, educationLevel: educationLevel, educationStartYear: educationStartYear, educationEndYear: educationEndYear, workPlace: workPlace, position: position, workStartYear: workStartYear, workEndYear: workEndYear)
                     }
                     .padding(.horizontal, 100)

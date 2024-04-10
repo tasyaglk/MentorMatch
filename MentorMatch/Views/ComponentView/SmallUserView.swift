@@ -17,11 +17,9 @@ struct SmallUserView: View {
     @StateObject var imageLoader = ImageLoader()
     
     @State var viewUserProfile: Bool = false
-    // MARK: - Body
     var body: some View {
         
         Button(action: {
-//            UserView(userr: user)
             viewUserProfile.toggle()
         }, label: {
             HStack {
@@ -30,15 +28,15 @@ struct SmallUserView: View {
                         Image("Image")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .clipShape(Circle()) // Делает изображение круглым
-                            .frame(width: 50, height: 50) // Устанавливает средний размер
+                            .clipShape(Circle())
+                            .frame(width: 50, height: 50)
                     } else {
                         if let image = imageLoader.image {
                             Image(uiImage: image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .clipShape(Circle()) // Делает изображение круглым
-                                .frame(width: 50, height: 50) // Устанавливает средний размер
+                                .clipShape(Circle())
+                                .frame(width: 50, height: 50)
                         } else {
                             Text("Загрузка...")
                                 .padding()
@@ -55,7 +53,7 @@ struct SmallUserView: View {
                         .font(.system(size: 12))
                         .fontWeight(.bold)
                     Text(userr.status)
-                        //.font(.title)
+                    //.font(.title)
                         .fontWeight(.thin)
                         .font(.system(size: 12))
                 }
@@ -63,13 +61,11 @@ struct SmallUserView: View {
             Spacer()
         })
         .navigationBarBackButtonHidden(true)
-        //.navigationBarItems(leading: CustomBackButton(text: "3"))
         .navigationDestination(
             isPresented: $viewUserProfile) {
                 UserView(userr: userr)
-    //                            RegistrationExpertiseView(firstName: "", lastName: "", email: "", password: "", educationPlace: "", educationLevel: "", educationStartYear: "", educationEndYear: "", workPlacePlace: "", position: "", workStartYear: "", workEndYear: "")
             }
-        .foregroundColor(.black)
+            .foregroundColor(.black)
     }
     
     

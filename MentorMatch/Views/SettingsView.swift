@@ -95,7 +95,7 @@ struct SettingsView: View {
                 .navigationBarItems(leading: CustomBackButton(text: ""))
                 .navigationDestination(
                     isPresented: $isOrder) {
-                        OrdersView() //
+                        OrdersView() 
                     }
                 
                 Spacer()
@@ -105,7 +105,6 @@ struct SettingsView: View {
                     
                 }
                 .padding(.horizontal, 100)
-                //            }
             }
         }
             .onAppear {

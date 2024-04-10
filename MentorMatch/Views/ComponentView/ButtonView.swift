@@ -19,7 +19,6 @@ struct ButtonView: View {
             buttonClicked?()
         }, label: {
             Text(title)
-//                .font(.dl.mainFont())
                 .fontWeight(.bold)
                 .font(.system(size: 25))
                 .foregroundColor(.black)

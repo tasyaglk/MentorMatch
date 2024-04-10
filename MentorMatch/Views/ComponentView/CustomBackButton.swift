@@ -20,12 +20,10 @@ struct CustomBackButton: View {
             HStack {
                 Image(systemName: "chevron.left")
                     .fontWeight(.bold)
-                    //.padding(.leading, 15)
                     .foregroundColor(.black)
                 Text(text)
                     .fontWeight(.bold)
                     .foregroundColor(.black)
-                    //.font(.dl.mainFont())
             }
         }
     }

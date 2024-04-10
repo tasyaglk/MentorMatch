@@ -25,7 +25,6 @@ struct UserView: View {
     
     init(userr: UserM) {
             self.userr = userr
-            // Скрыть стандартный заголовок навигации
             UINavigationBar.appearance().isHidden = true
         }
     
@@ -120,11 +119,9 @@ struct UserView: View {
                 if !allSkillsSelected {
                     VStack {
                         ForEach(userr.expertise!) { expertiseItem in
-                            // Вывод экспертиз
                             if expertiseItem.isChecked == true {
                                 HStack {
                                     Text("\(expertiseItem.name)")
-                                    //.padding(.horizontal, 5)
                                     
                                     Spacer()
                                     ForEach(1..<6) { index in

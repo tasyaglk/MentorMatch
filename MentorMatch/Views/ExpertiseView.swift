@@ -40,7 +40,6 @@ struct ExpertiseView: View {
         .navigationBarItems(leading: CustomBackButton(text: "навыки"))
         .onAppear {
             expertises = user.expertise!
-//            print(expertises)
         }
     }
         

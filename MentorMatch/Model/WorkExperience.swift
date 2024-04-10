@@ -20,12 +20,3 @@ struct WorkExperience{
         self.endYear = endYear
     }
 }
-
-//extension WorkExperience {
-//    init(companyName: String, position: String, startYear: String, endYear: String) {
-//        self.companyName = companyName
-//        self.position = position
-//        self.startYear = startYear
-//        self.endYear = endYear
-//    }
-//}

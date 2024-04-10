@@ -102,8 +102,6 @@ struct FieldView: View {
                 Text(labelText)
                     .font(.headline)
                     .foregroundColor(isError || isError2 ? Color("attention") : Color.gray)
-                //                    .foregroundColor(isError ? Color("attention") : Color.gray)
-                //                    .foregroundColor(isError2 ? Color("attention") : Color.gray)
                 TextField(prevText, text: $text, axis: .vertical)
                     .padding()
                     .background(Color.white)
@@ -112,8 +110,6 @@ struct FieldView: View {
                     .keyboardType(keyboardType)
                     .overlay(RoundedRectangle(cornerRadius: 15).stroke(isError2 ? Color("attention") : Color.gray, lineWidth: 8))
                     .cornerRadius(15)
-                //.padding(.horizontal, 15)
-                //.padding(.top, 100)
                     .lineLimit(30)
                 
                 if maxLength != 239 {
@@ -125,19 +121,11 @@ struct FieldView: View {
                 
             }
             .padding(.horizontal, 15)
-            //            .onChange(of: text) { newValue in
-            //                    // Проверяем корректность электронной почты и устанавливаем значение isError
-            //                isError2 = !Validator.isNotEmpty(newValue)
-            //                }
-            
-            //.padding(.vertical, 2)
         }  else if type == "digitals" {
             VStack(alignment: .leading, spacing: 2) {
                 Text(labelText)
                     .font(.headline)
                     .foregroundColor(isError || isError2 ? Color("attention") : Color.gray)
-                //                    .foregroundColor(isError ? Color("attention") : Color.gray)
-                //                    .foregroundColor(isError2 ? Color("attention") : Color.gray)
                 TextField(prevText, text: $text, axis: .vertical)
                     .padding()
                     .background(Color.white)
@@ -146,8 +134,6 @@ struct FieldView: View {
                     .keyboardType(keyboardType)
                     .overlay(RoundedRectangle(cornerRadius: 15).stroke(isError || isError2 ? Color("attention") : Color.gray, lineWidth: 8))
                     .cornerRadius(15)
-                //.padding(.horizontal, 15)
-                //.padding(.top, 100)
                     .lineLimit(30)
                 
                 
@@ -161,18 +147,13 @@ struct FieldView: View {
             }
             .padding(.horizontal, 15)
             .onChange(of: text) { newValue in
-                // Проверяем корректность электронной почты и устанавливаем значение isError
                 isError = !Validator.isOnlyDigits(newValue)
             }
-            
-            //.padding(.vertical, 2)
-        }  else if type == "email" { //why not lowerCase???
+        }  else if type == "email" {
             VStack(alignment: .leading, spacing: 2) {
                 Text(labelText)
                     .font(.headline)
-                //                    .foregroundColor(Color.gray)
                     .foregroundColor(isError || isError2 ? Color("attention") : Color.gray)
-                //                    .foregroundColor(isError2 ? Color("attention") : Color.gray)
                 TextField(prevText, text: $text, axis: .vertical)
                     .padding()
                     .background(Color.white)
@@ -183,9 +164,6 @@ struct FieldView: View {
                     .cornerRadius(15)
                     .textContentType(.emailAddress)
                     .autocapitalization(.none)
-                //.padding(.horizontal, 15)
-                //.padding(.top, 100)
-                // .lineLimit(30)
                 
                 if maxLength != 239 {
                     Text("\(text.count)/\(maxLength)")
@@ -197,18 +175,14 @@ struct FieldView: View {
             }
             .padding(.horizontal, 15)
             .onChange(of: text) { newValue in
-                // Проверяем корректность электронной почты и устанавливаем значение isError
                 isError = !Validator.isEmailCorrect(newValue)
             }
-            //.padding(.vertical, 2)
         } else if type == "passwordLogin" {
             VStack(alignment: .leading, spacing: 2) {
                 if labelText != "" {
                     Text(labelText)
                         .font(.headline)
                         .foregroundColor(isError2 ? Color("attention") : Color.gray)
-                    //                    .foregroundColor(isError ? Color("attention") : Color.gray)
-                    //                    .foregroundColor(isError2 ? Color("attention") : Color.gray)
                 }
                 SecureField(prevText, text: $text)
                     .padding()
@@ -216,27 +190,18 @@ struct FieldView: View {
                     .cornerRadius(15)
                     .keyboardType(keyboardType)
                     .overlay(RoundedRectangle(cornerRadius: 15).stroke(isError2 ? Color("attention") : Color.gray, lineWidth: 8))
-                //                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(isError2 ? Color("attention") : Color.gray, lineWidth: 8))
                     .cornerRadius(15)
-                //.padding(.horizontal, 15)
-                //.padding(.top, 10)
                 
                 
             }
             .onChange(of: text) { newValue in
-                // Проверяем корректность электронной почты и устанавливаем значение isError
                 isError = !Validator.isPasswordCorrect(password: newValue)
             }
-            //.padding(.horizontal, 15)
-            
-            //.padding(.vertical, 2)
         } else if type == "emailLogin" {
             VStack(alignment: .leading, spacing: 2) {
                 Text(labelText)
                     .font(.headline)
-                //                    .foregroundColor(Color.gray)
                     .foregroundColor(isError2 ? Color("attention") : Color.gray)
-                //                    .foregroundColor(isError2 ? Color("attention") : Color.gray)
                 TextField(prevText, text: $text, axis: .vertical)
                     .padding()
                     .background(Color.white)
@@ -247,9 +212,6 @@ struct FieldView: View {
                     .cornerRadius(15)
                     .textContentType(.emailAddress)
                     .autocapitalization(.none)
-                //.padding(.horizontal, 15)
-                //.padding(.top, 100)
-                // .lineLimit(30)
                 
                 if maxLength != 239 {
                     Text("\(text.count)/\(maxLength)")
@@ -261,21 +223,9 @@ struct FieldView: View {
             }
             .padding(.horizontal, 15)
             .onChange(of: text) { newValue in
-                // Проверяем корректность электронной почты и устанавливаем значение isError
                 isError = !Validator.isEmailCorrect(newValue)
             }
-            //.padding(.vertical, 2)
         }
     }
 }
-
-
-//    struct FieldView_Previews: PreviewProvider {
-//        static var previews: some View {
-//            FieldView(maxLength: 239, labelText: "Описание", prevText: "Таисия", type: "usual", keyboardType: .numberPad, text: <#Binding<String>#>)
-//            //            .previewLayout(.sizeThatFits)
-//            //            .padding()
-//        }
-//    } ASAS@E.ry
-
 

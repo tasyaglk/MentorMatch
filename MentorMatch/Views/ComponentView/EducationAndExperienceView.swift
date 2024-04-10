@@ -24,11 +24,6 @@ struct EducationAndExperienceView: View {
                     .font(.body)
                 Text("\(label3) - \(label4)")
             }
-            ///Spacer()
-            //.padding(.horizontal)
-            //.padding()
-            //.background(Color.gray.opacity(0.1))
-            //.cornerRadius(8)
         }
     
 }
@@ -37,7 +32,5 @@ struct EducationAndExperienceView: View {
 struct EducationAndExperienceView_Previews: PreviewProvider {
     static var previews: some View {
         EducationAndExperienceView(label1: "ВШЭ", label2: "бакалавриат", label3: "2021", label4: "2025")
-//            .previewLayout(.sizeThatFits)
-//            .padding()
     }
 }

@@ -38,13 +38,10 @@ struct FullOrderDescription: View {
                 .padding(.horizontal)
             Spacer()
         }
-//        .frame(minWidth: 0, alignment: .leading)
         .padding(.top)
         .padding(.horizontal)
         
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton(text: ""))
     }
-    
-    //    }
 }

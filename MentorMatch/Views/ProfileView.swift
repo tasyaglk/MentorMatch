@@ -25,7 +25,6 @@ struct ProfileView: View {
     var body: some View {
         let userr = viewModel.getUser() ?? UserM()
         let imageURL: String = userr.photoURL ?? ""
-        //        Text(userr.email)
         
         ScrollView {
             
