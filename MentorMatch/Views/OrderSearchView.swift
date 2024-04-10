@@ -45,11 +45,12 @@ struct OrderSearchView: View {
             ZStack {
                 ScrollView {
                     VStack(alignment: .leading) {
-                        ForEach(viewModel.strangersOrders, id: \.self) { order in
-                            //                                Text(order.byUserEmail)
+                        
+
+                        ForEach(viewModel.strangersOrders.reversed(), id: \.self) { order in
                             if order.byUserEmail.lowercased() != viewModel.auth.currentUser?.email && order.isActive == true {
                                 let user = viewModel.getUserByEmail(email: order.byUserEmail)
-                                if viewModel.zalupa(selectedSkills: selectedSkills, order: order) {
+                                if viewModel.isOrderHasSkills(selectedSkills: selectedSkills, order: order) {
                                     StrangerOrderView(order: order, user: user)
                                         .padding(.horizontal)
                                     Divider()
@@ -155,8 +156,13 @@ struct OrderSearchView: View {
             Spacer()
         }
         .onAppear {
-            allSkills = viewModel.skillsName
+            allSkills = viewModel.skillsName.sorted()
             viewModel.fetchAllStrangersOrders()
+            viewModel.strangersOrders = viewModel.strangersOrders.sorted(by: { (firstOrder, secondOrder) -> Bool in
+                return firstOrder.byUserEmail < secondOrder.byUserEmail
+            })
+
+
         }
         .navigationBarTitle("New Order")
         .padding(.top, 70)

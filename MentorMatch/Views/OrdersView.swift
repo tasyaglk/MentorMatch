@@ -41,7 +41,7 @@ struct OrdersView: View {
                         ForEach(viewModel.orders, id: \.self) { order in
                             //                        isActive = order.isActive
                             if order.byUserEmail == user.email{
-                                if viewModel.zalupa(selectedSkills: selectedSkills, order: order) {
+                                if viewModel.isOrderHasSkills(selectedSkills: selectedSkills, order: order) {
                                     OrderView(order: order, isActive: order.isActive)
                                         .padding(.horizontal)
                                     Divider()
@@ -53,8 +53,6 @@ struct OrdersView: View {
                 }
                 
             }
-//        }
-//        .navigationViewStyle(.stack)
         .onAppear {
             allSkills = viewModel.skillsName
             viewModel.fetchAllOrders()

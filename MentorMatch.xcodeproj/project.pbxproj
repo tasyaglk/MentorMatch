@@ -202,8 +202,6 @@
 		001A66E62B99F0EE006C9425 /* MentorMatch */ = {
 			isa = PBXGroup;
 			children = (
-				001A676D2B9DE9EE006C9425 /* ComponentView */,
-				001A676B2B9CC750006C9425 /* AGroticextrabold.ttf */,
 				001A672D2B9BC105006C9425 /* Model */,
 				001A672C2B9BBF71006C9425 /* ViewModel */,
 				001A671D2B9B9B92006C9425 /* Views */,
@@ -212,6 +210,7 @@
 				001A66ED2B99F0EF006C9425 /* Preview Content */,
 				001A67222B9BB837006C9425 /* TabBar.swift */,
 				0062D85F2BA39F1D00219D5A /* GoogleService-Info.plist */,
+				001A676B2B9CC750006C9425 /* AGroticextrabold.ttf */,
 				00719FA92BC20D0700C98F49 /* Validator.swift */,
 			);
 			path = MentorMatch;
@@ -246,6 +245,7 @@
 		001A671D2B9B9B92006C9425 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				001A676D2B9DE9EE006C9425 /* ComponentView */,
 				001A67242B9BBBD9006C9425 /* CommunityView.swift */,
 				001A67782B9E1297006C9425 /* EducationView.swift */,
 				001A677E2B9E6B83006C9425 /* ExperienceView.swift */,
@@ -273,9 +273,9 @@
 			isa = PBXGroup;
 			children = (
 				0062D83B2BA35CA600219D5A /* AuthFirebase.swift */,
-				00719F992BBC5D1700C98F49 /* SkillsFirebase.swift */,
-				00719F9B2BBC9C3500C98F49 /* SaveFirebase.swift */,
 				00719F9F2BBF221E00C98F49 /* OrderFirebase.swift */,
+				00719F9B2BBC9C3500C98F49 /* SaveFirebase.swift */,
+				00719F992BBC5D1700C98F49 /* SkillsFirebase.swift */,
 				00719FCE2BC5AEDA00C98F49 /* UnsplashAPIManager.swift */,
 			);
 			path = ViewModel;
@@ -284,11 +284,11 @@
 		001A672D2B9BC105006C9425 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				001A672E2B9BC11A006C9425 /* UserM.swift */,
 				001A67302B9BC23C006C9425 /* Education.swift */,
-				001A67322B9BC254006C9425 /* WorkExperience.swift */,
 				0062D81D2B9F1AAE00219D5A /* Expertise.swift */,
 				0062D8372BA24F8200219D5A /* Order.swift */,
+				001A672E2B9BC11A006C9425 /* UserM.swift */,
+				001A67322B9BC254006C9425 /* WorkExperience.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

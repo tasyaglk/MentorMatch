@@ -186,42 +186,7 @@ class AuthFirebase: ObservableObject {
         }
     }
     
-    func fetchAndSaveRandomImage(completion: @escaping (Result<URL, Error>) -> Void) {
-            guard let url = URL(string: "https://random-image-pepebigotes.vercel.app/api/random-image") else {
-                completion(.failure(NetworkError.invalidURL))
-                return
-            }
-
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                guard let data = data, error == nil else {
-                    completion(.failure(NetworkError.invalidData))
-                    return
-                }
-
-                let storage = Storage.storage()
-                let storageRef = storage.reference()
-                let imageRef = storageRef.child("images/\(UUID().uuidString).jpg")
-
-                let _ = imageRef.putData(data, metadata: nil) { metadata, error in
-                    guard let _ = metadata else {
-                        completion(.failure(error ?? NetworkError.unknown))
-                        return
-                    }
-
-                    imageRef.downloadURL { url, error in
-                        if let url = url {
-                            completion(.success(url))
-                        } else {
-                            completion(.failure(error ?? NetworkError.unknown))
-                        }
-                    }
-                }
-            }.resume()
-        }
-    
     func insertNewUser(firstName: String, lastName: String, email: String, password: String, education: Education, workExperience: WorkExperience, expertises: [Expertise], completion: @escaping (Result<Bool, FBError>) -> Void) {
-        
-        var photoUrl = ""
         
         var expertisesData = [[String: Any]]()
         

@@ -137,39 +137,4 @@ extension AuthFirebase {
             }
         }
     }
-        
-        
-//        let newOrderDataDict: [String: Any] = [
-//            "isActive": order.isActive,
-//            "skills": order.selectedSkills,
-//            "comment": order.comment,
-//            "customerEmail": order.byUserEmail
-//        ]
-        
-//        print(order.id)
-        
-//        db.collection("users").document(email).updateData([
-//            "orders": FieldValue.arrayUnion([newOrderDataDict])
-//        ]) { error in
-//            if let error = error {
-//                print("Ошибка при обновлении данных об навыках: \(error.localizedDescription)")
-//            } else {
-//                print("Данные об навыках пользователя успешно обновлены.")
-//            }
-//        }
-//        
-//        db.collection("orders").addDocument(data: [
-//            "isActive": order.isActive,
-//            "skills": order.selectedSkills,
-//            "comment": order.comment,
-//            "customerEmail": order.byUserEmail
-//        ]) { error in
-//            if let error = error {
-//                print("Ошибка при сохранении заказа: \(error.localizedDescription)")
-//            } else {
-//                print("Заказ успешно сохранен.")
-//            }
-//        }
-        
-//    }
 }

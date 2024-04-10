@@ -26,7 +26,7 @@ struct EducationView: View {
         VStack {
             FieldView(isError: hasEmptyFields && educationPlace.isEmpty,isError2: hasEmptyFields && educationPlace.isEmpty,maxLength: 239, labelText: "образование", type: "settings", prevText: user.education?.place ?? "", keyboardType: .default, text: $educationPlace)
                 .padding(.top, 15)
-            FieldView(isError: hasEmptyFields && educationLevel.isEmpty,isError2: hasEmptyFields && educationLevel.isEmpty, maxLength: 239, labelText: "степень", type: "settings", prevText: user.education?.degree  ?? "", keyboardType: .default, text: $educationLevel)
+            FieldView(isError: hasEmptyFields && educationLevel.isEmpty,isError2: hasEmptyFields && educationLevel.isEmpty, maxLength: 239, labelText: "специализация", type: "settings", prevText: user.education?.degree  ?? "", keyboardType: .default, text: $educationLevel)
             
             HStack {
                 FieldView(isError: hasEmptyFields && educationStartYear.isEmpty,isError2: hasEmptyFields && educationStartYear.isEmpty,maxLength: 239, labelText: "год начала", type: "digitals", prevText: user.education?.startYear  ?? "", keyboardType: .numberPad, text: $educationStartYear)

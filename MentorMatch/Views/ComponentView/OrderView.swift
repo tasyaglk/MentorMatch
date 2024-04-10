@@ -23,7 +23,6 @@ struct OrderView: View {
     
     var body: some View  {
         let user = viewModel.getUser() ?? UserM()
-//        NavigationView{
             VStack(alignment: .leading) {
                 Text(order.comment)
                     .bold()
@@ -50,7 +49,5 @@ struct OrderView: View {
                     }
                 }
             }
-//        }
-//        .navigationViewStyle(.stack)
     }
 }

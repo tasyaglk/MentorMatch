@@ -39,7 +39,7 @@ struct RegistrationEdView: View {
         VStack {
             FieldView(isError: hasEmptyFields && educationPlace.isEmpty,isError2: hasEmptyFields && educationPlace.isEmpty,maxLength: 239, labelText: "образование", type: "preUsual", prevText: "введите название учебного заведения", keyboardType: .default, text: $educationPlace)
                 .padding(.top, 15)
-            FieldView(isError: hasEmptyFields && educationLevel.isEmpty,isError2: hasEmptyFields && educationLevel.isEmpty,maxLength: 239, labelText: "степень", type: "preUsual", prevText: "введите полученную степень", keyboardType: .default, text: $educationLevel)
+            FieldView(isError: hasEmptyFields && educationLevel.isEmpty,isError2: hasEmptyFields && educationLevel.isEmpty,maxLength: 239, labelText: "специализация", type: "preUsual", prevText: "введите полученную специализацию", keyboardType: .default, text: $educationLevel)
             
             HStack {
                 FieldView(isError: hasEmptyFields && educationStartYear.isEmpty,isError2: hasEmptyFields && educationStartYear.isEmpty,maxLength: 239, labelText: "год начала", type: "digitals", prevText: "введите год", keyboardType: .numberPad, text: $educationStartYear)

@@ -933,8 +933,8 @@
             filePath = "MentorMatch/ViewModel/SkillsFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "createExpertises()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1068,102 +1068,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6F8D1167-2381-478A-9B10-CA4115AD9402"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MentorMatch/ViewModel/SkillsFirebase.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "getSkillsName()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6F8D1167-2381-478A-9B10-CA4115AD9402 - db1688a4fe230d04"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentorMatch.AuthFirebase.getSkillsName() -&gt; ()"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/ViewModel/SkillsFirebase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "211"
-                  endingLineNumber = "211"
-                  offsetFromSymbolStart = "388">
-               </Location>
-               <Location
-                  uuid = "6F8D1167-2381-478A-9B10-CA4115AD9402 - 3ae98da44f6c9828"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MentorMatch.AuthFirebase.getSkillsName() -&gt; ()"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/ViewModel/SkillsFirebase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "211"
-                  endingLineNumber = "211"
-                  offsetFromSymbolStart = "208">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9297FC99-2A73-4D4D-862A-408A6B296920"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MentorMatch/ViewModel/SkillsFirebase.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "getSkillsName()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9297FC99-2A73-4D4D-862A-408A6B296920 - db1688a4fe230d04"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentorMatch.AuthFirebase.getSkillsName() -&gt; ()"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/ViewModel/SkillsFirebase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "211"
-                  endingLineNumber = "211"
-                  offsetFromSymbolStart = "388">
-               </Location>
-               <Location
-                  uuid = "9297FC99-2A73-4D4D-862A-408A6B296920 - 3ae98da44f6c9828"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MentorMatch.AuthFirebase.getSkillsName() -&gt; ()"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/ViewModel/SkillsFirebase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "211"
-                  endingLineNumber = "211"
-                  offsetFromSymbolStart = "208">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "0D03DEB5-0D7B-41C4-A665-FB25EA126890"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1171,73 +1075,10 @@
             filePath = "MentorMatch/ViewModel/SkillsFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "getSkillsName()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CDC88DDF-FC0E-4729-9774-87565A6CA78A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MentorMatch/ViewModel/SkillsFirebase.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "getSkillsName()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "CDC88DDF-FC0E-4729-9774-87565A6CA78A - 3ae98da44f6c986a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MentorMatch.AuthFirebase.getSkillsName() -&gt; ()"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/ViewModel/SkillsFirebase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "209"
-                  endingLineNumber = "209"
-                  offsetFromSymbolStart = "104">
-               </Location>
-               <Location
-                  uuid = "CDC88DDF-FC0E-4729-9774-87565A6CA78A - de6c6a7f5ae3771c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MentorMatch.AuthFirebase.getSkillsName() -&gt; ()"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/ViewModel/SkillsFirebase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "209"
-                  endingLineNumber = "209"
-                  offsetFromSymbolStart = "1336">
-               </Location>
-               <Location
-                  uuid = "CDC88DDF-FC0E-4729-9774-87565A6CA78A - de6c6a7f5ae36de6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MentorMatch.AuthFirebase.getSkillsName() -&gt; ()"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/ViewModel/SkillsFirebase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "1336">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1378,114 +1219,6 @@
                   startingLineNumber = "109"
                   endingLineNumber = "109"
                   offsetFromSymbolStart = "132">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "384F83A6-1322-48DC-AED5-682B7283FE25"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MentorMatch/ViewModel/SaveFirebase.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "AuthFirebase"
-            landmarkType = "21">
-            <Locations>
-               <Location
-                  uuid = "384F83A6-1322-48DC-AED5-682B7283FE25 - 2bb62a6d6d777d4e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentorMatch.AuthFirebase.saveOrder(email: Swift.String, order: MentorMatch.Order) -&gt; ()"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/ViewModel/SaveFirebase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "131"
-                  endingLineNumber = "131"
-                  offsetFromSymbolStart = "1612">
-               </Location>
-               <Location
-                  uuid = "384F83A6-1322-48DC-AED5-682B7283FE25 - 2bb62a6d6d777d4e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentorMatch.AuthFirebase.saveOrder(email: Swift.String, order: MentorMatch.Order) -&gt; ()"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/ViewModel/SaveFirebase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "131"
-                  endingLineNumber = "131"
-                  offsetFromSymbolStart = "1620">
-               </Location>
-               <Location
-                  uuid = "384F83A6-1322-48DC-AED5-682B7283FE25 - 2bb62a6d6d777d4e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentorMatch.AuthFirebase.saveOrder(email: Swift.String, order: MentorMatch.Order) -&gt; ()"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/ViewModel/SaveFirebase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "131"
-                  endingLineNumber = "131"
-                  offsetFromSymbolStart = "2352">
-               </Location>
-               <Location
-                  uuid = "384F83A6-1322-48DC-AED5-682B7283FE25 - 2bb62a6d6d777d4e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentorMatch.AuthFirebase.saveOrder(email: Swift.String, order: MentorMatch.Order) -&gt; ()"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/ViewModel/SaveFirebase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "131"
-                  endingLineNumber = "131"
-                  offsetFromSymbolStart = "2196">
-               </Location>
-               <Location
-                  uuid = "384F83A6-1322-48DC-AED5-682B7283FE25 - 2bb62a6d6d777d6d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentorMatch.AuthFirebase.saveOrder(email: Swift.String, order: MentorMatch.Order) -&gt; ()"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/ViewModel/SaveFirebase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132"
-                  offsetFromSymbolStart = "2596">
-               </Location>
-               <Location
-                  uuid = "384F83A6-1322-48DC-AED5-682B7283FE25 - 2bb62a6d6d777d6d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentorMatch.AuthFirebase.saveOrder(email: Swift.String, order: MentorMatch.Order) -&gt; ()"
-                  moduleName = "MentorMatch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/ViewModel/SaveFirebase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132"
-                  offsetFromSymbolStart = "1600">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1893,8 +1626,8 @@
             filePath = "MentorMatch/Views/OrderSearchView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -1971,8 +1704,8 @@
             filePath = "MentorMatch/Views/OrderSearchView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -2079,8 +1812,8 @@
             filePath = "MentorMatch/Views/OrderSearchView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "OrderSearchView"
             landmarkType = "14">
          </BreakpointContent>
@@ -2095,8 +1828,8 @@
             filePath = "MentorMatch/Views/RegistrationExpertiseView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -2158,8 +1891,8 @@
             filePath = "MentorMatch/Views/RegistrationExpertiseView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -2193,6 +1926,36 @@
                   endingLineNumber = "52"
                   offsetFromSymbolStart = "32">
                </Location>
+               <Location
+                  uuid = "00FDC5DC-7497-430C-AA18-A800D930F9A3 - f127aa4d0f6aaf17"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in MentorMatch.RegistrationExpertiseView.body.getter : some"
+                  moduleName = "MentorMatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/Views/RegistrationExpertiseView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "284">
+               </Location>
+               <Location
+                  uuid = "00FDC5DC-7497-430C-AA18-A800D930F9A3 - b54813dc2120f891"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MentorMatch.Expertise) -&gt; Swift.Bool in closure #2 () -&gt; () in MentorMatch.RegistrationExpertiseView.body.getter : some"
+                  moduleName = "MentorMatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/Views/RegistrationExpertiseView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "32">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -2206,8 +1969,8 @@
             filePath = "MentorMatch/Views/RegistrationExpertiseView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -2269,8 +2032,8 @@
             filePath = "MentorMatch/Views/RegistrationExpertiseView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -2317,8 +2080,8 @@
             filePath = "MentorMatch/Views/RegistrationExpertiseView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -2365,8 +2128,8 @@
             filePath = "MentorMatch/Views/RegistrationExpertiseView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -2400,6 +2163,21 @@
                   endingLineNumber = "55"
                   offsetFromSymbolStart = "460">
                </Location>
+               <Location
+                  uuid = "63E55FCC-D6BF-4CF5-8CCC-AC95D6ECAB71 - f127aa4d0f6aae8a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in MentorMatch.RegistrationExpertiseView.body.getter : some"
+                  moduleName = "MentorMatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/Views/RegistrationExpertiseView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "460">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -2413,8 +2191,8 @@
             filePath = "MentorMatch/Views/NewOrderView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -2540,8 +2318,8 @@
             filePath = "MentorMatch/Views/OrdersView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -2651,8 +2429,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
             landmarkName = "checkUserExists(email:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3478,8 +3256,8 @@
             filePath = "MentorMatch/ViewModel/UnsplashAPIManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "10"
-            endingLineNumber = "10"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "UnsplashAPIManager"
             landmarkType = "3">
             <Locations>
@@ -3571,8 +3349,8 @@
             filePath = "MentorMatch/ViewModel/AuthFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "insertNewUser(firstName:lastName:email:password:education:workExperience:expertises:completion:)"
             landmarkType = "7">
             <Locations>
@@ -3680,8 +3458,8 @@
             filePath = "MentorMatch/Views/OrdersView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -3728,8 +3506,8 @@
             filePath = "MentorMatch/Views/CommunityView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -3776,10 +3554,88 @@
             filePath = "MentorMatch/Views/CommunityView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E2D1303-244B-4F62-8E9A-E2AAAF5C3BDB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentorMatch/Views/MentorSearchView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "8E2D1303-244B-4F62-8E9A-E2AAAF5C3BDB - 47708ff8857eb660"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;MentorMatch.UserM&gt;, Foundation.UUID, Swift.Optional&lt;Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;&gt; in closure #2 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.blur(radius: CoreGraphics.CGFloat, opaque: Swift.Bool) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.blur(radius: CoreGraphics.CGFloat, opaque: Swift.Bool) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;, SwiftUI.Spacer)&gt; in MentorMatch.MentorSearchView.body.getter : some"
+                  moduleName = "MentorMatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/Views/MentorSearchView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "236">
+               </Location>
+               <Location
+                  uuid = "8E2D1303-244B-4F62-8E9A-E2AAAF5C3BDB - 92840920331744f6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MentorMatch.UserM) -&gt; Swift.Optional&lt;Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;MentorMatch.UserM&gt;, Foundation.UUID, Swift.Optional&lt;Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;&gt; in closure #2 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.blur(radius: CoreGraphics.CGFloat, opaque: Swift.Bool) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.blur(radius: CoreGraphics.CGFloat, opaque: Swift.Bool) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;, SwiftUI.Spacer)&gt; in MentorMatch.MentorSearchView.body.getter : some"
+                  moduleName = "MentorMatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/Views/MentorSearchView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "744">
+               </Location>
+               <Location
+                  uuid = "8E2D1303-244B-4F62-8E9A-E2AAAF5C3BDB - 4db854841077d5cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.ReversedCollection&lt;Swift.Array&lt;MentorMatch.UserM&gt;&gt;, Foundation.UUID, Swift.Optional&lt;Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;&gt; in closure #2 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.blur(radius: CoreGraphics.CGFloat, opaque: Swift.Bool) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.blur(radius: CoreGraphics.CGFloat, opaque: Swift.Bool) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;, SwiftUI.Spacer)&gt; in MentorMatch.MentorSearchView.body.getter : some"
+                  moduleName = "MentorMatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/Views/MentorSearchView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "208">
+               </Location>
+               <Location
+                  uuid = "8E2D1303-244B-4F62-8E9A-E2AAAF5C3BDB - 6226dc47d341e0a0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MentorMatch.UserM) -&gt; Swift.Optional&lt;Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.ReversedCollection&lt;Swift.Array&lt;MentorMatch.UserM&gt;&gt;, Foundation.UUID, Swift.Optional&lt;Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;&gt; in closure #2 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.blur(radius: CoreGraphics.CGFloat, opaque: Swift.Bool) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.blur(radius: CoreGraphics.CGFloat, opaque: Swift.Bool) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;, SwiftUI.Spacer)&gt; in MentorMatch.MentorSearchView.body.getter : some"
+                  moduleName = "MentorMatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tasagalkina/Desktop/MentorMatch/MentorMatch/Views/MentorSearchView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "744">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

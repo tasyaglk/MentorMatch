@@ -40,6 +40,7 @@ struct RegistrationExpertiseView: View {
                     ExpertiseRowView(expertise: $expertises[index])
                 }
             }
+            .padding(.horizontal)
             .listStyle(GroupedListStyle())
             .background(Color.white)
             .scrollContentBackground(.hidden)
@@ -121,10 +122,3 @@ struct RegistrationExpertiseView: View {
         
     }
 }
-
-
-
-
-//#Preview {
-//    RegistrationEdView(firstName: "", lastName: "", email: "", password: "")
-//} tttttt

@@ -84,17 +84,5 @@ extension AuthFirebase {
         }
     }
     
-    func hui(selectedSkills: [String], user: UserM) -> Bool{
-        let selectedSkillsSet = Set(selectedSkills)
-        let userSkillNames = user.expertise?.compactMap { $0.isChecked ? $0.name : nil } ?? []
-        let userSkillNamesSet = Set(userSkillNames)
-        return selectedSkillsSet.isSubset(of: userSkillNamesSet)
-    }
     
-    func zalupa(selectedSkills: [String], order: Order) -> Bool{
-        let selectedSkillsSet = Set(selectedSkills)
-        let orderSkillNames = order.selectedSkills.compactMap { $0 } ?? []
-        let orderSkillNamesSet = Set(orderSkillNames)
-        return selectedSkillsSet.isSubset(of: orderSkillNamesSet)
-    }
 }
