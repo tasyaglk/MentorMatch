@@ -13,7 +13,11 @@ enum APIError: Error {
     case invalidResponse
 }
 
-class UnsplashAPIManager: ObservableObject {
+protocol UnsplashAPIProtocol {
+    static func getRandomPhoto(completion: @escaping (Result<String, Error>) -> Void)
+}
+
+class UnsplashAPIManager: ObservableObject, UnsplashAPIProtocol {
     static let baseURL = "https://api.unsplash.com"
     static let accessKey = "nEVFPBlEfIncdAbbFcuEk3PbRSmAzycD9ApSa35ihSk"
     
