@@ -8,8 +8,14 @@
 import Foundation
 import Firebase
 
+protocol OrderFirebaseProtocol {
+    func updateOrderStatusInUserDocument(email: String, orderID: String, isDone: Bool)
+    func deleteOrder(orderID: String)
+    func getOrders(email: String)
+    func fetchStrangersOrders(email: String)
+}
 
-extension AuthFirebase {
+extension AuthFirebase: OrderFirebaseProtocol {
     func updateOrderStatusInUserDocument(email: String, orderID: String, isDone: Bool) {
         let docRef = db.collection("users").document(email).collection("orders").document(orderID)
         docRef.updateData([
