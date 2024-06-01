@@ -8,14 +8,13 @@
 import Foundation
 import FirebaseFirestore
 
-struct Order: Identifiable, Codable, Hashable  {
-    
+struct Order: Orderable {
     @DocumentID var id: String?
     var isActive: Bool
     var selectedSkills: [String]
     var comment: String
     var byUserEmail: String
-  
+
     static func == (lhs: Order, rhs: Order) -> Bool {
         lhs.id == rhs.id
     }

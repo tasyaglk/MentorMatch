@@ -9,8 +9,7 @@
 
 import Foundation
 
-struct UserM: Comparable, Identifiable {
-    
+struct UserM: UserEntity {
     let id = UUID()
     var firstName: String
     var lastName: String
@@ -22,12 +21,11 @@ struct UserM: Comparable, Identifiable {
     var expertise: [Expertise]?
     var orders: [Order]?
     var photoURL: String?
-    
+
     static func ==(lhs: UserM, rhs: UserM) -> Bool {
-        lhs.firstName == rhs.firstName &&
-        lhs.lastName == rhs.lastName
+        lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName
     }
-    
+
     static func < (lhs: UserM, rhs: UserM) -> Bool {
         lhs.firstName < rhs.firstName
     }
@@ -44,6 +42,6 @@ extension UserM {
         education = Education(place: "ВШЭ", degree: "Бакалавриат", startYear: "2021", endYear: "2025")
         workExperience = WorkExperience(companyName: "", position: "", startYear: "", endYear: "")
         expertise = [Expertise(name: "ios-разработка", rating: 5, isChecked: true), Expertise(name: "С++", rating: 4, isChecked: true)]
-        orders = [Order(id: "1", isActive: true, selectedSkills: ["ios-developer"], comment: "lalala", byUserEmail: "t5@t.ru")]
+        orders = [Order(isActive: true, selectedSkills: ["ios-developer"], comment: "lalala", byUserEmail: "t5@t.ru")]
     }
 }

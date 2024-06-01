@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0000C4002C0B6888007F8B8D /* Educable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000C3FF2C0B6888007F8B8D /* Educable.swift */; };
+		0000C4022C0B6898007F8B8D /* Expertiseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000C4012C0B6898007F8B8D /* Expertiseable.swift */; };
+		0000C4042C0B68A5007F8B8D /* Orderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000C4032C0B68A5007F8B8D /* Orderable.swift */; };
+		0000C4062C0B68BC007F8B8D /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000C4052C0B68BC007F8B8D /* UserEntity.swift */; };
+		0000C4082C0B68D5007F8B8D /* WorkExperiencable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000C4072C0B68D5007F8B8D /* WorkExperiencable.swift */; };
 		001A66E82B99F0EE006C9425 /* MentorMatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A66E72B99F0EE006C9425 /* MentorMatchApp.swift */; };
 		001A66EA2B99F0EE006C9425 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A66E92B99F0EE006C9425 /* WelcomeView.swift */; };
 		001A66EC2B99F0EF006C9425 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 001A66EB2B99F0EF006C9425 /* Assets.xcassets */; };
@@ -84,6 +89,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0000C3FF2C0B6888007F8B8D /* Educable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Educable.swift; sourceTree = "<group>"; };
+		0000C4012C0B6898007F8B8D /* Expertiseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expertiseable.swift; sourceTree = "<group>"; };
+		0000C4032C0B68A5007F8B8D /* Orderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orderable.swift; sourceTree = "<group>"; };
+		0000C4052C0B68BC007F8B8D /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
+		0000C4072C0B68D5007F8B8D /* WorkExperiencable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkExperiencable.swift; sourceTree = "<group>"; };
 		001A66E42B99F0EE006C9425 /* MentorMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MentorMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		001A66E72B99F0EE006C9425 /* MentorMatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorMatchApp.swift; sourceTree = "<group>"; };
 		001A66E92B99F0EE006C9425 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -171,6 +181,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0000C3FE2C0B6877007F8B8D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0000C3FF2C0B6888007F8B8D /* Educable.swift */,
+				0000C4012C0B6898007F8B8D /* Expertiseable.swift */,
+				0000C4032C0B68A5007F8B8D /* Orderable.swift */,
+				0000C4052C0B68BC007F8B8D /* UserEntity.swift */,
+				0000C4072C0B68D5007F8B8D /* WorkExperiencable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		001A66DB2B99F0EE006C9425 = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +216,7 @@
 		001A66E62B99F0EE006C9425 /* MentorMatch */ = {
 			isa = PBXGroup;
 			children = (
+				0000C3FE2C0B6877007F8B8D /* Protocols */,
 				001A672D2B9BC105006C9425 /* Model */,
 				001A672C2B9BBF71006C9425 /* ViewModel */,
 				001A671D2B9B9B92006C9425 /* Views */,
@@ -451,6 +474,7 @@
 				0062D83A2BA24FDA00219D5A /* WhichOrderView.swift in Sources */,
 				001A672F2B9BC11A006C9425 /* UserM.swift in Sources */,
 				001A672B2B9BBD24006C9425 /* ProfileView.swift in Sources */,
+				0000C4062C0B68BC007F8B8D /* UserEntity.swift in Sources */,
 				0062D81C2B9F1A5C00219D5A /* ExpertiseRowView.swift in Sources */,
 				00719FAA2BC20D0700C98F49 /* Validator.swift in Sources */,
 				001A676F2B9DEA09006C9425 /* ButtonView.swift in Sources */,
@@ -461,6 +485,7 @@
 				0062D82A2B9FB19000219D5A /* OrderSearchView.swift in Sources */,
 				00719FA42BC053E200C98F49 /* UserView.swift in Sources */,
 				00719FA02BBF221E00C98F49 /* OrderFirebase.swift in Sources */,
+				0000C4042C0B68A5007F8B8D /* Orderable.swift in Sources */,
 				001A67312B9BC23C006C9425 /* Education.swift in Sources */,
 				001A67792B9E1297006C9425 /* EducationView.swift in Sources */,
 				001A677F2B9E6B83006C9425 /* ExperienceView.swift in Sources */,
@@ -477,9 +502,12 @@
 				001A66EA2B99F0EE006C9425 /* WelcomeView.swift in Sources */,
 				001A67332B9BC254006C9425 /* WorkExperience.swift in Sources */,
 				00719F9A2BBC5D1700C98F49 /* SkillsFirebase.swift in Sources */,
+				0000C4082C0B68D5007F8B8D /* WorkExperiencable.swift in Sources */,
 				0062D83C2BA35CA600219D5A /* AuthFirebase.swift in Sources */,
 				001A67772B9E02AC006C9425 /* ArrowButtonView.swift in Sources */,
+				0000C4022C0B6898007F8B8D /* Expertiseable.swift in Sources */,
 				001A67292B9BBD0A006C9425 /* NewOrderView.swift in Sources */,
+				0000C4002C0B6888007F8B8D /* Educable.swift in Sources */,
 				00719FCF2BC5AEDA00C98F49 /* UnsplashAPIManager.swift in Sources */,
 				001A677D2B9E65C5006C9425 /* CustomBackButton.swift in Sources */,
 				00719FD12BC5B17900C98F49 /* ImageLoader.swift in Sources */,

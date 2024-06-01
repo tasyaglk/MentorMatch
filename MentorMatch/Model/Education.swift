@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Education{
+struct Education: Educable {
     var place: String
     var degree: String
     var startYear: String
@@ -20,5 +20,3 @@ struct Education{
         self.endYear = endYear
     }
 }
-
-
