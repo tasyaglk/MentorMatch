@@ -32,7 +32,27 @@ enum NetworkError: Error {
     case unknown
 }
 
-class AuthFirebase: ObservableObject {
+protocol AuthFirebaseProtocol: ObservableObject {
+    var users: [UserM] { get set }
+    var skillsName: [String] { get set }
+    var orders: [Order] { get set }
+    var strangersOrders: [Order] { get set }
+    var isUserLoggedOut: Bool { get set }
+    var errorMessage: String? { get set }
+    
+    func fetchAllOrders()
+    func fetchAllStrangersOrders()
+    func handleSignOut()
+    var signedIn: Bool { get }
+    func fetchData()
+    func getUser() -> UserM?
+    func getUserByEmail(email: String) -> UserM
+    func signIn(email: String, password: String, complition: @escaping (Result<Bool, FBError>) -> Void)
+    func signUp(email: String, password: String, complition: @escaping (Result<Bool, FBError>) -> Void)
+    func insertNewUser(firstName: String, lastName: String, email: String, password: String, education: Education, workExperience: WorkExperience, expertises: [Expertise], completion: @escaping (Result<Bool, FBError>) -> Void)
+}
+
+class AuthFirebase: AuthFirebaseProtocol {
     @Published var users = [UserM]()
     @Published var skillsName = [String]()
     @Published var orders = [Order]()
@@ -50,17 +70,14 @@ class AuthFirebase: ObservableObject {
         getSkillsName()
         fetchAllOrders()
         fetchAllStrangersOrders()
-        
     }
     
     func fetchAllOrders() {
         self.orders.removeAll()
         for user in users {
             if user.email.lowercased() == getUser()?.email.lowercased() {
-                print("zalupa \(user.email)")
                 getOrders(email: user.email)
             }
-            
         }
     }
     
@@ -81,61 +98,55 @@ class AuthFirebase: ObservableObject {
     }
     
     func fetchData() {
-            let db = Firestore.firestore()
+        let db = Firestore.firestore()
+        
+        db.collection("users").addSnapshotListener { [self] (querySnapshot, error) in
+            guard let users = querySnapshot?.documents else {
+                return
+            }
             
-            db.collection("users").addSnapshotListener { [self] (querySnapshot, error) in
-                guard let users = querySnapshot?.documents else {
-                    print("Error fetching documents: \(error!)")
-                    return
+            self.users = users.compactMap { queryDocumentSnapshot -> UserM? in
+                let data = queryDocumentSnapshot.data()
+                
+                let firstName = data["firstName"] as? String ?? ""
+                let lastName = data["lastName"] as? String ?? ""
+                let status = data["status"] as? String ?? ""
+                let description = data["description"] as? String ?? ""
+                let email = data["email"] as? String ?? ""
+                
+                let educationData = data["education"] as? [String: Any] ?? [:]
+                let workData = data["work"] as? [String: Any] ?? [:]
+                let expertisesData = data["expertises"] as? [[String: Any]]  ?? [[:]]
+                
+                let place = educationData["place"] as? String ?? ""
+                let degree = educationData["degree"] as? String ?? ""
+                let startYear = educationData["startYear"] as? String ?? ""
+                let endYear = educationData["endYear"] as? String ?? ""
+                let education = Education(place: place, degree: degree, startYear: startYear, endYear: endYear)
+                
+                let companyName = workData["companyName"] as? String ?? ""
+                let position = workData["position"] as? String ?? ""
+                let startYearWork = workData["startYear"] as? String ?? ""
+                let endYearWork = workData["endYear"] as? String ?? ""
+                let workExperience = WorkExperience(companyName: companyName, position: position, startYear: startYearWork, endYear: endYearWork)
+                
+                var expertises = [Expertise]()
+                for expertiseData in expertisesData {
+                    let name = expertiseData["name"] as? String ?? ""
+                    let rating = expertiseData["rating"] as? Int ?? 3
+                    let isChecked = expertiseData["isChecked"] as? Bool ?? false
+                    let expertise = Expertise(name: name, rating: rating, isChecked: isChecked)
+                    expertises.append(expertise)
                 }
                 
-                self.users = users.compactMap { queryDocumentSnapshot -> UserM? in
-                    let data = queryDocumentSnapshot.data()
-                    
-                    let firstName = data["firstName"] as? String ?? ""
-                    let lastName = data["lastName"] as? String ?? ""
-                    let status = data["status"] as? String ?? ""
-                    let description = data["description"] as? String ?? ""
-                    let email = data["email"] as? String ?? ""
-                    
-                    let educationData = data["education"] as? [String: Any] ?? [:]
-                    let workData = data["work"] as? [String: Any] ?? [:]
-                    let expertisesData = data["expertises"] as? [[String: Any]]  ?? [[:]]
-                    
-                    let place = educationData["place"] as? String ?? ""
-                    let degree = educationData["degree"] as? String ?? ""
-                    let startYear = educationData["startYear"] as? String ?? ""
-                    let endYear = educationData["endYear"] as? String ?? ""
-                    let education = Education(place: place, degree: degree, startYear: startYear, endYear: endYear)
-                    
-                    let companyName = workData["companyName"] as? String ?? ""
-                    let position = workData["position"] as? String ?? ""
-                    let startYearWork = workData["startYear"] as? String ?? ""
-                    let endYearWork = workData["endYear"] as? String ?? ""
-                    let workExperience = WorkExperience(companyName: companyName, position: position, startYear: startYearWork, endYear: endYearWork)
-                    
-                    
-                    var expertises = [Expertise]()
-                    for expertiseData in expertisesData {
-                        let name = expertiseData["name"] as? String ?? ""
-                        let rating = expertiseData["rating"] as? Int ?? 3
-                        let isChecked = expertiseData["isChecked"] as? Bool ?? false
-                        let expertise = Expertise(name: name, rating: rating, isChecked: isChecked)
-                        expertises.append(expertise)
-                    }
-                    
-                    let photoURL = data["photoURL"] as? String ?? ""
-                    return UserM(firstName: firstName, lastName: lastName, status: status, description: description, email: email, education: education, workExperience: workExperience, expertise: expertises, photoURL: photoURL)
-                }
+                let photoURL = data["photoURL"] as? String ?? ""
+                return UserM(firstName: firstName, lastName: lastName, status: status, description: description, email: email, education: education, workExperience: workExperience, expertise: expertises, photoURL: photoURL)
             }
         }
-    
+    }
     
     func getUser() -> UserM? {
-        print(auth.currentUser?.email)
-        
         for user in users {
-            print(user.email)
             if user.email.lowercased() == auth.currentUser?.email {
                 return user
             }
@@ -152,8 +163,7 @@ class AuthFirebase: ObservableObject {
         return UserM(firstName: "", lastName: "", status: "", description: "", email: "")
     }
     
-    
-    func signIn (email: String, password: String, complition: @escaping (Result<Bool, FBError>) -> Void) {
+    func signIn(email: String, password: String, complition: @escaping (Result<Bool, FBError>) -> Void) {
         auth.signIn(withEmail: email, password: password) { result, error in
             if let error {
                 DispatchQueue.main.async {
@@ -167,8 +177,7 @@ class AuthFirebase: ObservableObject {
         }
     }
     
-    func signUp (email: String, password: String, complition: @escaping (Result<Bool, FBError>) -> Void) {
-        print(email + " " + password)
+    func signUp(email: String, password: String, complition: @escaping (Result<Bool, FBError>) -> Void) {
         auth.createUser(withEmail: email, password: password) { result, error in
             if let error {
                 DispatchQueue.main.async {
@@ -183,7 +192,6 @@ class AuthFirebase: ObservableObject {
     }
     
     func insertNewUser(firstName: String, lastName: String, email: String, password: String, education: Education, workExperience: WorkExperience, expertises: [Expertise], completion: @escaping (Result<Bool, FBError>) -> Void) {
-        
         var expertisesData = [[String: Any]]()
         
         for expertise in expertises {
@@ -249,7 +257,6 @@ class AuthFirebase: ObservableObject {
     func checkUserExists(email: String, completion: @escaping (Bool) -> Void) {
         db.collection("users").whereField("email", isEqualTo: email).getDocuments { (querySnapshot, error) in
             if let error = error {
-                print("Error getting documents: \(error)")
                 completion(false)
             } else {
                 if let documents = querySnapshot?.documents, !documents.isEmpty {
