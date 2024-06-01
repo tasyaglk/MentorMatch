@@ -8,9 +8,15 @@
 import Foundation
 import FirebaseFirestore
 
+protocol SkillsFirebaseprotocol {
+    func getSkillsName()
+    func createExpertises() -> [Expertise]
+    func isMentorHasSkills(selectedSkills: [String], user: UserM) -> Bool
+    func isOrderHasSkills(selectedSkills: [String], order: Order) -> Bool
+}
 
-extension AuthFirebase {
-
+extension AuthFirebase: SkillsFirebaseprotocol {
+    
     func getSkillsName() {
         let db = Firestore.firestore()
         let skillsRef = db.collection("skills")

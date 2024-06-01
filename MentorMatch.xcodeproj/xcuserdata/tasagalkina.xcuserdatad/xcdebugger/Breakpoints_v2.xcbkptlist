@@ -731,8 +731,8 @@
             filePath = "MentorMatch/ViewModel/SkillsFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "AuthFirebase"
             landmarkType = "21">
             <Locations>
@@ -809,8 +809,8 @@
             filePath = "MentorMatch/ViewModel/SkillsFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "createExpertises()"
             landmarkType = "7">
          </BreakpointContent>
@@ -825,8 +825,8 @@
             filePath = "MentorMatch/ViewModel/SkillsFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "getSkillsName()"
             landmarkType = "7">
             <Locations>
@@ -888,8 +888,8 @@
             filePath = "MentorMatch/ViewModel/SkillsFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "getSkillsName()"
             landmarkType = "7">
             <Locations>
@@ -951,8 +951,8 @@
             filePath = "MentorMatch/ViewModel/SkillsFirebase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "getSkillsName()"
             landmarkType = "7">
          </BreakpointContent>
