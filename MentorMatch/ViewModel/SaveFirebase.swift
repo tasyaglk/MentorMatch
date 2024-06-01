@@ -8,12 +8,21 @@
 import Foundation
 import Firebase
 
-extension AuthFirebase {
+
+protocol SaveFirebaseProtocol {
+    func saveNewMainInfo(firstName: String, lastName: String, email: String, status: String, description: String, completion: @escaping (Result<Bool, FBError>) -> Void)
+    func saveEducationInfo(email: String, newEducationData: Education)
+    func saveWorkInfo(email: String, newWorkData: WorkExperience)
+    func saveExpertiseInfo(email: String, expertises: [Expertise])
+    func saveOrder(email: String, order: Order)
+}
+
+extension AuthFirebase: SaveFirebaseProtocol {
     
     func saveNewMainInfo(firstName: String, lastName: String, email: String, status: String, description: String, completion: @escaping (Result<Bool, FBError>) -> Void) {
         
         let db = Firestore.firestore()
-    
+        
         db.collection("users").document(email).getDocument { document, error in
             if let document = document, document.exists {
                 var userData = document.data() ?? [:]
